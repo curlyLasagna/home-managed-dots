@@ -34,18 +34,27 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    bat
+    colima
+    cowsay
     curl
+    eza
     fd
     fira-code
     fish
     fzf
+    gawkInteractive
     git
     jq
     neovim
+    pipx
+    ranger
     ripgrep
+    starship
+    tmux
+    unixtools.watch
     wget
     zoxide
-    starship
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -89,6 +98,11 @@
 
   programs.git = {
     enable = true;
+    userName = "luis";
+    userEmail = "luis.gcodes@gmail.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   # Default shell
