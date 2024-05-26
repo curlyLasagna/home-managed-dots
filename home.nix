@@ -36,7 +36,6 @@
     # '')
     bat
     colima
-    cowsay
     curl
     eza
     fd
@@ -51,7 +50,9 @@
     ranger
     ripgrep
     starship
+    stylua
     tmux
+    nil
     unixtools.watch
     wget
     zoxide
@@ -90,12 +91,13 @@
   #  /etc/profiles/per-user/luis/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    PATH = (lib.concatStringSep ":" [
-      "/Users/luis/.local/bin"
-      "/Users/luis/.ghcup/bin"
-      "/Users/luis/.config/emacs/bin"
-    ]);
+    PATH =
+      "/Users/luis/.local/bin:" +
+      "/Users/luis/.ghcup/bin:" +
+      "/Users/luis/.config/emacs/bin:" +
+      "$PATH";
   };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   # Store config files within `.config` directory
@@ -107,6 +109,9 @@
     userEmail = "luis.gcodes@gmail.com";
     extraConfig = {
       init.defaultBranch = "main";
+    };
+    lfs = {
+      enable = true;
     };
   };
 
@@ -124,9 +129,12 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    plugins = [];
-    initExtraFirst = ''
-    ''
+    zplug = {
+      enable = true;
+      plugins = [
+      { name = "zsh-users/zsh-autosuggestions"; }
+      ];
+    };
   };
 
   programs.starship = {
@@ -134,4 +142,23 @@
     enableFishIntegration = true;
     enableZshIntegration = true;
   };
+
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+  };
+
+  programs.eza = {
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+    git = true;
+    icons = true;
+  }
 }
