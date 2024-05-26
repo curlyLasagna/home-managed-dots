@@ -55,6 +55,7 @@
     unixtools.watch
     wget
     zoxide
+    zsh
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -89,7 +90,11 @@
   #  /etc/profiles/per-user/luis/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    PATH = (lib.concatStringSep ":" [
+      "/Users/luis/.local/bin"
+      "/Users/luis/.ghcup/bin"
+      "/Users/luis/.config/emacs/bin"
+    ]);
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -105,13 +110,28 @@
     };
   };
 
-  # Default shell
   programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      set fish_greeting
+    '';
+  };
+
+  # Default shell
+  programs.zsh = {
+    enable = true;
+    autocd = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    plugins = [];
+    initExtraFirst = ''
+    ''
   };
 
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    enableZshIntegration = true;
   };
 }
