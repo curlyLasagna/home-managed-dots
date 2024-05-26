@@ -91,11 +91,8 @@
   #  /etc/profiles/per-user/luis/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    PATH =
-      "/Users/luis/.local/bin:" +
-      "/Users/luis/.ghcup/bin:" +
-      "/Users/luis/.config/emacs/bin:" +
-      "$PATH";
+    PATH = "/Users/luis/.local/bin:" + "/Users/luis/.ghcup/bin:"
+      + "/Users/luis/.config/emacs/bin:" + "$PATH";
   };
 
   # Let Home Manager install and manage itself.
@@ -107,40 +104,66 @@
     enable = true;
     userName = "luis";
     userEmail = "luis.gcodes@gmail.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
-    lfs = {
-      enable = true;
-    };
+    extraConfig = { init.defaultBranch = "main"; };
+    lfs = { enable = true; };
   };
 
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      set fish_greeting
+      set -U fish_greeting
     '';
+    plugins = [{
+      name = "nix-env";
+      src = pkgs.fetchFromGitHub {
+        owner = "lilyball";
+        repo = "nix-env.fish";
+        rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
+        sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
+      };
+    }];
   };
 
   # Default shell
   programs.zsh = {
     enable = true;
     autocd = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    completionInit = "autoload -Uz compinit && compinit";
     zplug = {
       enable = true;
       plugins = [
-      { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "zsh-users/zsh-syntax-highlighting"; }
+        { name = "zsh-users/zsh-history-substring-search"; }
       ];
     };
+    initExtra = ''
+      export HISTIGNORE="pwd:ls:cd"
+      ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+    '';
+    initExtraBeforeCompInit = ''
+      setopt extendedglob nomatch
+      unsetopt BEEP
+    '';
   };
 
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
+    settings = {
+      command_timeout = 10000;
+      add_newline = false;
+      scan_timeout = 30;
+      shell = {
+        fish_indicator = "Fish";
+        zsh_indicator = "Zsh";
+        nu_indicator = "Nu";
+        style = "dimmed";
+        disabled = false;
+      };
+    };
   };
 
   programs.fzf = {
@@ -156,9 +179,10 @@
   };
 
   programs.eza = {
+    enable = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
     git = true;
     icons = true;
-  }
+  };
 }
