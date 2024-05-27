@@ -112,6 +112,15 @@
     enable = true;
     interactiveShellInit = ''
       set -U fish_greeting
+      export SHELL=$(which fish)
+      eval (/opt/homebrew/bin/brew shellenv)
+      if test -d (brew --prefix)"/share/fish/completions"
+          set -p fish_complete_path (brew --prefix)/share/fish/completions
+      end
+
+      if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+          set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+      end
     '';
     plugins = [{
       name = "nix-env";
@@ -141,6 +150,7 @@
     initExtra = ''
       export HISTIGNORE="pwd:ls:cd"
       ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+      eval $(/opt/homebrew/bin/brew shellenv)
     '';
     initExtraBeforeCompInit = ''
       setopt extendedglob nomatch
@@ -148,10 +158,13 @@
     '';
   };
 
+  programs.bash = { enable = true; };
+
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
+    enableBashIntegration = true;
     settings = {
       command_timeout = 10000;
       add_newline = false;
