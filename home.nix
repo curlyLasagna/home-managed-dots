@@ -37,6 +37,7 @@
     bat
     colima
     curl
+    devenv
     eza
     fd
     fira-code
@@ -46,13 +47,13 @@
     git
     jq
     neovim
+    nil
     pipx
     ranger
     ripgrep
     starship
     stylua
     tmux
-    nil
     unixtools.watch
     wget
     zoxide
@@ -112,6 +113,7 @@
     enable = true;
     interactiveShellInit = ''
       set -U fish_greeting
+      source ~/.asdf/asdf.fish
       export SHELL=$(which fish)
       eval (/opt/homebrew/bin/brew shellenv)
       if test -d (brew --prefix)"/share/fish/completions"
@@ -122,6 +124,7 @@
           set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
       end
     '';
+    # Bruh, why does fish need this dependency to work properly?
     plugins = [{
       name = "nix-env";
       src = pkgs.fetchFromGitHub {
@@ -148,6 +151,7 @@
       ];
     };
     initExtra = ''
+      zstyle ':completion:*' menu select
       export HISTIGNORE="pwd:ls:cd"
       ZSH_AUTOSUGGEST_STRATEGY=(history completion)
       eval $(/opt/homebrew/bin/brew shellenv)
