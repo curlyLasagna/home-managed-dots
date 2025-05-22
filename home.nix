@@ -32,7 +32,9 @@
     jq
     nixfmt-rfc-style
     neovim
+    lazygit
     nil
+    tree
     pipx
     ranger
     ripgrep
@@ -56,6 +58,9 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    # "nvim" = {
+    #   source =
+    # }
   };
 
   # Home Manager can also manage your environment variables through
@@ -74,12 +79,14 @@
   #
   #  /etc/profiles/per-user/luis/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    PATH = "/Users/luis/.local/bin:" +
-           "/Users/luis/.ghcup/bin:" +
-           "/Users/luis/.config/emacs/bin:" +
-           "$PATH";
-  };
+  home.sessionVariables = { };
+
+  home.sessionPath = [
+    "/opt/homebrew/bin"
+    "/Users/luis/.local/bin"
+    "/Users/luis/.ghcup/bin"
+    "/Users/luis/.config/emacs/bin"
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -90,49 +97,59 @@
     enable = true;
     userName = "luis";
     userEmail = "luis.gcodes@gmail.com";
-    extraConfig = { init.defaultBranch = "main"; };
-    lfs = { enable = true; };
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+    lfs = {
+      enable = true;
+    };
   };
 
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      set -U fish_greeting
-      source ~/.asdf/asdf.fish
-      export SHELL=$(which fish)
-      eval (/opt/homebrew/bin/brew shellenv)
       if test -d (brew --prefix)"/share/fish/completions"
-          set -p fish_complete_path (brew --prefix)/share/fish/completions
+        set -p fish_complete_path (brew --prefix)/share/fish/completions
       end
 
       if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-          set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+        set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
       end
     '';
-    # Need this when using Fish as a default macOS shell in order to pick
-    # up ~/.nix-profile/bin
+    shellAbbrs = {
+      ls = "eza";
+      ee = "emacsclient -c --no-wait";
+    };
+    functions = {
+      clean_local_branch = {
+        body = ''
+          git fetch -p
+          git branch -vv | rg ': gone]' | rg -v "\*" | awk '{print $1}' | xargs git branch -d
+        '';
+      };
+    };
+    # Need this when using Fish as a default macOS shell in order to pick up ~/.nix-profile/bin
     plugins = [
       {
-      name = "nix-env";
-      src = pkgs.fetchFromGitHub {
-        owner = "lilyball";
-        repo = "nix-env.fish";
-        rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
-        sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
+        name = "nix-env";
+        src = pkgs.fetchFromGitHub {
+          owner = "lilyball";
+          repo = "nix-env.fish";
+          rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
+          sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
         };
       }
       {
-      name = "fzf";
-      src = pkgs.fishPlugins.fzf;
+        name = "fzf";
+        src = pkgs.fishPlugins.fzf;
       }
       {
-      name = "z";
-      src = pkgs.fishPlugins.z;
+        name = "z";
+        src = pkgs.fishPlugins.z;
       }
     ];
   };
 
-  # Default shell
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -146,16 +163,9 @@
         { name = "zsh-users/zsh-history-substring-search"; }
       ];
     };
-    initContent = ''
-      bindkey -M menuselect '^[[Z' reverse-menu-complete
-      zstyle ':completion:*' menu select
-      zstyle ':completion:*' group-name
-      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-      export HISTIGNORE="pwd:ls:cd"
-      ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-      eval $(/opt/homebrew/bin/brew shellenv)
-      setopt extendedglob nomatch
-      unsetopt BEEP
+    profileExtra = ''
+      export SHELL="$HOME/.nix-profile/bin/fish"
+      exec "$SHELL"
     '';
   };
 
@@ -169,9 +179,7 @@
       add_newline = false;
       scan_timeout = 30;
       nix_shell = {
-        symbol = "❄️ ";
-        style = "bold blue";
-        format = "[$symbol$name]($style) ";
+        symbol = "❄ ";
       };
       shell = {
         fish_indicator = "Fish";
