@@ -24,12 +24,6 @@
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
     bat
     curl
     devenv
@@ -46,6 +40,7 @@
     tmux
     unixtools.watch
     wget
+    yazi
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -80,8 +75,10 @@
   #  /etc/profiles/per-user/luis/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    PATH = "/Users/luis/.local/bin:" + "/Users/luis/.ghcup/bin:"
-      + "/Users/luis/.config/emacs/bin:" + "$PATH";
+    PATH = "/Users/luis/.local/bin:" +
+           "/Users/luis/.ghcup/bin:" +
+           "/Users/luis/.config/emacs/bin:" +
+           "$PATH";
   };
 
   # Let Home Manager install and manage itself.
@@ -112,16 +109,27 @@
           set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
       end
     '';
-    # Bruh, why does fish need this dependency to work properly?
-    plugins = [{
+    # Need this when using Fish as a default macOS shell in order to pick
+    # up ~/.nix-profile/bin
+    plugins = [
+      {
       name = "nix-env";
       src = pkgs.fetchFromGitHub {
         owner = "lilyball";
         repo = "nix-env.fish";
         rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
         sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
-      };
-    }];
+        };
+      }
+      {
+      name = "fzf";
+      src = pkgs.fishPlugins.fzf;
+      }
+      {
+      name = "z";
+      src = pkgs.fishPlugins.z;
+      }
+    ];
   };
 
   # Default shell
@@ -138,7 +146,7 @@
         { name = "zsh-users/zsh-history-substring-search"; }
       ];
     };
-    initExtra = ''
+    initContent = ''
       bindkey -M menuselect '^[[Z' reverse-menu-complete
       zstyle ':completion:*' menu select
       zstyle ':completion:*' group-name
@@ -146,8 +154,6 @@
       export HISTIGNORE="pwd:ls:cd"
       ZSH_AUTOSUGGEST_STRATEGY=(history completion)
       eval $(/opt/homebrew/bin/brew shellenv)
-    '';
-    initExtraBeforeCompInit = ''
       setopt extendedglob nomatch
       unsetopt BEEP
     '';
@@ -189,6 +195,6 @@
     enableFishIntegration = true;
     enableZshIntegration = true;
     git = true;
-    icons = true;
+    icons = "auto";
   };
 }
