@@ -23,7 +23,6 @@
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
     bat
     curl
     devenv
@@ -31,6 +30,7 @@
     nil
     gawkInteractive
     jq
+    nixfmt-rfc-style
     neovim
     nil
     pipx
@@ -168,6 +168,11 @@
       command_timeout = 10000;
       add_newline = false;
       scan_timeout = 30;
+      nix_shell = {
+        symbol = "❄️ ";
+        style = "bold blue";
+        format = "[$symbol$name]($style) ";
+      };
       shell = {
         fish_indicator = "Fish";
         zsh_indicator = "Zsh";
