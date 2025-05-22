@@ -18,10 +18,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -35,29 +31,21 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     bat
-    colima
     curl
     devenv
-    eza
     fd
-    fira-code
-    fish
-    fzf
+    nil
     gawkInteractive
-    git
     jq
     neovim
     nil
     pipx
     ranger
     ripgrep
-    starship
     stylua
     tmux
     unixtools.watch
     wget
-    zoxide
-    zsh
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -151,7 +139,10 @@
       ];
     };
     initExtra = ''
+      bindkey -M menuselect '^[[Z' reverse-menu-complete
       zstyle ':completion:*' menu select
+      zstyle ':completion:*' group-name
+      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
       export HISTIGNORE="pwd:ls:cd"
       ZSH_AUTOSUGGEST_STRATEGY=(history completion)
       eval $(/opt/homebrew/bin/brew shellenv)
@@ -161,8 +152,6 @@
       unsetopt BEEP
     '';
   };
-
-  programs.bash = { enable = true; };
 
   programs.starship = {
     enable = true;
