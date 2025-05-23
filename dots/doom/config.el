@@ -162,13 +162,3 @@
   (doom-modeline-vcs-max-length 12)
   (doom-modeline-buffer-file-name-style 'file-name-with-project)
   )
-
-(use-package! gptel
-  :config
-  (setq! gptel-model 'gemini-2.0-flash-exp)
-  (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
-  (setq! gptel-backend (gptel-make-gemini "Gemini"
-                         :key "AIzaSyCJur7pDW_LllvY9hQldv1NhXmslf9LBJY"
-                         :stream t
-                         ))
-  )
