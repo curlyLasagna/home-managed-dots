@@ -33,6 +33,7 @@
       nixfmt-rfc-style
       neovim
       lazygit
+      pandoc
       nil
       tree
       pipx
@@ -60,12 +61,19 @@
       #   org.gradle.daemon.idletimeout=3600000
       # '';
       ".config/nvim" = {
-        # I have no idea why I have to spell the whole thing out
+        # Git submodule issue
         source = config.lib.file.mkOutOfStoreSymlink /Users/luis/.config/home-manager/dots/nvim;
       };
       ".config/doom" = {
         source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
-        # source = dots/doom;
+      };
+      # Terminal emulator
+      ".config/ghostty" = {
+        source = config.lib.file.mkOutOfStoreSymlink ./dots/ghostty;
+      };
+      # MacOS tiling window manager
+      ".config/aerospace" = {
+        source = config.lib.file.mkOutOfStoreSymlink ./dots/aerospace;
       };
     };
 
@@ -112,6 +120,7 @@
 
     fish = {
       enable = true;
+      # Add brew completions to fish
       interactiveShellInit = ''
         if test -d (brew --prefix)"/share/fish/completions"
           set -p fish_complete_path (brew --prefix)/share/fish/completions
@@ -144,14 +153,14 @@
             sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
           };
         }
-        {
-          name = "fzf";
-          src = pkgs.fishPlugins.fzf;
-        }
-        {
-          name = "z";
-          src = pkgs.fishPlugins.z;
-        }
+        # {
+          # name = "fzf";
+          # src = pkgs.fishPlugins.fzf;
+        # }
+        # {
+          # name = "z";
+          # src = pkgs.fishPlugins.z;
+        # }
       ];
     };
 
@@ -180,15 +189,15 @@
       enableZshIntegration = true;
       enableBashIntegration = true;
       settings = {
-        command_timeout = 10000;
+        command_timeout = 100000;
         add_newline = false;
         scan_timeout = 30;
         nix_shell = {
           symbol = "❄ ";
         };
         shell = {
-          fish_indicator = "Fish";
-          zsh_indicator = "Zsh";
+          fish_indicator = "🐟";
+          zsh_indicator = "Z";
           nu_indicator = "Nu";
           style = "dimmed";
           disabled = false;
@@ -204,6 +213,8 @@
 
     zoxide = {
       enable = true;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
     };
 
     eza = {
