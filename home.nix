@@ -59,10 +59,11 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     ".config/nvim" = {
-      source = ../dots/nvim;
+      source = config.lib.file.mkOutOfStoreSymlink ./dots/nvim;
     };
     ".config/doom" = {
-      source = ../dots/doom;
+      source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
+      # source = dots/doom;
     };
   };
 

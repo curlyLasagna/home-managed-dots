@@ -11,22 +11,32 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = inputs@{self, flake-utils, nixpkgs, home-manager, ... }:
-    flake-utils.lib.eachDefaultSystem(system:
-    let
-      pkgs = import nixpkgs {inherit system; };
-    in {
-      legacyPackages = {
-        homeConfigurations."luis" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+  outputs =
+    inputs@{
+      self,
+      flake-utils,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
+        legacyPackages = {
+          homeConfigurations."luis" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
 
-          # Specify your home configuration modules here, for example,
-          # the path to your home.nix.
-          modules = [ ./home.nix ];
+            # Specify your home configuration modules here, for example,
+            # the path to your home.nix.
+            modules = [ ./home.nix ];
 
-          # Optionally use extraSpecialArgs
-          # to pass through arguments to home.nix
+            # Optionally use extraSpecialArgs
+            # to pass through arguments to home.nix
+          };
         };
-      };
-    });
+      }
+    );
 }
