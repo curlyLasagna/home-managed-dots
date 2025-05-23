@@ -27,6 +27,7 @@
     curl
     devenv
     fd
+    awscli
     nil
     gawkInteractive
     jq
@@ -59,7 +60,8 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     ".config/nvim" = {
-      source = config.lib.file.mkOutOfStoreSymlink ./dots/nvim;
+        # I have no idea why I have to spell the whole thing out
+      source = config.lib.file.mkOutOfStoreSymlink /Users/luis/.config/home-manager/dots/nvim;
     };
     ".config/doom" = {
       source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
