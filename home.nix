@@ -58,9 +58,12 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    # "nvim" = {
-    #   source =
-    # }
+    ".config/nvim" = {
+      source = ../dots/nvim;
+    };
+    ".config/doom" = {
+      source = ../dots/doom;
+    };
   };
 
   # Home Manager can also manage your environment variables through
