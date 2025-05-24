@@ -27,7 +27,10 @@
       curl
       devenv
       fd
+      xh
       nil
+      hyperfine
+      tokei
       gawkInteractive
       jq
       nixfmt-rfc-style
@@ -35,10 +38,10 @@
       lazygit
       pandoc
       yaml-language-server
+      direnv
       nil
       tree
       pipx
-      ranger
       ripgrep
       stylua
       tmux
