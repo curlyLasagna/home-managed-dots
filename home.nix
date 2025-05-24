@@ -34,6 +34,7 @@
       neovim
       lazygit
       pandoc
+      yaml-language-server
       nil
       tree
       pipx
