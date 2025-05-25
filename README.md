@@ -2,12 +2,11 @@
 
 My humble home-manager config for MacOS
 
-> Getting a hang of Nix. One rabbit hole at a time.
+## Workflow
 
-## Neovim
+- Emacs for editing config files or systems programming. Also magit is ❤️
+- Nvim when I forget I have Emacs
+- Starship as my shell prompt
+- Fish as default shell
+- Alacritty + zellij or Ghostty, depends how much I want to show off
 
-I use NvChad as my Neovim config because I don't use Neovim enough to justify configuring it, so it's a git submodule
-
-## Doom Emacs
-
-Continues to be broken but I love this text editor regardless
