@@ -8,7 +8,72 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   # Store config files within `.config` directory
-  xdg.enable = true;
+  xdg = {
+    enable = true;
+    configFile = {
+      "nvim" = {
+        source = config.lib.file.mkOutOfStoreSymlink /Users/luis/.config/home-manager/dots/nvim;
+      };
+      "doom" = {
+        source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
+      };
+      "aerospace" = {
+        source = config.lib.file.mkOutOfStoreSymlink ./dots/aerospace;
+      };
+      # Terminal emulator
+      "ghostty/config".text = ''
+        command = ${pkgs.fish}/bin/fish --login --interactive
+        # Aesthetics
+        font-family = JetBrains Nerd Font Mono
+        font-size = 13
+        window-theme = auto
+
+        window-padding-x = 10
+        window-padding-y = 10,0
+        window-inherit-working-directory = true
+
+        theme = light:tokyonight-day,dark:catppuccin-mocha
+
+        # Cursor
+        shell-integration-features = no-cursor
+        cursor-style = block
+
+        # Mac
+        macos-icon = holographic
+        macos-titlebar-style = transparent
+        macos-titlebar-proxy-icon = hidden
+        macos-option-as-alt = true
+      '';
+
+      # kdl is too niche for me to add a mode for
+      "zellij/config.kdl".text = ''
+        default_shell "fish"
+        theme "tokyo-night"
+        keybinds {
+          pane {
+              bind "h" { MoveFocus "Left"; }
+              bind "l" { MoveFocus "Right"; }
+              bind "j" { MoveFocus "Down"; }
+              bind "k" { MoveFocus "Up"; }
+          }
+          tab {
+              bind "h" { GoToPreviousTab; }
+              bind "l" { GoToNextTab; }
+          }
+          resize {
+            bind "h" { Resize "Increase Left"; }
+            bind "j" { Resize "Increase Down"; }
+            bind "k" { Resize "Increase Up"; }
+            bind "l" { Resize "Increase Right"; }
+            bind "H" { Resize "Decrease Left"; }
+            bind "J" { Resize "Decrease Down"; }
+            bind "K" { Resize "Decrease Up"; }
+            bind "L" { Resize "Decrease Right"; }
+          }
+        }
+      '';
+    };
+  };
   home = {
     username = "luis";
     homeDirectory = "/Users/luis";
@@ -56,54 +121,17 @@
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
-    file = {
-      # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-      # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-      # # symlink to the Nix store copy.
-      # ".screenrc".source = dotfiles/screenrc;
+    # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # symlink to the Nix store copy.
+    # ".screenrc".source = dotfiles/screenrc;
 
-      # # You can also set the file content immediately.
-      # ".gradle/gradle.properties".text = ''
-      #   org.gradle.console=verbose
-      #   org.gradle.daemon.idletimeout=3600000
-      # '';
-      ".config/nvim" = {
-        # Git submodule issue
-        source = config.lib.file.mkOutOfStoreSymlink /Users/luis/.config/home-manager/dots/nvim;
-      };
-      ".config/doom" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
-      };
-      # Terminal emulator
-      ".config/ghostty/config".text = ''
-          command = ${pkgs.fish}/bin/fish --login --interactive
-          # Aesthetics
-          font-family = JetBrains Nerd Font Mono
-          font-size = 13
-          window-theme = auto
-
-          window-padding-x = 10
-          window-padding-y = 10,0
-          window-inherit-working-directory = true
-
-          theme = light:tokyonight-day,dark:catppuccin-mocha
-
-          # Cursor
-          shell-integration-features = no-cursor
-          cursor-style = block
-
-          # Mac
-          macos-icon = holographic
-          macos-titlebar-style = transparent
-          macos-titlebar-proxy-icon = hidden
-          macos-option-as-alt = true
-      '';
-      # MacOS tiling window manager
-      ".config/aerospace" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./dots/aerospace;
-      };
-    };
-
+    # # You can also set the file content immediately.
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
+    file = { };
     # Home Manager can also manage your environment variables through
     # 'home.sessionVariables'. These will be explicitly sourced when using a
     # shell provided by Home Manager. If you don't want to manage your shell
@@ -248,9 +276,6 @@
 
     zellij = {
       enable = true;
-      settings = {
-        default_shell = "fish";
-      };
     };
 
     # GUI apps
