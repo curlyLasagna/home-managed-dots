@@ -38,6 +38,7 @@
       lazygit
       pandoc
       yaml-language-server
+      devenv
       direnv
       nil
       tree
@@ -137,6 +138,7 @@
       shellAbbrs = {
         ls = "eza";
         ee = "emacsclient -c --no-wait";
+        cd = "z";
       };
       functions = {
         clean_local_branch = {
@@ -157,14 +159,6 @@
             sha256 = "069ybzdj29s320wzdyxqjhmpm9ir5815yx6n522adav0z2nz8vs4";
           };
         }
-        # {
-          # name = "fzf";
-          # src = pkgs.fishPlugins.fzf;
-        # }
-        # {
-          # name = "z";
-          # src = pkgs.fishPlugins.z;
-        # }
       ];
     };
 
@@ -181,8 +175,9 @@
           { name = "zsh-users/zsh-history-substring-search"; }
         ];
       };
+      # Work-around since home-manager doesn't manage default shells
       profileExtra = ''
-        export SHELL="$HOME/.nix-profile/bin/fish"
+        export SHELL="${pkgs.fish}/bin/fish"
         exec "$SHELL"
       '';
     };
@@ -227,6 +222,19 @@
       enableZshIntegration = true;
       git = true;
       icons = "auto";
+    };
+
+    zellij = {
+      enable = true;
+    };
+
+    alacritty = {
+      settings = {
+        terminal.shell = {
+          program = "${pkgs.fish}/bin/fish";
+          args = ["-l" "-c" "zellij"];
+        };
+      };
     };
   };
 }
