@@ -31,27 +31,25 @@
       curl
       devenv
       fd
-      xh
-      nil
-      hyperfine
-      tokei
+      lazydocker
       gawkInteractive
+      hyperfine
       jq
-      nixfmt-rfc-style
-      neovim
       lazygit
-      pandoc
-      yaml-language-server
-      devenv
-      direnv
+      neovim
       nil
-      tree
+      nixfmt-rfc-style
+      pandoc
       pipx
       ripgrep
       stylua
       tmux
+      tokei
+      tree
       unixtools.watch
       wget
+      xh
+      yaml-language-server
       yazi
       zoxide
     ];
