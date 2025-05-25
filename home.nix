@@ -75,9 +75,29 @@
         source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
       };
       # Terminal emulator
-      ".config/ghostty" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./dots/ghostty;
-      };
+      ".config/ghostty/config".text = ''
+          command = ${pkgs.fish}/bin/fish --login --interactive
+          # Aesthetics
+          font-family = JetBrains Nerd Font Mono
+          font-size = 13
+          window-theme = auto
+
+          window-padding-x = 10
+          window-padding-y = 10,0
+          window-inherit-working-directory = true
+
+          theme = light:tokyonight-day,dark:catppuccin-mocha
+
+          # Cursor
+          shell-integration-features = no-cursor
+          cursor-style = block
+
+          # Mac
+          macos-icon = holographic
+          macos-titlebar-style = transparent
+          macos-titlebar-proxy-icon = hidden
+          macos-option-as-alt = true
+      '';
       # MacOS tiling window manager
       ".config/aerospace" = {
         source = config.lib.file.mkOutOfStoreSymlink ./dots/aerospace;
