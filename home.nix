@@ -184,6 +184,11 @@
       ];
     };
 
+    direnv = {
+      enable = true;
+      silent = true;
+    };
+
     zsh = {
       enable = true;
       autocd = true;
