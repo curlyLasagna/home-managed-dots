@@ -202,11 +202,6 @@
           { name = "zsh-users/zsh-history-substring-search"; }
         ];
       };
-      # Work-around since home-manager doesn't manage default shells
-      profileExtra = ''
-        export SHELL="${pkgs.fish}/bin/fish"
-        exec "$SHELL"
-      '';
     };
 
     starship = {
@@ -253,14 +248,46 @@
 
     zellij = {
       enable = true;
+      enableFishIntegration = true;
+      settings = {
+        default_shell = "fish";
+      };
     };
 
+    # GUI apps
+    # TODO: Running alacritty via spotlight doesn't spawn a shell. It's just stuck
     alacritty = {
+      enable = true;
       settings = {
         terminal.shell = {
           program = "${pkgs.fish}/bin/fish";
-          args = ["-l" "-c" "zellij"];
+          args = [
+            "-l"
+            "-i"
+            "-c"
+            "zellij"
+          ];
         };
+        window = {
+          padding = {
+            x = 10;
+            y = 8;
+          };
+          startup_mode = "Windowed";
+          dynamic_padding = true;
+          dynamic_title = true;
+          option_as_alt = "Both";
+          decorations = "Buttonless";
+          decorations_theme_variant = "Dark";
+        };
+        font = {
+          normal = {
+            family = "JetBrainsMono Nerd Font";
+            style = "Regular";
+          };
+          size = 13;
+        };
+        selection.save_to_clipboard = true;
       };
     };
   };
