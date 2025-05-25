@@ -248,14 +248,12 @@
 
     zellij = {
       enable = true;
-      enableFishIntegration = true;
       settings = {
         default_shell = "fish";
       };
     };
 
     # GUI apps
-    # TODO: Running alacritty via spotlight doesn't spawn a shell. It's just stuck
     alacritty = {
       enable = true;
       settings = {
