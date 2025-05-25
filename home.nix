@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = (_: true);
+  };
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   # Store config files within `.config` directory
