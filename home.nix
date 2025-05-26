@@ -1,13 +1,17 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  alacritty-themes,
+  ...
+}:
 
 {
   nixpkgs.config = {
+    # Allow useful packages 😜
     allowUnfree = true;
     allowUnfreePredicate = (_: true);
   };
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  # Store config files within `.config` directory
+  # Store relative to `.config` directory
   xdg = {
     enable = true;
     configFile = {
@@ -20,7 +24,15 @@
       "aerospace" = {
         source = config.lib.file.mkOutOfStoreSymlink ./dots/aerospace;
       };
-      # Terminal emulator
+      # Download alacritty theme from alacritty-themes
+      "alacritty/theme.toml" = {
+        source =
+          let
+            themeName = "everforest_dark";
+            ext = "toml";
+          in
+          "${alacritty-themes}/themes/${themeName}.${ext}";
+      };
       "ghostty/config".text = ''
         command = ${pkgs.fish}/bin/fish --login --interactive
         # Aesthetics
@@ -279,6 +291,7 @@
     };
 
     # GUI apps
+
     alacritty = {
       enable = true;
       settings = {
@@ -311,6 +324,9 @@
           size = 13;
         };
         selection.save_to_clipboard = true;
+        general.import = [
+          "${config.xdg.configFile."alacritty/theme.toml".source}"
+        ];
       };
     };
   };

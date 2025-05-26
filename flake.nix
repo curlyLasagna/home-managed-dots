@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
+    # Pick themes
+    alacritty-themes = {
+      url = "github:alacritty/alacritty-theme";
+      flake = false;
+    };
   };
 
   outputs =
@@ -17,6 +22,7 @@
       flake-utils,
       nixpkgs,
       home-manager,
+      alacritty-themes,
       ...
     }:
     flake-utils.lib.eachDefaultSystem (
@@ -35,6 +41,9 @@
 
             # Optionally use extraSpecialArgs
             # to pass through arguments to home.nix
+            extraSpecialArgs = {
+              alacritty-themes = alacritty-themes;
+            };
           };
         };
       }
