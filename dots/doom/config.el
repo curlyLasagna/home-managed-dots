@@ -2,7 +2,7 @@
 
 (setq! user-full-name "Luis Dale Gascon"
        user-mail-address "luis.gcodes@gmail.com")
-(setq! doom-font (font-spec :family "Iosevka Nerd Font Mono" :size 16)
+(setq! doom-font (font-spec :family "ZedMono Nerd Font" :size 16)
        doom-variable-pitch-font (font-spec :family "SF Mono" :size 15)
        doom-symbol-font (font-spec :family "Hack Nerd Font")
        doom-big-font (font-spec :family "CommitMono" :size 25)
