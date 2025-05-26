@@ -57,8 +57,10 @@
         macos-option-as-alt = true
       '';
 
-      # kdl is too niche for me to add a mode for
+      # Who uses kdl?
       "zellij/config.kdl".text = ''
+        on_force_close "quit"
+        show_startup_tips false
         default_shell "fish"
         theme "tokyo-night"
         keybinds {
@@ -100,7 +102,6 @@
     # You should not change this value, even if you update Home Manager. If you do
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
-    stateVersion = "23.11";
     packages = with pkgs; [
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
@@ -158,7 +159,11 @@
     # or
     #
     #  /etc/profiles/per-user/luis/etc/profile.d/hm-session-vars.sh
-    sessionVariables = { };
+    sessionVariables = {
+      ALTERNATE_EDITOR = "";
+      VISUAL = "emacsclient -c -a emacs";
+      EDITOR = "emacsclient -t";
+    };
     sessionPath = [
       "/opt/homebrew/bin"
       "/Users/luis/.local/bin"
@@ -198,7 +203,8 @@
       '';
       shellAbbrs = {
         ls = "eza";
-        ee = "emacsclient -c --no-wait";
+        ee = "emacsclient -r --no-wait";
+        enw = "emacsclient -nw ";
         cd = "z";
       };
       functions = {
