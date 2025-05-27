@@ -108,14 +108,17 @@
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
       # # fonts?
       # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+
+      # cli apps
       bat
       curl
       devenv
       fd
-      lazydocker
       gawkInteractive
       hyperfine
       jq
+      gcc
+      lazydocker
       lazygit
       neovim
       nil
@@ -131,9 +134,16 @@
       wget
       xh
       yaml-language-server
-      vscode
       yazi
       zoxide
+
+      # gui apps
+      vscode
+      obsidian
+      zed-editor
+      emacs
+      hoppscotch
+
       # fonts
       fira-code
       roboto-mono
@@ -164,6 +174,7 @@
       VISUAL = "emacsclient -c -a emacs";
       EDITOR = "emacsclient -t";
     };
+    # PATH
     sessionPath = [
       "/opt/homebrew/bin"
       "/Users/luis/.local/bin"
