@@ -105,6 +105,7 @@
       # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
       # cli apps
+
       bat
       coreutils
       curl
@@ -113,14 +114,15 @@
       gawkInteractive
       hyperfine
       jq
-      python313
       lazydocker
       lazygit
+      marksman
       neovim
       nil
       nixfmt-rfc-style
       pandoc
       pipx
+      python313
       ripgrep
       stylua
       tokei
