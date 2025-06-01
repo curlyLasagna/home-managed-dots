@@ -106,13 +106,14 @@
 
       # cli apps
       bat
+      coreutils
       curl
       devenv
       fd
       gawkInteractive
       hyperfine
       jq
-      gcc
+      python313
       lazydocker
       lazygit
       neovim
@@ -122,7 +123,6 @@
       pipx
       ripgrep
       stylua
-      tmux
       tokei
       tree
       unixtools.watch
@@ -136,7 +136,6 @@
       vscode
       obsidian
       zed-editor
-      emacs
       hoppscotch
 
       # fonts
