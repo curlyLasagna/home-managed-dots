@@ -18,21 +18,16 @@
       "nvim" = {
         source = config.lib.file.mkOutOfStoreSymlink /Users/luis/.config/home-manager/dots/nvim;
       };
-      "doom" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
-      };
-      "aerospace" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./dots/aerospace;
-      };
       # Download alacritty theme from alacritty-themes
       "alacritty/theme.toml" = {
         source =
           let
-            themeName = "everforest_dark";
+            themeName = "tokyo_night";
             ext = "toml";
           in
           "${alacritty-themes}/themes/${themeName}.${ext}";
       };
+
       "ghostty/config".text = ''
         command = ${pkgs.fish}/bin/fish --login --interactive
         # Aesthetics
@@ -307,6 +302,36 @@
     };
 
     # GUI apps
+
+    aerospace = {
+      enable = true;
+      userSettings = {
+        gaps = {
+          inner.horizontal = 10;
+          inner.vertical = 8;
+          outer.left = 7;
+          outer.bottom = 7;
+          outer.top = 7;
+          outer.right = 7;
+        };
+        mode.main.binding = {
+          ctrl-alt-h = "focus left --boundaries-action wrap-around-the-workspace";
+          ctrl-alt-j = "focus down --boundaries-action wrap-around-the-workspace";
+          ctrl-alt-k = "focus up --boundaries-action wrap-around-the-workspace";
+          ctrl-alt-l = "focus right --boundaries-action wrap-around-the-workspace";
+
+          ctrl-alt-n = "move-node-to-workspace next --wrap-around";
+          ctrl-alt-p = "move-node-to-workspace prev --wrap-around";
+
+          ctrl-alt-f = "fullscreen --no-outer-gaps";
+
+          cmd-ctrl-alt-h = "move left";
+          cmd-ctrl-alt-j = "move down";
+          cmd-ctrl-alt-k = "move up";
+          cmd-ctrl-alt-l = "move right";
+        };
+      };
+    };
 
     alacritty = {
       enable = true;
