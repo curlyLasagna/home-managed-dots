@@ -31,23 +31,23 @@
       "ghostty/config".text = ''
         command = ${pkgs.fish}/bin/fish --login --interactive
         # Aesthetics
-        font-family = JetBrains Nerd Font Mono
+        font-family = ZedMono Nerd Font
         font-size = 13
         window-theme = auto
 
-        window-padding-x = 10
-        window-padding-y = 10,0
-        window-inherit-working-directory = true
+        window-padding-x = 15
+        window-padding-y = 15,0
+        window-inherit-working-directory = false
 
-        theme = light:tokyonight-day,dark:catppuccin-mocha
+        theme = light:Raycast_Light,dark:catppuccin-mocha
 
         # Cursor
         shell-integration-features = no-cursor
         cursor-style = block
 
         # Mac
-        macos-icon = holographic
-        macos-titlebar-style = transparent
+        macos-icon = retro
+        macos-titlebar-style = hidden
         macos-titlebar-proxy-icon = hidden
         macos-option-as-alt = true
       '';
