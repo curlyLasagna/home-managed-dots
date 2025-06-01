@@ -303,7 +303,8 @@
     };
 
     # GUI apps
-
+    # TODO:
+    # - Figure out a key combo that doesn't mess with Emacs bindings (Impossible)
     aerospace = {
       enable = true;
       userSettings = {
@@ -315,21 +316,30 @@
           outer.top = 7;
           outer.right = 7;
         };
-        mode.main.binding = {
-          ctrl-alt-h = "focus left --boundaries-action wrap-around-the-workspace";
-          ctrl-alt-j = "focus down --boundaries-action wrap-around-the-workspace";
-          ctrl-alt-k = "focus up --boundaries-action wrap-around-the-workspace";
-          ctrl-alt-l = "focus right --boundaries-action wrap-around-the-workspace";
+        mode = {
+          main.binding = {
+            ctrl-alt-h = "focus left --boundaries-action wrap-around-the-workspace";
+            ctrl-alt-j = "focus down --boundaries-action wrap-around-the-workspace";
+            ctrl-alt-k = "focus up --boundaries-action wrap-around-the-workspace";
+            ctrl-alt-l = "focus right --boundaries-action wrap-around-the-workspace";
 
-          ctrl-alt-n = "move-node-to-workspace next --wrap-around";
-          ctrl-alt-p = "move-node-to-workspace prev --wrap-around";
+            ctrl-alt-n = "move-node-to-workspace next --wrap-around";
+            ctrl-alt-p = "move-node-to-workspace prev --wrap-around";
 
-          ctrl-alt-f = "fullscreen --no-outer-gaps";
+            ctrl-alt-enter = "fullscreen --no-outer-gaps";
 
-          cmd-ctrl-alt-h = "move left";
-          cmd-ctrl-alt-j = "move down";
-          cmd-ctrl-alt-k = "move up";
-          cmd-ctrl-alt-l = "move right";
+            cmd-ctrl-alt-h = "move left";
+            cmd-ctrl-alt-j = "move down";
+            cmd-ctrl-alt-k = "move up";
+            cmd-ctrl-alt-l = "move right";
+
+            alt-space = "layout floating tiling";
+
+          };
+          resize.binding = {
+            minus = "resize smart -50";
+            equal = "resize smart +50";
+          };
         };
       };
     };
@@ -360,7 +370,7 @@
         };
         font = {
           normal = {
-            family = "JetBrainsMono Nerd Font";
+            family = "ZedMono Nerd Font";
             style = "Regular";
           };
           size = 13;
