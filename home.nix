@@ -50,6 +50,7 @@
         macos-titlebar-style = hidden
         macos-titlebar-proxy-icon = hidden
         macos-option-as-alt = true
+        macos-window-shadow = false
       '';
 
       # Who uses kdl?
