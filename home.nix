@@ -31,13 +31,13 @@
       "ghostty/config".text = ''
         command = ${pkgs.fish}/bin/fish --login --interactive
         # Aesthetics
-        font-family = ZedMono Nerd Font
+        font-family = JetBrains Mono
         font-size = 13
         window-theme = auto
 
         window-padding-x = 15
         window-padding-y = 15,0
-        window-inherit-working-directory = false
+        window-inherit-working-directory = true
 
         theme = light:Raycast_Light,dark:catppuccin-mocha
 
@@ -46,11 +46,11 @@
         cursor-style = block
 
         # Mac
-        macos-icon = retro
-        macos-titlebar-style = hidden
+        macos-icon = blueprint
+        macos-titlebar-style = transparent
         macos-titlebar-proxy-icon = hidden
         macos-option-as-alt = true
-        macos-window-shadow = false
+        macos-window-shadow = true
       '';
 
       # Who uses kdl?
@@ -347,9 +347,13 @@
     };
 
     # GUI apps
-    # TODO:
-    # - Figure out a key combo that doesn't mess with Emacs bindings (Impossible)
+
     aerospace = {
+      # Aerospace is a window manager for MacOS https://github.com/nikitabobko/AeroSpace
+      # TODO:
+      # - Figure out a key combo that doesn't mess with Emacs bindings (Impossible)
+      # - Figure out how to format userSettings.on-window-detected to set new windows as floating
+
       enable = true;
       userSettings = {
         gaps = {
