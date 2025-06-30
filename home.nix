@@ -12,13 +12,12 @@ let
   unsupported = builtins.abort "Unsupported platform";
 in
 {
-  imports =
-    [
+  imports = [
 
-    ]
-    ++ lib.optionals isMac [
-      ./macos.nix
-    ];
+  ];
+  # ++ lib.optionals isMac [
+  #   ./macos.nix
+  # ];
   nixpkgs.config = {
     # Allow useful packages 😜
     allowUnfree = true;
@@ -31,7 +30,7 @@ in
       if isMac then
         "/Users/luis"
       else if isLinux then
-        "/home/${config.home.username}"
+        "/home/luis"
       else
         unsupported;
     stateVersion = "23.11";
