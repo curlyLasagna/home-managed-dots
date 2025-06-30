@@ -26,44 +26,28 @@
       ...
     }:
 
-    let
-      args = {
-        inherit (nixpkgs) lib;
-        inherit alacritty-themes;
-      };
-    in
     {
       # Macbook configuration
       homeConfigurations = {
-        "luis@macbook" = home-manager.lib.homeManagerConfiguration {
+        "luis@macbook" = home-manager.lib.homeManagerConfiguration ({
+          modules = [
+            (import ./home.nix)
+          ];
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
             config.allowUnfree = true;
           };
-          modules = [
-            ./shared.nix
-            ./macos.nix
-          ];
+        });
 
-          extraSpecialArgs = args // {
-            isMac = true;
-            isLinux = false;
-          };
-        };
-        "luis@wsl" = home-manager.lib.homeManagerConfiguration {
+        "luis@wsl" = home-manager.lib.homeManagerConfiguration ({
+          modules = [
+            (import ./home.nix)
+          ];
           pkgs = import nixpkgs {
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
-          modules = [
-            ./shared.nix
-          ];
-
-          extraSpecialArgs = args // {
-            isMac = false;
-            isLinux = true;
-          };
-        };
+        });
       };
     };
 }
