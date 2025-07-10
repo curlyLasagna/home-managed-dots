@@ -15,7 +15,8 @@
     hoppscotch
 
     # Fonts
-    fira-code
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
     roboto-mono
     jetbrains-mono
     iosevka
@@ -40,7 +41,7 @@
     "alacritty/theme.toml" = {
       source =
         let
-          themeName = "tokyo_night";
+          themeName = "ashes_dark";
           ext = "toml";
         in
         "${alacritty-themes}/themes/${themeName}.${ext}";
@@ -151,7 +152,7 @@
       };
       font = {
         normal = {
-          family = "JetBrains Mono";
+          family = "JetBrainsMono Nerd Font";
           style = "Regular";
         };
         size = 13;
