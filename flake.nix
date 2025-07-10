@@ -31,17 +31,21 @@
       homeConfigurations = {
         "luis@macbook" = home-manager.lib.homeManagerConfiguration ({
           modules = [
-            (import ./home.nix)
+            ./home.nix
+            ./macos.nix
           ];
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
             config.allowUnfree = true;
           };
+          extraSpecialArgs = {
+            alacritty-themes = alacritty-themes;
+          };
         });
 
         "luis@wsl" = home-manager.lib.homeManagerConfiguration ({
           modules = [
-            (import ./home.nix)
+            ./home.nix
           ];
           pkgs = import nixpkgs {
             system = "x86_64-linux";

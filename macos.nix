@@ -2,9 +2,10 @@
   config,
   pkgs,
   lib,
-  alacritty-themes
+  alacritty-themes,
   ...
 }:
+
 {
   home.packages = with pkgs; [
     # GUI apps
@@ -20,6 +21,19 @@
     iosevka
     nerd-fonts.iosevka-term
     nerd-fonts.zed-mono
+  ];
+
+  home.sessionVariables = {
+    ALTERNATE_EDITOR = "";
+    VISUAL = "emacsclient -c -a emacs";
+    EDITOR = "emacsclient -t";
+  };
+  # PATH
+  home.sessionPath = [
+    "/opt/homebrew/bin"
+    "/Users/luis/.local/bin"
+    "/Users/luis/.ghcup/bin"
+    "/Users/luis/.config/emacs/bin"
   ];
 
   xdg.configFile = {
@@ -99,6 +113,18 @@
     };
   };
 
+  programs.fish = {
+    interactiveShellInit = ''
+      if test -d (brew --prefix)"/share/fish/completions"
+        set -p fish_complete_path (brew --prefix)/share/fish/completions
+      end
+
+      if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+        set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+      end
+    '';
+  };
+
   programs.alacritty = {
     enable = true;
     settings = {
@@ -125,7 +151,7 @@
       };
       font = {
         normal = {
-          family = "ZedMono Nerd Font";
+          family = "JetBrains Mono";
           style = "Regular";
         };
         size = 13;

@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  alacritty-themes,
   ...
 }:
 
@@ -12,12 +11,6 @@ let
   unsupported = builtins.abort "Unsupported platform";
 in
 {
-  imports = [
-
-  ];
-  # ++ lib.optionals isMac [
-  #   ./macos.nix
-  # ];
   nixpkgs.config = {
     # Allow useful packages 😜
     allowUnfree = true;
@@ -48,9 +41,6 @@ in
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
       # # fonts?
       # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-      # cli apps
-
       bat
       coreutils
       curl
@@ -78,51 +68,9 @@ in
       yaml-language-server
       yazi
       zoxide
-
-      # gui apps
-      vscode
-      obsidian
-      zed-editor
-      hoppscotch
-
-      # fonts
-      fira-code
-      roboto-mono
-      jetbrains-mono
-      iosevka
-      nerd-fonts.iosevka-term
-      nerd-fonts.zed-mono
     ];
 
     file = { };
-    # Home Manager can also manage your environment variables through
-    # 'home.sessionVariables'. These will be explicitly sourced when using a
-    # shell provided by Home Manager. If you don't want to manage your shell
-    # through Home Manager then you have to manually source 'hm-session-vars.sh'
-    # located at either
-    #
-    #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-    #
-    # or
-    #
-    #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-    #
-    # or
-    #
-    #  /etc/profiles/per-user/luis/etc/profile.d/hm-session-vars.sh
-    sessionVariables = {
-      ALTERNATE_EDITOR = "";
-      VISUAL = "emacsclient -c -a emacs";
-      EDITOR = "emacsclient -t";
-    };
-    # PATH
-    sessionPath = [
-      "/opt/homebrew/bin"
-      "/Users/luis/.local/bin"
-      "/Users/luis/.ghcup/bin"
-      "/Users/luis/.config/emacs/bin"
-    ];
-
   };
 
   programs = {
@@ -187,15 +135,6 @@ in
     fish = {
       enable = true;
       # Add brew completions to fish
-      interactiveShellInit = ''
-        if test -d (brew --prefix)"/share/fish/completions"
-          set -p fish_complete_path (brew --prefix)/share/fish/completions
-        end
-
-        if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-          set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-        end
-      '';
       shellAbbrs = {
         ls = "eza";
         ee = "emacsclient -r --no-wait";
