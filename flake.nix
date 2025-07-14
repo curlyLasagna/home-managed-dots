@@ -17,7 +17,7 @@
   };
 
   outputs =
-    inputs@{
+    {
       self,
       flake-utils,
       nixpkgs,
@@ -25,27 +25,33 @@
       alacritty-themes,
       ...
     }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-      in
-      {
-        legacyPackages = {
-          homeConfigurations."luis" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
 
-            # Specify your home configuration modules here, for example,
-            # the path to your home.nix.
-            modules = [ ./home.nix ];
-
-            # Optionally use extraSpecialArgs
-            # to pass through arguments to home.nix
-            extraSpecialArgs = {
-              alacritty-themes = alacritty-themes;
-            };
+    {
+      # Macbook configuration
+      homeConfigurations = {
+        "luis@macbook" = home-manager.lib.homeManagerConfiguration ({
+          modules = [
+            ./home.nix
+            ./macos.nix
+          ];
+          pkgs = import nixpkgs {
+            system = "aarch64-darwin";
+            config.allowUnfree = true;
           };
-        };
-      }
-    );
+          extraSpecialArgs = {
+            alacritty-themes = alacritty-themes;
+          };
+        });
+
+        "luis@wsl" = home-manager.lib.homeManagerConfiguration ({
+          modules = [
+            ./home.nix
+          ];
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        });
+      };
+    };
 }

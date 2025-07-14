@@ -1,6 +1,29 @@
 # ❄️ Home-manager managed dotfiles ❄️
 
-My humble home-manager config for MacOS
+Home-manager config for MacOS and WSL. 
+Home is where your dots is :)
+
+## Setup
+
+### Install nix via Determinate Nix Installer
+
+`curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install`
+
+### Clone repo
+
+`git clone https://github.com/curlyLasagna/home-managed-dots`
+
+### Enable flakes
+
+Add the following line in your `nix.conf` file
+
+`experimental-features = nix-command flakes`
+
+### Activate config 
+
+WSL: `nix run home-manager/master -- switch --flake .#luis@wsl `
+
+macos: `nix run home-manager/master -- switch --flake .#luis@macbook`
 
 ## Workflow
 
