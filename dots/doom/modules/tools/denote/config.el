@@ -22,13 +22,12 @@
 (use-package! denote
   :hook (dired-mode . denote-dired-mode)
   :config
-  (map! :leader :desc "denote"
-        :n "d n" #'denote-open-or-create
-        :n "d l" #'denote-link-or-create
-        :n "d r" #'denote-rename-file
-        :n "d g" #'denote-grep
-        :n "d d" #'denote-dired
-        )
+  (map! :leader
+        :desc "Open or create note"         :n "d n" #'denote-open-or-create
+        :desc "Link or create"              :n "d l" #'denote-link-or-create
+        :desc "Rename file"                 :n "d r" #'denote-rename-file
+        :desc "Grep notes"                  :n "d g" #'denote-grep
+        :desc "Dired view"                  :n "d d" #'denote-dired)
   (setq! denote-date-prompt-use-org-read-date t)
   (denote-rename-buffer-mode 1))
 
@@ -38,10 +37,9 @@
   :hook (calendar-mode . denote-journal-calendar-mode)
   :config
   (setq! denote-journal-directory (expand-file-name "journal" denote-directory))
-  (map! :leader :desc "denote"
-        :n "d j n" #'denote-journal-new-or-existing-entry
-        :n "d j l" #'denote-journal-link-or-create-entry
-        )
+  (map! :leader
+        :desc "New or existing journal entry" :n "d j n" #'denote-journal-new-or-existing-entry
+        :desc "Link or create journal entry"  :n "d j l" #'denote-journal-link-or-create-entry)
   )
 
 (provide 'config)

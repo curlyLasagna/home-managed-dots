@@ -19,8 +19,8 @@
 ;;
 ;;; Code:
 
-(package! denote :pin "24b88f1fb5682b10266fd52b213bfedb10957a99")
-(when (modulep! :tools denote +journal) (package! denote-journal :pin "3fe6f003777dce3b26536cb3ecd1b96155bf2f0d"))
+(package! denote)
+(when (modulep! :tools denote +journal) (package! denote-journal))
 
 (provide 'packages)
 ;;; packages.el ends here
