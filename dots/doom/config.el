@@ -2,13 +2,11 @@
 
 (setq! user-full-name "Luis Dale Gascon"
        user-mail-address "luis.gcodes@gmail.com")
-(setq! doom-font (font-spec :family "ZedMono Nerd Font" :size 14)
+(setq! doom-font (font-spec :family "ZedMono Nerd Font" :size 15)
        doom-variable-pitch-font (font-spec :family "SF Mono" :size 15)
        doom-symbol-font (font-spec :family "Hack Nerd Font")
        doom-big-font (font-spec :family "CommitMono" :size 25)
        line-spacing 0.10)
-
-(setq! doom-theme 'doom-rouge)
 
 ;; vscode bindings lmao
 (map! :map +popup-mode-map
@@ -18,9 +16,8 @@
   (setq! treemacs-position 'right))
 
 (after! denote
-  (setq! denote-directory (expand-file-name "~/Documents/notes/"))
-  (setq! denote-known-keywords '("meeting" "info" "person" "task" "idea" "thought"))
-  (setq! denote-file-type 'markdown-yaml)
+  (setq! denote-directory (expand-file-name "~/Documents/de_notes/"))
+  (setq denote-journal-directory (expand-file-name "journal/" denote-directory))
   (add-hook! 'dired-mode-hook #'denote-dired-mode)
   (map! :leader :desc "denote"
         :n "d n" #'denote-open-or-create
@@ -29,48 +26,24 @@
         )
   )
 
-(after! doom-ui
-  (whitespace-mode -1)
-  (delete-selection-mode +1)
-  (global-subword-mode +1)
-  (repeat-mode 1)
-  (global-goto-address-mode +1)
-  (menu-bar-mode -1)
-  (setq! truncate-string-ellipsis "…")
-  (setq! display-line-numbers-type 'relative)
-  (setq! confirm-kill-emacs nil)
-  (setq! frame-title-format "Not Emacs")
-  ;; Aesthetic
-  ;; Draggable window divider by increasing width
-  (setq! window-divider-default-right-width 3)
-  (setq! window-divider-default-bottom-width 0)
-  (map!
-   :desc "Disable mouse scroll to modify text size"
-   "<C-wheel-up>" nil
-   "<C-wheel-down>" nil)
-  )
-
-(when (modulep! :ui doom-dashboard)
-  (setq! +doom-dashboard-menu-sections
-         '(
-           ("Recently opened files"
-            :icon (nerd-icons-faicon "nf-fa-file_text" :face 'doom-dashboard-menu-title)
-            :action recentf-open-files)
-           ("Reload last session"
-            :icon (nerd-icons-octicon "nf-oct-history" :face 'doom-dashboard-menu-title)
-            :when (cond ((modulep! :ui workspaces) (file-exists-p (expand-file-name persp-auto-save-fname persp-save-dir)))
-                        ((require 'desktop nil t) (file-exists-p (desktop-full-file-name))))
-            :action doom/quickload-session)
-           ("Open org-agenda"
-            :icon (nerd-icons-octicon "nf-oct-calendar" :face 'doom-dashboard-menu-title)
-            :when (fboundp 'org-agenda) :action org-agenda)
-           ("Open project"
-            :icon (nerd-icons-octicon "nf-oct-briefcase" :face 'doom-dashboard-menu-title)
-            :action projectile-switch-project)
-           )
-         )
-  (setq! fancy-splash-image (concat doom-user-dir "img/bond.png"))
-  )
+(whitespace-mode -1)
+(delete-selection-mode +1)
+(global-subword-mode +1)
+(repeat-mode 1)
+(global-goto-address-mode +1)
+(setq! tab-width 4)
+(setq! truncate-string-ellipsis "…")
+(setq! display-line-numbers-type 'relative)
+(setq! confirm-kill-emacs nil)
+(setq! frame-title-format "Vim but better")
+;; Aesthetic
+;; Draggable window divider by increasing width
+(setq! window-divider-default-right-width 3)
+(setq! window-divider-default-bottom-width 0)
+(map!
+ :desc "Disable mouse scroll to modify text size"
+ "<C-wheel-up>" nil
+ "<C-wheel-down>" nil)
 
 (after! writeroom-mode
   (setq! writeroom-mode-line nil
@@ -154,11 +127,11 @@
   (setq! markdown-unordered-list-item-prefix "  - ")
   )
 
-(use-package! doom-modeline
-  :custom
-  (doom-modeline-height 25)
-  (doom-modeline-bar-width 1)
-  (doom-modeline-enable-word-count nil)
-  (doom-modeline-vcs-max-length 12)
-  (doom-modeline-buffer-file-name-style 'file-name-with-project)
-  )
+;; (use-package! doom-modeline
+;;   :custom
+;;   (doom-modeline-height 25)
+;;   (doom-modeline-bar-width 1)
+;;   (doom-modeline-enable-word-count nil)
+;;   (doom-modeline-vcs-max-length 12)
+;;   (doom-modeline-buffer-file-name-style 'file-name-with-project)
+;;   )

@@ -70,6 +70,8 @@
         macos-titlebar-proxy-icon = hidden
         macos-option-as-alt = true
         macos-window-shadow = true
+
+        keybind = cmd + i = change_title_prompt
       '';
     };
   };
