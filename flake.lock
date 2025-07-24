@@ -46,6 +46,11 @@
         "owner": "nix-community",
         "repo": "home-manager",
         "rev": "96354906f58464605ff81d2f6c2ea23211cbf051",
+        "lastModified": 1751146119,
+        "narHash": "sha256-gvjG95TCnUVJkvQvLMlnC4NqiqFyBdJk3o8/RwuHeaU=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "76d0c31fce2aa0c71409de953e2f9113acd5b656",
         "type": "github"
       },
       "original": {
@@ -61,6 +66,11 @@
         "owner": "nixos",
         "repo": "nixpkgs",
         "rev": "3016b4b15d13f3089db8a41ef937b13a9e33a8df",
+        "lastModified": 1751011381,
+        "narHash": "sha256-krGXKxvkBhnrSC/kGBmg5MyupUUT5R6IBCLEzx9jhMM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "30e2e2857ba47844aa71991daa6ed1fc678bcbb7",
         "type": "github"
       },
       "original": {

@@ -1,94 +1,31 @@
 {
   config,
   pkgs,
-  alacritty-themes,
+  lib,
   ...
 }:
 
+let
+  isMac = pkgs.stdenv.hostPlatform.isDarwin;
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
+  unsupported = builtins.abort "Unsupported platform";
+in
 {
   nixpkgs.config = {
     # Allow useful packages 😜
     allowUnfree = true;
     allowUnfreePredicate = (_: true);
   };
-  # Store relative to `.config` directory
-  xdg = {
-    enable = true;
-    configFile = {
-      "nvim" = {
-        source = config.lib.file.mkOutOfStoreSymlink ./dots/nvim;
-      };
-      # Download alacritty theme from alacritty-themes
-      "alacritty/theme.toml" = {
-        source =
-          let
-            themeName = "tokyo_night";
-            ext = "toml";
-          in
-          "${alacritty-themes}/themes/${themeName}.${ext}";
-      };
 
-      "ghostty/config".text = ''
-        command = ${pkgs.fish}/bin/fish --login --interactive
-        # Aesthetics
-        font-family = JetBrains Mono
-        font-size = 13
-        window-theme = auto
-
-        window-padding-x = 15
-        window-padding-y = 15,0
-        window-inherit-working-directory = true
-
-        theme = light:Raycast_Light,dark:catppuccin-mocha
-
-        # Cursor
-        shell-integration-features = no-cursor
-        cursor-style = block
-
-        # Mac
-        macos-icon = blueprint
-        macos-titlebar-style = transparent
-        macos-titlebar-proxy-icon = hidden
-        macos-option-as-alt = true
-        macos-window-shadow = true
-      '';
-
-      # Who uses kdl?
-      "zellij/config.kdl".text = ''
-        on_force_close "quit"
-        show_startup_tips false
-        default_shell "fish"
-        theme "tokyo-night"
-        keybinds {
-          pane {
-              bind "h" { MoveFocus "Left"; }
-              bind "l" { MoveFocus "Right"; }
-              bind "j" { MoveFocus "Down"; }
-              bind "k" { MoveFocus "Up"; }
-          }
-          tab {
-              bind "h" { GoToPreviousTab; }
-              bind "l" { GoToNextTab; }
-          }
-          resize {
-            bind "h" { Resize "Increase Left"; }
-            bind "j" { Resize "Increase Down"; }
-            bind "k" { Resize "Increase Up"; }
-            bind "l" { Resize "Increase Right"; }
-            bind "H" { Resize "Decrease Left"; }
-            bind "J" { Resize "Decrease Down"; }
-            bind "K" { Resize "Decrease Up"; }
-            bind "L" { Resize "Decrease Right"; }
-          }
-        }
-      '';
-    };
-  };
-
-  fonts.fontconfig.enable = true;
   home = {
     username = "luis";
-    homeDirectory = "/Users/luis";
+    homeDirectory =
+      if isMac then
+        "/Users/luis"
+      else if isLinux then
+        "/home/luis"
+      else
+        unsupported;
     stateVersion = "23.11";
 
     # This value determines the Home Manager release that your configuration is
@@ -104,9 +41,6 @@
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
       # # fonts?
       # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-      # cli apps
-
       bat
       coreutils
       curl
@@ -134,51 +68,9 @@
       yaml-language-server
       yazi
       zoxide
-
-      # gui apps
-      vscode
-      obsidian
-      zed-editor
-      hoppscotch
-
-      # fonts
-      fira-code
-      roboto-mono
-      jetbrains-mono
-      iosevka
-      nerd-fonts.iosevka-term
-      nerd-fonts.zed-mono
     ];
 
     file = { };
-    # Home Manager can also manage your environment variables through
-    # 'home.sessionVariables'. These will be explicitly sourced when using a
-    # shell provided by Home Manager. If you don't want to manage your shell
-    # through Home Manager then you have to manually source 'hm-session-vars.sh'
-    # located at either
-    #
-    #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-    #
-    # or
-    #
-    #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-    #
-    # or
-    #
-    #  /etc/profiles/per-user/luis/etc/profile.d/hm-session-vars.sh
-    sessionVariables = {
-      ALTERNATE_EDITOR = "";
-      VISUAL = "emacsclient -c -a emacs";
-      EDITOR = "emacsclient -t";
-    };
-    # PATH
-    sessionPath = [
-      "/opt/homebrew/bin"
-      "/Users/luis/.local/bin"
-      "/Users/luis/.ghcup/bin"
-      "/Users/luis/.config/emacs/bin"
-    ];
-
   };
 
   programs = {
@@ -243,15 +135,6 @@
     fish = {
       enable = true;
       # Add brew completions to fish
-      interactiveShellInit = ''
-        if test -d (brew --prefix)"/share/fish/completions"
-          set -p fish_complete_path (brew --prefix)/share/fish/completions
-        end
-
-        if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-          set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-        end
-      '';
       shellAbbrs = {
         ls = "eza";
         ee = "emacsclient -r --no-wait";
@@ -344,90 +227,6 @@
 
     zellij = {
       enable = true;
-    };
-
-    # GUI apps
-
-    aerospace = {
-      # Aerospace is a window manager for MacOS https://github.com/nikitabobko/AeroSpace
-      # TODO:
-      # - Figure out a key combo that doesn't mess with Emacs bindings (Impossible)
-      # - Figure out how to format userSettings.on-window-detected to set new windows as floating
-
-      enable = true;
-      userSettings = {
-        gaps = {
-          inner.horizontal = 10;
-          inner.vertical = 8;
-          outer.left = 7;
-          outer.bottom = 7;
-          outer.top = 7;
-          outer.right = 7;
-        };
-        mode = {
-          main.binding = {
-            ctrl-alt-h = "focus left --boundaries-action wrap-around-the-workspace";
-            ctrl-alt-j = "focus down --boundaries-action wrap-around-the-workspace";
-            ctrl-alt-k = "focus up --boundaries-action wrap-around-the-workspace";
-            ctrl-alt-l = "focus right --boundaries-action wrap-around-the-workspace";
-
-            ctrl-alt-n = "move-node-to-workspace next --wrap-around";
-            ctrl-alt-p = "move-node-to-workspace prev --wrap-around";
-
-            ctrl-alt-enter = "fullscreen --no-outer-gaps";
-
-            cmd-ctrl-alt-h = "move left";
-            cmd-ctrl-alt-j = "move down";
-            cmd-ctrl-alt-k = "move up";
-            cmd-ctrl-alt-l = "move right";
-
-            alt-space = "layout floating tiling";
-
-          };
-          resize.binding = {
-            minus = "resize smart -50";
-            equal = "resize smart +50";
-          };
-        };
-      };
-    };
-
-    alacritty = {
-      enable = true;
-      settings = {
-        terminal.shell = {
-          program = "${pkgs.fish}/bin/fish";
-          args = [
-            "-l"
-            "-i"
-            "-c"
-            "zellij"
-          ];
-        };
-        window = {
-          padding = {
-            x = 10;
-            y = 8;
-          };
-          startup_mode = "Windowed";
-          dynamic_padding = true;
-          dynamic_title = true;
-          option_as_alt = "Both";
-          decorations = "Buttonless";
-          decorations_theme_variant = "Dark";
-        };
-        font = {
-          normal = {
-            family = "ZedMono Nerd Font";
-            style = "Regular";
-          };
-          size = 13;
-        };
-        selection.save_to_clipboard = true;
-        general.import = [
-          "${config.xdg.configFile."alacritty/theme.toml".source}"
-        ];
-      };
     };
   };
 }
