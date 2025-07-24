@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
-    # Pick themes
+    # Pick Alacritty themes
     alacritty-themes = {
       url = "github:alacritty/alacritty-theme";
       flake = false;
@@ -49,6 +49,22 @@
           ];
           pkgs = import nixpkgs {
             system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        });
+        "luis@secured_macbook" = home-manager.lib.homeManagerConfiguration ({
+          modules = [
+            ./home.nix
+            ./macos.nix
+            ./work.nix
+          ];
+
+          extraSpecialArgs = {
+            alacritty-themes = alacritty-themes;
+          };
+          
+          pkgs = import nixpkgs {
+            system = "aarch64-darwin";
             config.allowUnfree = true;
           };
         });

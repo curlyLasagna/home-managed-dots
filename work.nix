@@ -10,7 +10,7 @@
 {
   programs.fish = {
     shellAbbrs = {
-      mongo-compass = "NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#mongodb-compass --impure"
+      mongo-compass = "NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#mongodb-compass --impure";
     };
   };
 }

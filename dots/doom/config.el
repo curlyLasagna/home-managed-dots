@@ -56,7 +56,6 @@
   (remove-hook 'writeroom-mode-hook #'+zen-enable-mixed-pitch-mode-h)
   )
 
-
 (after! corfu
   (setq! corfu-preview-current t)
   (setq! corfu-preselect 'prompt)
@@ -64,12 +63,13 @@
   )
 
 (after! org
-  (setq! +org-capture-notes-file "inbox.org")
   (setq! org-image-max-width 0.5)
-  (setq! org-directory "~/Documents/org")
+  (setq! org-directory "~/Documents/de_notes")
   (when (modulep! :lang org +dragndrop)
-    (setq! org-download-image-dir (concat org-directory "/attachments")
-           ))
+    (setq! org-download-image-dir (concat org-directory "/attachments"))
+    (setq org-directory (expand-file-name "~/Documents/de_notes/"))
+    (setq! org-agenda-files (list org-directory))
+    )
   (map!
    :map org-mode-map
    :desc "Insert org heading" "C-s-<return>" #'org-insert-heading)

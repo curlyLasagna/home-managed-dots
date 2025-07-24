@@ -11,7 +11,6 @@
     # GUI apps
     vscode
     obsidian
-    zed-editor
     hoppscotch
 
     # Fonts
@@ -27,6 +26,7 @@
     ALTERNATE_EDITOR = "";
     VISUAL = "emacsclient -c -a emacs";
     EDITOR = "emacsclient -t";
+    ESHELL = "/Users/luis/.nix-profile/bin/fish";
   };
   # PATH
   home.sessionPath = [
@@ -44,6 +44,14 @@
           ext = "toml";
         in
         "${alacritty-themes}/themes/${themeName}.${ext}";
+    };
+
+    "nvim" = {
+      source = config.lib.file.mkOutOfStoreSymlink ./dots/nvim;
+    };
+
+    "doom" = {
+      source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
     };
 
     "ghostty/config" = {
@@ -71,7 +79,6 @@
         macos-option-as-alt = true
         macos-window-shadow = true
 
-        keybind = cmd + i = change_title_prompt
       '';
     };
   };
