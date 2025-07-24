@@ -16,15 +16,7 @@
   (setq! treemacs-position 'right))
 
 (after! denote
-  (setq! denote-directory (expand-file-name "~/Documents/de_notes/"))
-  (setq denote-journal-directory (expand-file-name "journal/" denote-directory))
-  (add-hook! 'dired-mode-hook #'denote-dired-mode)
-  (map! :leader :desc "denote"
-        :n "d n" #'denote-open-or-create
-        :n "d j" #'denote-journal-new-or-existing-entry
-        :n "d l" #'denote-link-or-create
-        )
-  )
+  (setq! denote-directory (expand-file-name "~/Documents/de_notes/")))
 
 (whitespace-mode -1)
 (delete-selection-mode +1)
@@ -49,7 +41,7 @@
   (setq! writeroom-mode-line nil
          +zen-text-scale 1.10
          writeroom-width 0.3)
-  ;; No line numbers
+  ;; No line numbers in zen
   (add-hook! 'writeroom-mode-enable-hook #'(lambda () (display-line-numbers-mode -1)))
   (add-hook! 'writeroom-mode-disable-hook #'(lambda () (display-line-numbers-mode 1)))
   ;; Disable writeroom from applying mixed-pitch text
@@ -88,8 +80,8 @@
 (after! markdown-mode
   (map!
    :map markdown-mode-map
-   :desc "Next cell" "<tab>" #'markdown-table-forward-cell
-   :desc "Previous cell" "S-<tab>" #'markdown-table-backward-cell)
+   :desc "Next table cell" "<tab>" #'markdown-table-forward-cell
+   :desc "Previous table cell" "S-<tab>" #'markdown-table-backward-cell)
   )
 
 (after! vertico

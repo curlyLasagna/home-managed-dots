@@ -13,8 +13,6 @@
 
 (package! docker-compose-mode)
 (package! catppuccin-theme)
-(package! denote)
-(package! denote-journal)
 (package! direnv)
 
 ;; If you'd like to disable a package included with Doom, you can do so here

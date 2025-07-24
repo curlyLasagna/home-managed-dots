@@ -33,7 +33,7 @@
   (denote-rename-buffer-mode 1))
 
 (use-package! denote-journal
-  :when (modulep! +journal)
+  ;; :when (modulep! +journal)
   :after denote
   :hook (calendar-mode . denote-journal-calendar-mode)
   :config
