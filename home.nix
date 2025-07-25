@@ -11,6 +11,7 @@ let
   unsupported = builtins.abort "Unsupported platform";
 in
 {
+  fonts.fontconfig.enable = true;
   nixpkgs.config = {
     # Allow useful packages 😜
     allowUnfree = true;
@@ -71,6 +72,16 @@ in
     ];
 
     file = { };
+  };
+
+  xdg.configFile = {
+    "nvim" = {
+      source = config.lib.file.mkOutOfStoreSymlink ./dots/nvim;
+    };
+
+    "doom" = {
+      source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
+    };
   };
 
   programs = {

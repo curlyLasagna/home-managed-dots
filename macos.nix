@@ -16,9 +16,7 @@
     # Fonts
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
-    roboto-mono
-    jetbrains-mono
-    iosevka
+    nerd-fonts.roboto-mono
     nerd-fonts.iosevka-term
     nerd-fonts.zed-mono
   ];
@@ -45,14 +43,6 @@
           ext = "toml";
         in
         "${alacritty-themes}/themes/${themeName}.${ext}";
-    };
-
-    "nvim" = {
-      source = config.lib.file.mkOutOfStoreSymlink ./dots/nvim;
-    };
-
-    "doom" = {
-      source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
     };
 
     "ghostty/config" = {
