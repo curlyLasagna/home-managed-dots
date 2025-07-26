@@ -30,7 +30,7 @@
 
        :ui
        ;;deft              ; notational velocity for Emacs
-       ;; doom              ; what makes DOOM look the way it does
+       doom              ; what makes DOOM look the way it does
        ;; doom-dashboard    ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;(emoji +unicode)  ; 🙂
@@ -80,7 +80,7 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       (syntax +icons +flymake)              ; tasing you for every semicolon you forget
+       (syntax +icons)              ; tasing you for every semicolon you forget
        (spell +aspell +everywhere) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
@@ -92,7 +92,7 @@
        biblio            ; Writes a PhD for you (citation needed)
        ;;collab            ; buffers with friends
        ;; debugger          ; FIXME stepping through code, to help you add bugs
-       ;;direnv
+       direnv
        docker
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
@@ -150,7 +150,7 @@
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        (lua +lsp)               ; one-based indices? one-based indices
-       markdown          ; writing docs for people to ignore
+       (markdown +grip)          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ( nix +lsp )               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel

@@ -14,7 +14,14 @@
 (package! docker-compose-mode)
 (package! catppuccin-theme)
 (package! direnv)
-
+(package! delight)
+(package! doom-nano-modeline
+  :recipe (:host github
+           :repo "ronisbr/doom-nano-modeline"))
+(package! copilot-chat
+  :recipe (:host github
+           :repo "chep/copilot-chat.el"
+           :files ("*.el")))
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
 ;; (package! builtin-package :disable t)

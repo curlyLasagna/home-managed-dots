@@ -2,6 +2,7 @@
 
 (setq! user-full-name "Luis Dale Gascon"
        user-mail-address "luis.gcodes@gmail.com")
+
 (setq! doom-font (font-spec :family "ZedMono Nerd Font" :size 15)
        doom-variable-pitch-font (font-spec :family "SF Mono" :size 15)
        doom-symbol-font (font-spec :family "Hack Nerd Font")
@@ -56,11 +57,10 @@
 
 (after! org
   (setq! org-image-max-width 0.5)
-  (setq! org-directory "~/Documents/de_notes")
+  (setq org-directory (expand-file-name "~/Documents/de_notes/"))
+  (setq! org-agenda-files (list org-directory))
   (when (modulep! :lang org +dragndrop)
     (setq! org-download-image-dir (concat org-directory "/attachments"))
-    (setq org-directory (expand-file-name "~/Documents/de_notes/"))
-    (setq! org-agenda-files (list org-directory))
     )
   (map!
    :map org-mode-map
@@ -118,6 +118,11 @@
 (after! markdown-mode
   (setq! markdown-unordered-list-item-prefix "  - ")
   )
+
+(use-package! doom-nano-modeline
+  :config
+  (doom-nano-modeline-mode 1)
+  (global-hide-mode-line-mode 1))
 
 ;; (use-package! doom-modeline
 ;;   :custom
