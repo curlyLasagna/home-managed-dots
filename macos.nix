@@ -12,13 +12,13 @@
     vscode
     obsidian
     hoppscotch
+    aerospace
+    zed-editor
 
     # Fonts
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
-    roboto-mono
-    jetbrains-mono
-    iosevka
+    nerd-fonts.roboto-mono
     nerd-fonts.iosevka-term
     nerd-fonts.zed-mono
   ];
@@ -38,6 +38,9 @@
   ];
 
   xdg.configFile = {
+    "aerospace/aerospace.toml" = {
+      source = config.lib.file.mkOutOfStoreSymlink ./dots/aerospace/aerospace.toml;
+    };
     "alacritty/theme.toml" = {
       source =
         let
@@ -77,49 +80,10 @@
         macos-icon = blueprint
         macos-titlebar-style = transparent
         macos-titlebar-proxy-icon = hidden
+        macos-non-native-fullscreen = true
         macos-option-as-alt = true
         macos-window-shadow = true
-
       '';
-    };
-  };
-
-  # GUI app configurations
-  programs.aerospace = {
-    enable = true;
-    userSettings = {
-      gaps = {
-        inner.horizontal = 10;
-        inner.vertical = 8;
-        outer.left = 7;
-        outer.bottom = 7;
-        outer.top = 7;
-        outer.right = 7;
-      };
-      mode = {
-        main.binding = {
-          ctrl-alt-h = "focus left --boundaries-action wrap-around-the-workspace";
-          ctrl-alt-j = "focus down --boundaries-action wrap-around-the-workspace";
-          ctrl-alt-k = "focus up --boundaries-action wrap-around-the-workspace";
-          ctrl-alt-l = "focus right --boundaries-action wrap-around-the-workspace";
-
-          ctrl-alt-n = "move-node-to-workspace next --wrap-around";
-          ctrl-alt-p = "move-node-to-workspace prev --wrap-around";
-
-          ctrl-alt-enter = "fullscreen --no-outer-gaps";
-
-          cmd-ctrl-alt-h = "move left";
-          cmd-ctrl-alt-j = "move down";
-          cmd-ctrl-alt-k = "move up";
-          cmd-ctrl-alt-l = "move right";
-
-          alt-space = "layout floating tiling";
-        };
-        resize.binding = {
-          minus = "resize smart -50";
-          equal = "resize smart +50";
-        };
-      };
     };
   };
 

@@ -1,7 +1,7 @@
 # ❄️ Home-manager managed dotfiles ❄️
 
 Home-manager config for MacOS and WSL. 
-Home is where your dots is :)
+> Home is where your dots is :)
 
 ## Setup
 
@@ -31,7 +31,7 @@ macos: `nix run home-manager/master -- switch --flake .#luis@macbook`
 - Nvim when I forget how to use Emacs
 - Starship as my shell prompt
 - Fish as default shell
-- Alacritty + zellij or Ghostty, depends how much I want to show off
+- Alacritty + zellij as my term emulator
 
 ## Cross Platform
 
