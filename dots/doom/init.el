@@ -86,6 +86,7 @@
 
        :tools
        (denote +journal)
+       gptel
        ;;ansible
 
 

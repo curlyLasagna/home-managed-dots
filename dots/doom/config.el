@@ -124,6 +124,10 @@
   (doom-nano-modeline-mode 1)
   (global-hide-mode-line-mode 1))
 
+(after! gptel
+  (setq gptel-model 'claude-3.7-sonnet
+        gptel-backend (gptel-make-gh-copilot "Copilot"))
+  )
 ;; (use-package! doom-modeline
 ;;   :custom
 ;;   (doom-modeline-height 25)
