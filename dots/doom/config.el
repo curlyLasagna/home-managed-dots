@@ -9,10 +9,6 @@
        doom-big-font (font-spec :family "CommitMono" :size 25)
        line-spacing 0.10)
 
-;; vscode bindings lmao
-(map! :map +popup-mode-map
-      :g "s-j" #'+popup/toggle)
-
 (after! treemacs
   (setq! treemacs-position 'right))
 
@@ -29,14 +25,23 @@
 (setq! display-line-numbers-type 'relative)
 (setq! confirm-kill-emacs nil)
 (setq! frame-title-format "Vim but better")
+(setq! evil-escape-key-sequence "kj")
 ;; Aesthetic
 ;; Draggable window divider by increasing width
 (setq! window-divider-default-right-width 3)
 (setq! window-divider-default-bottom-width 0)
+
 (map!
  :desc "Disable mouse scroll to modify text size"
  "<C-wheel-up>" nil
  "<C-wheel-down>" nil)
+
+(map!
+ :leader
+ :desc "Kill ring history"
+ :n
+ "s c" #'consult-yank-from-kill-ring
+ "")
 
 (after! writeroom-mode
   (setq! writeroom-mode-line nil
@@ -128,11 +133,3 @@
   (setq gptel-model 'claude-3.7-sonnet
         gptel-backend (gptel-make-gh-copilot "Copilot"))
   )
-;; (use-package! doom-modeline
-;;   :custom
-;;   (doom-modeline-height 25)
-;;   (doom-modeline-bar-width 1)
-;;   (doom-modeline-enable-word-count nil)
-;;   (doom-modeline-vcs-max-length 12)
-;;   (doom-modeline-buffer-file-name-style 'file-name-with-project)
-;;   )

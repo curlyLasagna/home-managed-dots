@@ -8,9 +8,24 @@
 }:
 
 {
-  programs.fish = {
-    shellAbbrs = {
-      mongo-compass = "NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#mongodb-compass --impure";
-    };
-  };
+  home.packages = with pkgs; [
+    mongodb-compass
+
+    # ops
+    awscli2
+    docker
+    terraform
+    terragrunt
+    terraform-ls
+    tflint
+
+    # lang
+
+    ## webdev
+    typescript-language-server
+
+    ## Python
+    basedpyright
+    ruff
+  ];
 }

@@ -36,7 +36,6 @@
           ];
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
-            config.allowUnfree = true;
           };
           extraSpecialArgs = {
             alacritty-themes = alacritty-themes;
@@ -49,9 +48,9 @@
           ];
           pkgs = import nixpkgs {
             system = "x86_64-linux";
-            config.allowUnfree = true;
           };
         });
+
         "luis@secured_macbook" = home-manager.lib.homeManagerConfiguration ({
           modules = [
             ./home.nix
@@ -62,10 +61,9 @@
           extraSpecialArgs = {
             alacritty-themes = alacritty-themes;
           };
-          
+
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
-            config.allowUnfree = true;
           };
         });
       };

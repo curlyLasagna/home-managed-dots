@@ -58,6 +58,10 @@
       source = config.lib.file.mkOutOfStoreSymlink ./dots/doom;
     };
 
+    "zellij/config.kdl" = {
+      source = config.lib.file.mkOutOfStoreSymlink ./dots/zellij/config.kdl;
+    };
+
     "ghostty/config" = {
       text = ''
         command = ${pkgs.fish}/bin/fish --login --interactive
