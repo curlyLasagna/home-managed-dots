@@ -23,8 +23,10 @@
 
     ## webdev
     typescript-language-server
+    biome
 
     ## Python
+    uv
     basedpyright
     ruff
   ];

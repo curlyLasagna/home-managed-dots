@@ -1,0 +1,13 @@
+tap "d12frosted/emacs-plus"
+tap "homebrew/services"
+brew "cmake"
+brew "gcc"
+brew "libgccjit"
+brew "libtool"
+brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-retro-emacs-logo-icon"]
+cask "coteditor"
+cask "font-fontawesome"
+cask "font-sf-pro"
+cask "google-chrome"
+cask "raycast"
+cask "skim"

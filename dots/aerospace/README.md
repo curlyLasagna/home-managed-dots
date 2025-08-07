@@ -45,7 +45,7 @@ outer.right =      0
 
 2 displays at most.
 
-4 workspaces on the main display and 3 on the secondary
+Assign only a single workspace for secondary displays
 
 ```
 # Browser
@@ -53,23 +53,13 @@ alt-1 = 'workspace 1'
 # Text Editors
 alt-2 = 'workspace 2'
 ... 
-
-# Secondary monitor
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-...
-
-[workspace-to-monitor-force-assignment]
-5 = 'secondary'
-6 = 'secondary'
-7 = 'secondary'
 ```
 
 ## Movement
 
 ### Focus 
 
-Changing focus towards the other display
+Changing focus to the other display
 
 ```
 alt-leftSquareBracket = 'focus-monitor --wrap-around prev'
@@ -87,8 +77,8 @@ alt-shift-tab = 'workspace prev --wrap-around'
 
 Entire workspaces and their windows migrate over to the other display
 ```
-alt-shift-comma = 'move-workspace-to-monitor --wrap-around prev'
-alt-shift-period = 'move-workspace-to-monitor --wrap-around next'
+alt-cmd-comma = 'move-workspace-to-monitor --wrap-around prev'
+alt-cmd-period = 'move-workspace-to-monitor --wrap-around next'
 ```
 
 
