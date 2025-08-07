@@ -10,6 +10,7 @@
 {
   home.packages = with pkgs; [
     mongodb-compass
+    slack
 
     # ops
     awscli2
