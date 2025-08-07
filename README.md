@@ -37,13 +37,17 @@ macos: `nix run home-manager/master -- switch --flake .#luis@macbook`
 
 ### WSL
 
-`nix run home-manager/master -- switch --flake #.luis@wsl`
+`nix run home-manager/master -- switch --flake .#luis@wsl`
 
 All CLI applications. Not going to bother with any GUI apps. I'll let Windows deal with that.
 
 ### MacOS
 
-`nix run home-manager/master -- switch --flake #.luis@macbook`
+`nix run home-manager/master -- switch --flake .#luis@macbook`
 
 > Will switch over to nix-darwin when time allows.
 > Home-Manager is good enough to start working
+
+### Work MacBook
+
+`nix run home-manager/master -- switch --flake .#luis@secured_macbook`

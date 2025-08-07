@@ -21,6 +21,7 @@
     nerd-fonts.roboto-mono
     nerd-fonts.iosevka-term
     nerd-fonts.zed-mono
+    julia-mono
   ];
 
   home.sessionVariables = {
