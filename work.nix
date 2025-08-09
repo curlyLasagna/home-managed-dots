@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     mongodb-compass
     slack
+    obsidian
 
     # ops
     awscli2
@@ -19,13 +20,19 @@
 
     # lang
 
-    ## webdev
+    # lsp
     typescript-language-server
+
+    # linter/formatter
     biome
 
     ## Python
     uv
+
+    # lsp
     basedpyright
+
+    # linter/formatter
     ruff
   ];
 
