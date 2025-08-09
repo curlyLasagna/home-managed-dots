@@ -48,6 +48,12 @@ All CLI applications. Not going to bother with any GUI apps. I'll let Windows de
 > Will switch over to nix-darwin when time allows.
 > Home-Manager is good enough to start working
 
+#### Add ssh key to keychain
+
+Do git commands without having to enter your passphrase:
+
+`ssh-add --apple-use-keychain <private key path>`
+
 ### Work MacBook
 
 `nix run home-manager/master -- switch --flake .#luis@secured_macbook`

@@ -1,9 +1,7 @@
 # Work related config for MacBook
 
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
 
@@ -14,7 +12,6 @@
 
     # ops
     awscli2
-    docker
     terraform
     terragrunt
     terraform-ls
@@ -31,4 +28,11 @@
     basedpyright
     ruff
   ];
+
+  programs.fish = {
+    # Convert the https urls to git for all the different submodules
+    shellAbbrs = {
+      https_to_ssh = "perl -i -p -e 's|https://(.*?)/|git@\\1:|g' .gitmodules";
+    };
+  };
 }
