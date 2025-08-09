@@ -4,7 +4,7 @@
        user-mail-address "luis.gcodes@gmail.com")
 
 (setq! doom-font (font-spec :family "ZedMono Nerd Font" :size 15)
-       doom-variable-pitch-font (font-spec :family "SF Mono" :size 15)
+       doom-variable-pitch-font (font-spec :family "JuliaMono" :size 15)
        doom-symbol-font (font-spec :family "Hack Nerd Font")
        doom-big-font (font-spec :family "CommitMono" :size 25)
        line-spacing 0.10)

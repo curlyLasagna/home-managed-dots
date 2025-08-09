@@ -123,7 +123,6 @@ in
         core = {
           autocrlf = false;
         };
-        credential.helper = "osxkeychain";
         github.user = "curlyLasagna";
         branch.autoSetupMerge = "always";
       };
@@ -227,6 +226,15 @@ in
 
     zellij = {
       enable = true;
+    };
+  };
+
+  services = {
+    home-manager = {
+      autoExpire = {
+        enable = true;
+        timestamp = "-7 days";
+      };
     };
   };
 }
