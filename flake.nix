@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
+    # Emacs overlay
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     # Pick Alacritty themes
     alacritty-themes = {
       url = "github:alacritty/alacritty-theme";
@@ -18,11 +20,10 @@
 
   outputs =
     {
-      self,
-      flake-utils,
       nixpkgs,
       home-manager,
       alacritty-themes,
+      emacs-overlay,
       ...
     }:
 
@@ -39,6 +40,7 @@
           };
           extraSpecialArgs = {
             alacritty-themes = alacritty-themes;
+            emacs-overlay = emacs-overlay;
           };
         });
 
