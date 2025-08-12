@@ -13,6 +13,7 @@
 
     # ops
     awscli2
+    aws-sam-cli
     terraform
     terragrunt
     terraform-ls
