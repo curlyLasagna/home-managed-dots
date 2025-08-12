@@ -19,22 +19,6 @@ Add the following line in your `nix.conf` file
 
 `experimental-features = nix-command flakes`
 
-### Activate config 
-
-WSL: `nix run home-manager/master -- switch --flake .#luis@wsl `
-
-macos: `nix run home-manager/master -- switch --flake .#luis@macbook`
-
-## Workflow
-
-- Emacs for editing config files or systems programming. Also magit is ❤️
-- Nvim when I forget how to use Emacs
-- Starship as my shell prompt
-- Fish as default shell
-- Alacritty + zellij as my term emulator
-
-## Cross Platform
-
 ### WSL
 
 `nix run home-manager/master -- switch --flake .#luis@wsl`
@@ -50,10 +34,18 @@ All CLI applications. Not going to bother with any GUI apps. I'll let Windows de
 
 #### Add ssh key to keychain
 
-Do git commands without having to enter your passphrase:
+Interact with remote repos without having to enter your passphrase:
 
 `ssh-add --apple-use-keychain <private key path>`
 
 ### Work MacBook
 
 `nix run home-manager/master -- switch --flake .#luis@secured_macbook`
+
+## Workflow
+
+- Emacs for editing config files or systems programming. Also magit is ❤️
+- Nvim when I forget how to use Emacs
+- Starship as my shell prompt
+- Fish as default shell
+- Alacritty + zellij as my term emulator
