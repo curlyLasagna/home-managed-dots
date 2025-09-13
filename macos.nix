@@ -2,32 +2,12 @@
   config,
   pkgs,
   alacritty-themes,
-  emacs-overlay,
   ...
 }:
 
 {
-  nixpkgs.overlays = [
-    emacs-overlay.overlays.default
-    (final: prev: {
-      emacs-pgtk = prev.emacsPgtk.overrides (old: {
-        patches = (old.patches or [ ]) ++ [
-          (pkgs.fetchpatch {
-            url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-29/poll.patch";
-            sha256 = "0j26n6yma4n5wh4klikza6bjnzrmz6zihgcsdx36pn3vbfnaqbh5";
-          })
-          (pkgs.fetchpatch {
-            url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/system-appearance.patch";
-            sha256 = "14ndp2fqqc95s70fwhpxq58y8qqj4gzvvffp77snm2xk76c1bvnn";
-          })
-        ];
-      });
-    })
-  ];
-
   services.emacs = {
     enable = true;
-    package = pkgs.emacs-unstable-pgtk;
   };
 
   home.packages = with pkgs; [
@@ -35,9 +15,8 @@
     vscode
     obsidian
     hoppscotch
-    aerospace
     zed-editor
-    emacs-unstable-pgtk
+    emacs
 
     # Fonts
     nerd-fonts.fira-code
@@ -63,6 +42,7 @@
   ];
 
   xdg.configFile = {
+    # Unused atm
     "aerospace/aerospace.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink ./dots/aerospace/aerospace.toml;
     };

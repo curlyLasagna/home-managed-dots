@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
 
@@ -68,6 +66,7 @@ in
       yaml-language-server
       yazi
       zoxide
+      zstd
     ];
 
     file = { };
