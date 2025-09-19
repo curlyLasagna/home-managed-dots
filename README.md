@@ -1,6 +1,6 @@
 # ❄️ Home-manager managed dotfiles ❄️
 
-Home-manager config for MacOS and WSL. 
+Home-manager config for MacOS and WSL.
 > Home is where your dots is :)
 
 ## Setup
@@ -49,3 +49,7 @@ Interact with remote repos without having to enter your passphrase:
 - Starship as my shell prompt
 - Fish as default shell
 - Alacritty + zellij as my term emulator
+
+## Modules
+
+Modules are commonly shared throughout different users. Any specialization will have to be set per user.

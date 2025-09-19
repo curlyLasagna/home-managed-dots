@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of luis";
+  description = "Home Manager configuration for multiple devices under the user Luis";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -8,9 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
-    # Emacs overlay
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
     # Pick Alacritty themes
     alacritty-themes = {
       url = "github:alacritty/alacritty-theme";
@@ -19,11 +16,10 @@
   };
 
   outputs =
-    {
+    inputs@{
       nixpkgs,
       home-manager,
       alacritty-themes,
-      emacs-overlay,
       ...
     }:
 
@@ -32,15 +28,13 @@
       homeConfigurations = {
         "luis@macbook" = home-manager.lib.homeManagerConfiguration ({
           modules = [
-            ./home.nix
-            ./macos.nix
+            ./users/macos.nix
           ];
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
           };
           extraSpecialArgs = {
             alacritty-themes = alacritty-themes;
-            emacs-overlay = emacs-overlay;
           };
         });
 
@@ -55,9 +49,8 @@
 
         "luis@secured_macbook" = home-manager.lib.homeManagerConfiguration ({
           modules = [
-            ./home.nix
-            ./macos.nix
-            ./work.nix
+            ./users/macos.nix
+            ./users/secured.nix
           ];
 
           extraSpecialArgs = {

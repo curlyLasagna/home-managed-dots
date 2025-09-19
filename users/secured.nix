@@ -1,5 +1,4 @@
 # Work related config for MacBook
-
 {
   pkgs,
   ...
@@ -9,7 +8,6 @@
   home.packages = with pkgs; [
     mongodb-compass
     slack
-    obsidian
 
     # ops
     awscli2
@@ -17,6 +15,7 @@
     terragrunt
     terraform-ls
     tflint
+    colima
 
     # lang
 
