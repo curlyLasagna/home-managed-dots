@@ -13,7 +13,7 @@ in
   nixpkgs.config = {
     # Allow useful packages 😜
     allowUnfree = true;
-    allowUnfreePredicate = true;
+    allowUnfreePredicate = (_: true );
   };
 
   home = {
