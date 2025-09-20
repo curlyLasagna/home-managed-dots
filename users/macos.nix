@@ -8,9 +8,10 @@
 {
   imports = [
     ./shared.nix
-    ../modules/alacritty
     ../modules/fish
+    # Terminal emulators
     ../modules/ghostty
+    ../modules/alacritty
     ../modules/git
     ../modules/starship
   ];
@@ -49,15 +50,15 @@
   xdg.configFile = {
 
     "nvim" = {
-      source = config.lib.file.mkOutOfStoreSymlink ../dots/nvim;
+      source = ../dots/nvim;
     };
 
     "doom" = {
-      source = config.lib.file.mkOutOfStoreSymlink ../dots/doom;
+      source = ../dots/doom;
     };
 
     "zellij/config.kdl" = {
-      source = config.lib.file.mkOutOfStoreSymlink ../dots/zellij/config.kdl;
+      source = ../dots/zellij/config.kdl;
     };
 
   };

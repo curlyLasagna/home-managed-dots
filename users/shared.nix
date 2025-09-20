@@ -27,19 +27,7 @@ in
         "/home/luis";
     stateVersion = "23.11";
 
-    # This value determines the Home Manager release that your configuration is
-    # compatible with. This helps avoid breakage when a new Home Manager release
-    # introduces backwards incompatible changes.
-    #
-    # You should not change this value, even if you update Home Manager. If you do
-    # want to update the value, then make sure to first check the Home Manager
-    # release notes.
     packages = with pkgs; [
-      # # It is sometimes useful to fine-tune packages, for example, by applying
-      # # overrides. You can do that directly here, just don't forget the
-      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-      # # fonts?
-      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
       bat
       coreutils
       curl
@@ -56,7 +44,6 @@ in
       nixfmt-rfc-style
       pandoc
       pipx
-      python313
       ripgrep
       stylua
       tokei
@@ -129,5 +116,6 @@ in
         frequency = "weekly";
       };
     };
+    emacs.enable = true;
   };
 }

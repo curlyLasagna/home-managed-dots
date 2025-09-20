@@ -1,3 +1,6 @@
+# Local Variables:
+# compile-command: "home-manager switch --flake .#luis@"
+# End:
 {
   description = "Home Manager configuration for multiple devices under the user Luis";
 
