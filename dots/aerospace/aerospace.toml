@@ -4,18 +4,17 @@ after-startup-command = []
 start-at-login = true
 
 # https://nikitabobko.github.io/AeroSpace/guide#normalization
+# idk what they do, so they stay true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 # https://nikitabobko.github.io/AeroSpace/guide#layouts
-# The 'accordion-padding' specifies the size of accordion padding
+# Padding is used to signal a stack
 # You can set 0 to disable the padding feature
 accordion-padding = 0
 # Possible values: tiles|accordion
 default-root-container-layout = 'accordion'
 # Possible values: horizontal|vertical|auto
-# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
-#               tall monitor (anything higher than wide) gets vertical orientation
 default-root-container-orientation = 'horizontal'
 
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
@@ -60,15 +59,6 @@ outer.right =      0
 # All possible modifiers: cmd, alt, ctrl, shift
 
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-# You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
-# alt-enter = '''exec-and-forget osascript -e '
-# tell application "Terminal"
-#     do script
-#     activate
-# end tell'
-# '''
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 cmd-alt-rightSquareBracket = 'focus right --boundaries-action wrap-around-the-workspace'
@@ -131,17 +121,20 @@ minus = 'resize smart -50'
 equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-v = ['layout v_tiles', 'mode main']
-h = ['layout h_tiles', 'mode main']
+# To me, the naming is conceptually backwards
+h = ['layout v_tiles', 'mode main']
+v = ['layout h_tiles', 'mode main']
 
 f = ['fullscreen', 'mode main']
 
-# s = stack
+# s = stack in i3
 s = ['layout h_accordion', 'mode main']
 
 # New windows are floating, so I deal with tiling https://www.reddit.com/r/macapps/comments/1fehon1/comment/lo3edp0/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 # [[on-window-detected]]
 # if.app-name-regex-substring = ".*"
 # run = "layout floating"
+
+# Secondary displays can only have a single workspace to avoid confusion
 [workspace-to-monitor-force-assignment]
 7 = 'secondary'
