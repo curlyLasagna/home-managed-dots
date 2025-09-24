@@ -19,7 +19,10 @@
 ;;
 ;;; Code:
 ;; OPTIONAL configuration
-
-
+(use-package! gpt-el
+  ;; Enable auto-scroll
+  :hook
+  (gptel-post-stream . gptel-auto-scroll)
+  )
 (provide 'config)
 ;;; config.el ends here

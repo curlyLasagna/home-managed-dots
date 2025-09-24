@@ -13,7 +13,7 @@ in
   nixpkgs.config = {
     # Allow useful packages 😜
     allowUnfree = true;
-    allowUnfreePredicate = (_: true );
+    allowUnfreePredicate = (_: true);
   };
 
   home = {
@@ -34,6 +34,7 @@ in
       devenv
       fd
       gawkInteractive
+      hunspell
       hyperfine
       jq
       lazydocker

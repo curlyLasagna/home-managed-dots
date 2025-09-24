@@ -22,7 +22,7 @@
     obsidian
     hoppscotch
     zed-editor
-    emacs
+    emacs-pgtk
 
     # Fonts
     nerd-fonts.fira-code
