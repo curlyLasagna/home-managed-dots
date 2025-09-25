@@ -37,9 +37,11 @@
   ];
 
   programs.fish = {
-    # Convert the https urls to git for all the different submodules
     shellAbbrs = {
+      # Convert the https urls to git for each submodules
       https_to_ssh = "perl -i -p -e 's|https://(.*?)/|git@\\1:|g' .gitmodules";
+      # Recursively deletes terraform lock files
+      del_tflock = "find . -type f -name '.terraform.lock.hcl' -exec rm {} +";
     };
   };
 }

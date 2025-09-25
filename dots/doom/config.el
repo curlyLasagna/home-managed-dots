@@ -133,3 +133,5 @@
   (setq gptel-model 'claude-3.7-sonnet
         gptel-backend (gptel-make-gh-copilot "Copilot"))
   )
+
+(setq! lsp-pyright-langserver-command "basedpyright")

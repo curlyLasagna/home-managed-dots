@@ -14,7 +14,7 @@
         window-padding-y = 15,0
         window-inherit-working-directory = true
 
-        theme = light:Raycast_Light,dark:catppuccin-mocha
+        theme = light:Catppuccin Latte,dark:Catppuccin Mocha
 
         # Cursor
         shell-integration-features = no-cursor
