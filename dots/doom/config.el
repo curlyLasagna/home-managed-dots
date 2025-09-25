@@ -25,7 +25,6 @@
 (setq! display-line-numbers-type 'relative)
 (setq! confirm-kill-emacs nil)
 (setq! frame-title-format "Vim but better")
-(setq! evil-escape-key-sequence "kj")
 ;; Aesthetic
 ;; Draggable window divider by increasing width
 (setq! window-divider-default-right-width 3)
@@ -76,6 +75,9 @@
 (after! dired
   (setq! dired-kill-when-opening-new-dired-buffer t))
 
+(after! flycheck
+  (flycheck-popup-tip-mode nil))
+
 (after! which-key
   (setq! which-key-idle-delay 0.8))
 
@@ -124,13 +126,13 @@
   (setq! markdown-unordered-list-item-prefix "  - ")
   )
 
-(use-package! doom-nano-modeline
-  :config
-  (doom-nano-modeline-mode 1)
-  (global-hide-mode-line-mode 1))
+;; (use-package! doom-nano-modeline
+;;   :config
+;;   (doom-nano-modeline-mode 1)
+;;   (global-hide-mode-line-mode 1))
 
 (after! gptel
-  (setq gptel-model 'claude-3.7-sonnet
+  (setq gptel-model 'gpt-4.1
         gptel-backend (gptel-make-gh-copilot "Copilot"))
   )
 
