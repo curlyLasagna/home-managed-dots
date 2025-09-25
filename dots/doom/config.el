@@ -24,7 +24,7 @@
 (setq! truncate-string-ellipsis "…")
 (setq! display-line-numbers-type 'relative)
 (setq! confirm-kill-emacs nil)
-(setq! frame-title-format "Vim but better")
+(setq! frame-title-format "Notepad for the top 1% male")
 ;; Aesthetic
 ;; Draggable window divider by increasing width
 (setq! window-divider-default-right-width 3)
@@ -136,4 +136,21 @@
         gptel-backend (gptel-make-gh-copilot "Copilot"))
   )
 
-(setq! lsp-pyright-langserver-command "basedpyright")
+(use-package! auto-dark
+  :defer t
+  :init
+  (setq! doom-theme nil)
+  (setq! custom-safe-themes t)
+  (defun my-auto-dark-init-h ()
+    (auto-dark-mode)
+    (remove-hook 'server-after-make-frame-hook #'my-auto-dark-init-h)
+    (remove-hook 'after-init-hook #'my-auto-dark-init-h))
+
+  (let ((hook (if (daemonp)
+                  'server-after-make-frame-hook
+                'after-init-hook)))
+    ;; Depth -95 puts this before doom-init-theme-h, which sounds like a good
+    ;; idea, if only for performance reasons.
+    (add-hook hook #'my-auto-dark-init-h -95)
+    )
+  )

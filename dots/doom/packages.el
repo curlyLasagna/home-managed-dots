@@ -15,6 +15,7 @@
 (package! catppuccin-theme)
 (package! direnv)
 (package! typst-ts-mode)
+(package! auto-dark)
 (package! delight)
 (package! doom-nano-modeline
   :recipe (:host github

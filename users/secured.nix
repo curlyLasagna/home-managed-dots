@@ -30,7 +30,7 @@
     uv
 
     # lsp
-    basedpyright
+    pyright
 
     # linter/formatter
     ruff
