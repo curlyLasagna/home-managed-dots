@@ -24,7 +24,7 @@
 (setq! truncate-string-ellipsis "…")
 (setq! display-line-numbers-type 'relative)
 (setq! confirm-kill-emacs nil)
-(setq! frame-title-format "Notepad for the top 1% male")
+(setq! frame-title-format "Notepad for the top 1\%% male")
 ;; Aesthetic
 ;; Draggable window divider by increasing width
 (setq! window-divider-default-right-width 3)
