@@ -20,6 +20,5 @@
 ;;; Code:
 (package! auto-dark)
 
-
 (provide 'package)
 ;;; package.el ends here
