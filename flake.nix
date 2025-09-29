@@ -11,6 +11,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     # Pick Alacritty themes
     alacritty-themes = {
       url = "github:alacritty/alacritty-theme";
@@ -38,6 +39,7 @@
           };
           extraSpecialArgs = {
             alacritty-themes = alacritty-themes;
+            zen-browser = inputs.zen-browser;
           };
         });
 
