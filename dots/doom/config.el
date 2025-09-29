@@ -138,21 +138,56 @@
         gptel-backend (gptel-make-gh-copilot "Copilot"))
   )
 
-(use-package! auto-dark
-  :defer t
-  :init
-  (setq! doom-theme nil)
-  (setq! custom-safe-themes t)
-  (defun my-auto-dark-init-h ()
-    (auto-dark-mode)
-    (remove-hook 'server-after-make-frame-hook #'my-auto-dark-init-h)
-    (remove-hook 'after-init-hook #'my-auto-dark-init-h))
-
-  (let ((hook (if (daemonp)
-                  'server-after-make-frame-hook
-                'after-init-hook)))
-    ;; Depth -95 puts this before doom-init-theme-h, which sounds like a good
-    ;; idea, if only for performance reasons.
-    (add-hook hook #'my-auto-dark-init-h -95)
-    )
+(after! auto-dark
+  (setq! auto-dark-themes '((doom-monokai-octagon) (modus-operandi)))
   )
+
+(use-package! flycheck
+  :preface
+
+  (defun mp-flycheck-eldoc (callback &rest _ignored)
+    "Print flycheck messages at point by calling CALLBACK. https://www.masteringemacs.org/article/seamlessly-merge-multiple-documentation-sources-eldoc"
+    (when-let ((flycheck-errors (and flycheck-mode (flycheck-overlay-errors-at (point)))))
+      (mapc
+       (lambda (err)
+         (funcall callback
+                  (format "%s: %s"
+                          (let ((level (flycheck-error-level err)))
+                            (pcase level
+                              ('info (propertize "I" 'face 'flycheck-error-list-info))
+                              ('error (propertize "E" 'face 'flycheck-error-list-error))
+                              ('warning (propertize "W" 'face 'flycheck-error-list-warning))
+                              (_ level)))
+                          (flycheck-error-message err))
+                  :thing (or (flycheck-error-id err)
+                             (flycheck-error-group err))
+                  :face 'font-lock-doc-face))
+       flycheck-errors)))
+
+  (defun mp-flycheck-prefer-eldoc ()
+    (add-hook 'eldoc-documentation-functions #'mp-flycheck-eldoc nil t)
+    (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
+    (setq flycheck-display-errors-function nil)
+    (setq flycheck-help-echo-function nil))
+
+  :hook ((flycheck-mode . mp-flycheck-prefer-eldoc)))
+
+;; TODO: Customize a minimal modeline that only shows the major mode and lsp server running. Git metrics would be cool too
+(setq! mode-line-format '("%e" mode-line-front-space
+                          (:propertize
+                           ("" mode-line-mule-info
+                            mode-line-client
+                            mode-line-modified
+                            mode-line-remote
+                            mode-line-window-dedicated)
+                           display (min-width (6.0)))
+                          mode-line-frame-identification
+                          mode-line-buffer-identification "   "
+                          mode-line-position
+                          (project-mode-line project-mode-line-format)
+                          (vc-mode vc-mode) "  "
+                          mode-line-modes
+                          ;; mode-line-misc-info
+                          mode-line-end-spaces
+                          )
+       )

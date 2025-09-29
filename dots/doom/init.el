@@ -31,6 +31,7 @@
        :ui
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
+       auto-dark
        ;; doom-dashboard    ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;(emoji +unicode)  ; 🙂
@@ -80,7 +81,7 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       (syntax +icons +childframe)              ; tasing you for every semicolon you forget
+       (syntax +icons)              ; tasing you for every semicolon you forget
        (spell +hunspell) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
