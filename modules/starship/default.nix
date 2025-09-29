@@ -26,7 +26,7 @@
 
       git_branch = {
         truncation_length = 20;
-        format = "[$symbol$branch(:$remote_branch)]($style)";
+        format = "[$symbol$branch(:$remote_branch)]($style) ";
       };
 
       fill = {
