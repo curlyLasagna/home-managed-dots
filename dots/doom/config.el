@@ -108,12 +108,14 @@
 (when (modulep! :editor word-wrap)
   (+global-word-wrap-mode 1))
 
+;; TODO: Add a keybind for lsp-ui-imenu
 (after! lsp-ui
   (setq! lsp-ui-doc-enable nil)
   (setq! lsp-ui-doc-delay 0.2)
   (setq! lsp-ui-doc-show-with-cursor nil)
   (setq! lsp-ui-doc-position 'top)
   (setq! lsp-ui-doc-max-width 120)
+  (setq! lsp-ui-sideline-show-diagnostics nil)
   )
 
 (after! web-mode
