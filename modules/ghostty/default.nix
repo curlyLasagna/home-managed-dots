@@ -1,5 +1,5 @@
 { pkgs, ... }:
-# ghostty for darwin is currently bork
+# ghostty for darwin is currently bork in nixpkgs
 {
   xdg.configFile = {
     "ghostty/config" = {
@@ -22,7 +22,7 @@
 
         # Mac specific settings
         macos-icon = blueprint
-        macos-titlebar-style = transparent
+        macos-titlebar-style = hidden
         macos-titlebar-proxy-icon = hidden
         macos-non-native-fullscreen = true
         macos-option-as-alt = true
