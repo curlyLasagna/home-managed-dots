@@ -116,6 +116,9 @@
   (setq! lsp-ui-doc-position 'top)
   (setq! lsp-ui-doc-max-width 120)
   (setq! lsp-ui-sideline-show-diagnostics nil)
+  (setq! lsp-ui-imenu-window-fix-width t)
+  (setq! lsp-ui-imenu-window-width 20)
+  (setq! lsp-ui-sideline-show-diagnostics nil)
   )
 
 (after! web-mode
@@ -186,7 +189,8 @@
                           mode-line-position
                           (project-mode-line project-mode-line-format)
                           (vc-mode vc-mode) "  "
-                          mode-line-modes
+                          ;; mode-line-modes
+                          mode-name
                           ;; mode-line-misc-info
                           mode-line-end-spaces
                           )

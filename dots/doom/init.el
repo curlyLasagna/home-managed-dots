@@ -82,8 +82,8 @@
 
        :checkers
        (syntax +icons)              ; tasing you for every semicolon you forget
-       (spell +hunspell) ; tasing you for misspelling mispelling
-       ;;grammar           ; tasing grammar mistake every you make
+       (spell +hunspell +everywhere +flyspell) ; tasing you for misspelling mispelling
+       ;; grammar           ; tasing grammar mistake every you make
 
        :tools
        (denote +journal)
