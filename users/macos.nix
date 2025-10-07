@@ -19,7 +19,6 @@
     vscode
     obsidian
     hoppscotch
-    zed-editor
     emacs-pgtk
     skimpdf
     iina

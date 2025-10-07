@@ -188,3 +188,6 @@
                           mode-line-end-spaces
                           )
        )
+
+;; Disable suspend frame keymap
+(map! "C-z" nil)

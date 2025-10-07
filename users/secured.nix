@@ -26,9 +26,6 @@
     # linter/formatter
     biome
 
-    ## Python
-    uv
-
     # lsp
     pyright
 
