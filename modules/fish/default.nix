@@ -5,7 +5,7 @@
     # Add brew completions to fish
     shellAbbrs = {
       ls = "eza";
-      ee = "emacsclient -r --no-wait";
+      ee = "emacsclient -c --no-wait";
       enw = "emacsclient -nw ";
       cd = "z";
     };

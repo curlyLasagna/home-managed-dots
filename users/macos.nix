@@ -21,6 +21,8 @@
     hoppscotch
     zed-editor
     emacs-pgtk
+    skimpdf
+    firefox-bin
 
     # Fonts
     nerd-fonts.fira-code
@@ -34,8 +36,8 @@
   home.sessionVariables = {
     ALTERNATE_EDITOR = "";
     VISUAL = "emacsclient -c -a emacs";
-    EDITOR = "emacsclient -t";
-    ESHELL = "/Users/luis/.nix-profile/bin/fish";
+    EDITOR = "emacsclient -c -a emacs";
+    ESHELL = "${pkgs.fish}";
   };
   # PATH
   home.sessionPath = [

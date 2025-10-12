@@ -13,7 +13,6 @@ in
   nixpkgs.config = {
     # Allow useful packages 😜
     allowUnfree = true;
-    allowUnfreePredicate = (_: true);
   };
 
   home = {
@@ -44,7 +43,6 @@ in
       nil
       nixfmt-rfc-style
       pandoc
-      pipx
       ripgrep
       stylua
       tokei

@@ -47,7 +47,7 @@
     "alacritty/theme.toml" = {
       source =
         let
-          themeName = "ashes_dark";
+          themeName = "kanagawa_dragon";
           ext = "toml";
         in
         "${alacritty-themes}/themes/${themeName}.${ext}";

@@ -20,6 +20,7 @@
 (global-subword-mode +1)
 (repeat-mode 1)
 (global-goto-address-mode +1)
+(setq! doom-theme 'kanagawa-dragon)
 (setq! tab-width 4)
 (setq! truncate-string-ellipsis "…")
 (setq! display-line-numbers-type 'relative)
@@ -131,18 +132,9 @@
   (setq! markdown-unordered-list-item-prefix "  - ")
   )
 
-;; (use-package! doom-nano-modeline
-;;   :config
-;;   (doom-nano-modeline-mode 1)
-;;   (global-hide-mode-line-mode 1))
-
 (after! gptel
   (setq gptel-model 'gpt-4.1
         gptel-backend (gptel-make-gh-copilot "Copilot"))
-  )
-
-(after! auto-dark
-  (setq! auto-dark-themes '((doom-monokai-octagon) (modus-operandi)))
   )
 
 (use-package! flycheck

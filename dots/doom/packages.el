@@ -15,10 +15,7 @@
 (package! catppuccin-theme)
 (package! direnv)
 (package! typst-ts-mode)
-(package! delight)
-(package! doom-nano-modeline
-  :recipe (:host github
-           :repo "ronisbr/doom-nano-modeline"))
+(package! kanagawa-themes)
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
 ;; (package! builtin-package :disable t)
