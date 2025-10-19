@@ -24,6 +24,7 @@
       nixpkgs,
       home-manager,
       alacritty-themes,
+      nvf,
       ...
     }:
 
@@ -45,6 +46,7 @@
 
         "luis@wsl" = home-manager.lib.homeManagerConfiguration ({
           modules = [
+            nvf.homeManagerModules.default
             ./users/linux.nix
           ];
           pkgs = import nixpkgs {
