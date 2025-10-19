@@ -16,6 +16,7 @@
       url = "github:alacritty/alacritty-theme";
       flake = false;
     };
+    nvf.url = "github:notashelf/nvf";
   };
 
   outputs =
@@ -44,7 +45,7 @@
 
         "luis@wsl" = home-manager.lib.homeManagerConfiguration ({
           modules = [
-            ./home.nix
+            ./users/linux.nix
           ];
           pkgs = import nixpkgs {
             system = "x86_64-linux";
