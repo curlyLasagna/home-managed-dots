@@ -16,10 +16,10 @@ programs.nvf = {
                 enable = true;
             };
 
-            whichkey = {
+            binds.whichkey = {
                 enable = true;
-            }
-        }
+            };
+        };
     };
   };
 }
