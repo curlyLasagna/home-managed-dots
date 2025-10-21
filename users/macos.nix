@@ -22,7 +22,9 @@
     zed-editor
     emacs-pgtk
     skimpdf
-    firefox-bin
+    firefox
+    iina
+    utm
 
     # Fonts
     nerd-fonts.fira-code
