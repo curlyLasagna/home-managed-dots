@@ -21,7 +21,6 @@
     hoppscotch
     zed-editor
     emacs-pgtk
-    vivaldi
     skimpdf
     iina
     utm
