@@ -20,6 +20,7 @@
 (global-subword-mode +1)
 (repeat-mode 1)
 (global-goto-address-mode +1)
+(setq! ns-use-native-fullscreen t)
 (setq! doom-theme 'kanagawa-dragon)
 (setq! tab-width 4)
 (setq! truncate-string-ellipsis "…")

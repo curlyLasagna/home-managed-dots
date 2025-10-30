@@ -115,6 +115,5 @@ in
         frequency = "weekly";
       };
     };
-    emacs.enable = true;
   };
 }
