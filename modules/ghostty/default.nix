@@ -12,12 +12,12 @@ in
   xdg.configFile = {
     "ghostty/config" = {
       text = ''
-        command = ${cmd}
+        command = ${pkgs.fish}/bin/fish --login --interactive
         # Aesthetics
         font-family = JetBrains Mono
         font-size = 13
         window-theme = auto
-        title = "Terminal for the top 1% male"
+        title = " "
 
         window-padding-x = 5
         window-padding-y = 2
@@ -31,7 +31,7 @@ in
 
         # Mac specific settings
         macos-icon = blueprint
-        macos-titlebar-style = transparent
+        macos-titlebar-style = native
         macos-titlebar-proxy-icon = hidden
         macos-non-native-fullscreen = true
         macos-option-as-alt = true
