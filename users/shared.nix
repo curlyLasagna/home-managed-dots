@@ -57,6 +57,10 @@ in
     ];
 
     file = { };
+    sessionVariables = {
+      # lazygit is weird not using xdg
+      XDG_CONFIG_HOME = "$HOME/.config";
+    };
   };
 
   programs = {
