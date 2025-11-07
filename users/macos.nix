@@ -12,6 +12,7 @@
     ../modules/alacritty
     ../modules/git
     ../modules/starship
+    ../modules/lazygit
   ];
 
   home.packages = with pkgs; [
@@ -90,7 +91,7 @@
   };
 
   programs.git = {
-    extraConfig = {
+    settings = {
       credential.helper = "osxkeychain";
       ssh = {
         AddKeysToAgent = "yes";

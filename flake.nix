@@ -16,6 +16,10 @@
       url = "github:alacritty/alacritty-theme";
       flake = false;
     };
+    catppuccin-lazygit = {
+      url = "github:catppuccin/lazygit";
+      flake = false;
+    };
     nvf.url = "github:notashelf/nvf";
   };
 
@@ -24,6 +28,7 @@
       nixpkgs,
       home-manager,
       alacritty-themes,
+      catppuccin-lazygit,
       nvf,
       ...
     }:
@@ -40,7 +45,7 @@
           };
           extraSpecialArgs = {
             alacritty-themes = alacritty-themes;
-            zen-browser = inputs.zen-browser;
+            lazygit-theme = catppuccin-lazygit;
           };
         });
 
