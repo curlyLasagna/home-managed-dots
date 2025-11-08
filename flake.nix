@@ -20,16 +20,14 @@
       url = "github:catppuccin/lazygit";
       flake = false;
     };
-    nvf.url = "github:notashelf/nvf";
   };
 
   outputs =
-    inputs@{
+    {
       nixpkgs,
       home-manager,
       alacritty-themes,
       catppuccin-lazygit,
-      nvf,
       ...
     }:
 
@@ -51,7 +49,6 @@
 
         "luis@wsl" = home-manager.lib.homeManagerConfiguration ({
           modules = [
-            nvf.homeManagerModules.default
             ./users/linux.nix
           ];
           pkgs = import nixpkgs {
