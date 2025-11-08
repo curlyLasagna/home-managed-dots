@@ -7,7 +7,6 @@
   imports = [
     ./shared.nix
     ../modules/fish
-    # Terminal emulators
     ../modules/ghostty
     ../modules/alacritty
     ../modules/git
@@ -25,6 +24,7 @@
     skimpdf
     iina
     utm
+    google-chrome
 
     # Fonts
     nerd-fonts.fira-code
