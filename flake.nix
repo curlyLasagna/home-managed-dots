@@ -7,6 +7,10 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix2vim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,10 +20,6 @@
       url = "github:alacritty/alacritty-theme";
       flake = false;
     };
-    catppuccin-lazygit = {
-      url = "github:catppuccin/lazygit";
-      flake = false;
-    };
   };
 
   outputs =
@@ -27,7 +27,7 @@
       nixpkgs,
       home-manager,
       alacritty-themes,
-      catppuccin-lazygit,
+      nix2vim,
       ...
     }:
 
@@ -36,6 +36,7 @@
       homeConfigurations = {
         "luis@macbook" = home-manager.lib.homeManagerConfiguration ({
           modules = [
+            nix2vim.homeModules.nixvim
             ./users/macos.nix
           ];
           pkgs = import nixpkgs {
@@ -43,7 +44,6 @@
           };
           extraSpecialArgs = {
             alacritty-themes = alacritty-themes;
-            lazygit-theme = catppuccin-lazygit;
           };
         });
 

@@ -47,10 +47,6 @@
 
   xdg.configFile = {
 
-    "nvim" = {
-      source = ../dots/nvim;
-    };
-
     "doom" = {
       source = ../dots/doom;
     };
@@ -84,6 +80,13 @@
         };
       }
     ];
+  };
+
+  programs.nixvim = {
+    enable = true;
+    plugins = {
+      lsp.enable = false;
+    };
   };
 
   programs.git = {
