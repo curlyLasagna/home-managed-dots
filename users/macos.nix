@@ -36,10 +36,6 @@
   ];
 
   home.sessionVariables = {
-    ALTERNATE_EDITOR = "";
-    VISUAL = "emacsclient -c -a emacs";
-    EDITOR = "emacsclient -c -a emacs";
-    ESHELL = "${pkgs.fish}";
   };
   # PATH
   home.sessionPath = [
