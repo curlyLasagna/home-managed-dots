@@ -25,6 +25,7 @@
     iina
     utm
     google-chrome
+    wezterm
 
     # Fonts
     nerd-fonts.fira-code
@@ -46,6 +47,10 @@
   ];
 
   xdg.configFile = {
+
+    "wezterm" = {
+      source = ../dots/wezterm;
+    };
 
     "doom" = {
       source = ../dots/doom;
