@@ -39,7 +39,6 @@ in
       lazydocker
       lazygit
       marksman
-      neovim
       nil
       nixfmt-rfc-style
       pandoc

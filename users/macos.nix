@@ -87,13 +87,6 @@
     ];
   };
 
-  programs.nixvim = {
-    enable = true;
-    plugins = {
-      lsp.enable = false;
-    };
-  };
-
   programs.git = {
     settings = {
       credential.helper = "osxkeychain";
