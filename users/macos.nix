@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 
@@ -12,6 +13,7 @@
     ../modules/git
     ../modules/starship
     ../modules/lazygit
+    ../modules/wezterm
   ];
 
   home.packages = with pkgs; [
@@ -46,10 +48,6 @@
   ];
 
   xdg.configFile = {
-
-    "wezterm" = {
-      source = ../dots/wezterm;
-    };
 
     "doom" = {
       source = ../dots/doom;
