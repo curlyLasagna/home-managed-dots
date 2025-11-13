@@ -40,9 +40,9 @@
   # PATH
   home.sessionPath = [
     "/opt/homebrew/bin"
-    "/Users/luis/.local/bin"
-    "/Users/luis/.ghcup/bin"
-    "/Users/luis/.config/emacs/bin"
+    "${config.home.homeDirectory}.local/bin"
+    "${config.home.homeDirectory}.ghcup/bin"
+    "${config.home.homeDirectory}.config/emacs/bin"
   ];
 
   xdg.configFile = {
