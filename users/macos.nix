@@ -12,6 +12,7 @@
     ../modules/git
     ../modules/starship
     ../modules/lazygit
+    ../modules/nix2vim
   ];
 
   home.packages = with pkgs; [
