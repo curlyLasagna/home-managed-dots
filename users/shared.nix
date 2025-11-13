@@ -42,6 +42,9 @@ in
       nil
       nixfmt-rfc-style
       pandoc
+      # Because emacs needs this -_-
+      pyenv
+      pipx
       ripgrep
       stylua
       tokei

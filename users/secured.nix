@@ -5,29 +5,24 @@
 }:
 
 {
+
   home.packages = with pkgs; [
     mongodb-compass
     slack
 
     # ops
     awscli2
-    aws-sam-cli
     terraform
     terragrunt
     terraform-ls
     tflint
     colima
 
-    # lang
-
     # lsp
     typescript-language-server
 
     # linter/formatter
     biome
-
-    ## Python
-    uv
 
     # lsp
     pyright
