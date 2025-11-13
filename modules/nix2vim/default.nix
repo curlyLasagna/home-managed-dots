@@ -28,7 +28,7 @@
       ignorecase = true;
       smartcase = true;
 
-    }
+    };
     colorschemes = {
       tokyonight.enable = true;
     };
