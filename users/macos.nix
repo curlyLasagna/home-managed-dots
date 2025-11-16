@@ -22,11 +22,9 @@
     vscode
     obsidian
     hoppscotch
-    emacs-pgtk
     skimpdf
     iina
     utm
-    google-chrome
     wezterm
 
     # Fonts
@@ -43,9 +41,9 @@
   # PATH
   home.sessionPath = [
     "/opt/homebrew/bin"
-    "${config.home.homeDirectory}.local/bin"
-    "${config.home.homeDirectory}.ghcup/bin"
-    "${config.home.homeDirectory}.config/emacs/bin"
+    "${config.home.homeDirectory}/.local/bin"
+    "${config.home.homeDirectory}/.ghcup/bin"
+    "${config.home.homeDirectory}/.config/emacs/bin"
   ];
 
   xdg.configFile = {
