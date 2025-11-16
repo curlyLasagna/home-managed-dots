@@ -15,19 +15,22 @@
 (after! denote
   (setq! denote-directory (expand-file-name "~/Documents/de_notes/")))
 
+(use-package! typst-ts-mode
+  :mode ("\\.typ\\'" . typst-ts-mode)
+  )
+
 (whitespace-mode -1)
 (delete-selection-mode +1)
 (global-subword-mode +1)
 (repeat-mode 1)
 (global-goto-address-mode +1)
 (setq! ns-use-native-fullscreen t)
-(setq! doom-theme 'kanagawa-dragon)
+(setq! doom-theme 'doom-opera-light)
 (setq! tab-width 4)
 (setq! truncate-string-ellipsis "…")
 (setq! display-line-numbers-type 'relative)
 (setq! confirm-kill-emacs nil)
 (setq! frame-title-format "Notepad for the top 1\%% male")
-;; Aesthetic
 ;; Draggable window divider by increasing width
 (setq! window-divider-default-right-width 3)
 (setq! window-divider-default-bottom-width 0)
@@ -37,12 +40,15 @@
  "<C-wheel-up>" nil
  "<C-wheel-down>" nil)
 
-(map!
- :leader
- :desc "Kill ring history"
- :n
- "s c" #'consult-yank-from-kill-ring
- "")
+(after! consult
+  (map!
+   :leader
+   :desc "Kill ring history"
+   "s c" #'consult-yank-from-kill-ring)
+  )
+
+(after! gptel)
+
 
 (after! writeroom-mode
   (setq! writeroom-mode-line nil
@@ -138,35 +144,6 @@
         gptel-backend (gptel-make-gh-copilot "Copilot"))
   )
 
-(use-package! flycheck
-  :preface
-
-  (defun mp-flycheck-eldoc (callback &rest _ignored)
-    "Print flycheck messages at point by calling CALLBACK. https://www.masteringemacs.org/article/seamlessly-merge-multiple-documentation-sources-eldoc"
-    (when-let ((flycheck-errors (and flycheck-mode (flycheck-overlay-errors-at (point)))))
-      (mapc
-       (lambda (err)
-         (funcall callback
-                  (format "%s: %s"
-                          (let ((level (flycheck-error-level err)))
-                            (pcase level
-                              ('info (propertize "I" 'face 'flycheck-error-list-info))
-                              ('error (propertize "E" 'face 'flycheck-error-list-error))
-                              ('warning (propertize "W" 'face 'flycheck-error-list-warning))
-                              (_ level)))
-                          (flycheck-error-message err))
-                  :thing (or (flycheck-error-id err)
-                             (flycheck-error-group err))
-                  :face 'font-lock-doc-face))
-       flycheck-errors)))
-
-  (defun mp-flycheck-prefer-eldoc ()
-    (add-hook 'eldoc-documentation-functions #'mp-flycheck-eldoc nil t)
-    (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
-    (setq flycheck-display-errors-function nil)
-    (setq flycheck-help-echo-function nil))
-
-  :hook ((flycheck-mode . mp-flycheck-prefer-eldoc)))
 
 ;; TODO: Customize a minimal modeline that only shows the major mode and lsp server running. Git metrics would be cool too
 (setq! mode-line-format '("%e" mode-line-front-space
