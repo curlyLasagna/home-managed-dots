@@ -19,6 +19,16 @@
   :mode ("\\.typ\\'" . typst-ts-mode)
   )
 
+(add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
+
+(lsp-register-client (make-lsp-client
+                      :new-connection (lsp-stdio-connection '("tinymist"))
+                      :activation-fn (lsp-activate-on "typst")
+                      :server-id 'tinymist
+                      ))
+
+(add-hook 'typst-ts-mode-hook 'lsp-deferred)
+
 (whitespace-mode -1)
 (delete-selection-mode +1)
 (global-subword-mode +1)
@@ -46,9 +56,6 @@
    :desc "Kill ring history"
    "s c" #'consult-yank-from-kill-ring)
   )
-
-(after! gptel)
-
 
 (after! writeroom-mode
   (setq! writeroom-mode-line nil
