@@ -59,6 +59,7 @@
 
         "luis@secured_macbook" = home-manager.lib.homeManagerConfiguration ({
           modules = [
+            nix2vim.homeModules.nixvim
             ./users/macos.nix
             ./users/secured.nix
           ];
