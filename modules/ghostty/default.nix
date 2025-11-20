@@ -1,5 +1,5 @@
 { pkgs, ... }:
-# ghostty for darwin is currently bork in nixpkgs
+# ghostty for darwin is currently bork in nixpkgs so it's installed via brew
 let
   hasZellij = pkgs ? zellij;
   cmd =
@@ -17,7 +17,6 @@ in
         font-family = JetBrains Mono
         font-size = 13
         window-theme = auto
-        title = " "
 
         window-padding-x = 5
         window-padding-y = 2
@@ -29,9 +28,13 @@ in
         shell-integration-features = no-cursor
         cursor-style = block
 
+        quick-terminal-position = center
+        quick-terminal-screen = mouse
+        window-new-tab-position = end
+
         # Mac specific settings
-        macos-icon = blueprint
-        macos-titlebar-style = native
+        macos-icon = official
+        macos-titlebar-style = transparent
         macos-titlebar-proxy-icon = hidden
         macos-non-native-fullscreen = true
         macos-option-as-alt = true
