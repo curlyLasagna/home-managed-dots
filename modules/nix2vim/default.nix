@@ -1,5 +1,8 @@
 { ... }:
 {
+  imports = [
+    ./keymaps.nix
+  ];
   programs.nixvim = {
     enable = true;
     globals.mapleader = " ";
@@ -35,11 +38,6 @@
       tokyonight.enable = true;
     };
     clipboard.register = "unnamedplus";
-    # keymaps = [
-    #   {
-    #     mode = ["n"];
-    #   }
-    # ];
     plugins = {
       web-devicons.enable = true;
       which-key.enable = true;
