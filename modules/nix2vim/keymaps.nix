@@ -8,6 +8,9 @@
         mode = [ "n" ];
         key = "<Esc>";
         action = "<cmd>nohlsearch<CR>";
+        options = {
+          silent = true;
+        };
       }
       # Window movement
       {

@@ -44,16 +44,12 @@
       lualine.enable = true;
       oil.enable = true;
       nvim-autopairs.enable = true;
+        enable = true;
+      };
+        };
+      };
       telescope = {
         enable = true;
-        keymaps = {
-          "<leader>ff" = "find_files";
-          "<leader>fr" = "oldfiles";
-          "<leader>bb" = "buffers";
-          "<leader>/" = "live_grep";
-          "gd" = "lsp_definitions";
-          "gD" = "lsp_references";
-        };
       };
       typst-vim.enable = true;
       typst-preview.enable = true;
