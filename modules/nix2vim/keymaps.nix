@@ -86,9 +86,18 @@
           action = "live_grep";
           options.desc = "Search text";
         };
-        "<leader>sk" = "keymaps";
+        "<leader>sk" = {
+          action = "keymaps";
+          options.desc = "Keymap search";
+        };
         "gd" = "lsp_definitions";
         "gD" = "lsp_references";
+      };
+      lsp.keymaps = {
+        lspBuf = {
+          "<leader>ca" = "code_action";
+          "<leader>cr" = "rename";
+        };
       };
     };
   };
