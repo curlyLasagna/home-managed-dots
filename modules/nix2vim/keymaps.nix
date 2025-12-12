@@ -3,6 +3,10 @@
 }:
 {
   programs.nixvim = {
+    globals = {
+      mapleader = " ";
+      maplocalleader = " ";
+    };
     keymaps = [
       {
         mode = [ "n" ];
@@ -69,6 +73,9 @@
       }
     ];
     plugins = {
+      blink-cmp = {
+        settings.keymap.preset = "enter";
+      };
       telescope.keymaps = {
         "<leader>ff" = {
           action = "find_files";

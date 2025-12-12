@@ -5,12 +5,9 @@
   ];
   programs.nixvim = {
     enable = true;
-    globals = {
-      mapleader = " ";
-      maplocalleader = " ";
-    };
     opts = {
       number = true;
+      spell = true;
       relativenumber = true;
       breakindent = true;
       completeopt = [
@@ -37,14 +34,15 @@
       ignorecase = true;
       smartcase = true;
       autoindent = true;
+      smartindent = true;
       splitright = true;
       splitbelow = true;
     };
     colorschemes = {
-      tokyonight.enable = true;
+      tokyonight.enable = false;
       kanagawa.enable = true;
       catppuccin = {
-        enable = true;
+        enable = false;
         settings.flavour = "mocha";
       };
     };
@@ -55,11 +53,6 @@
       lualine.enable = true;
       blink-cmp = {
         enable = true;
-        settings = {
-          keymap = {
-            preset = "enter";
-          };
-        };
       };
       oil.enable = true;
       nvim-autopairs.enable = true;
@@ -80,6 +73,23 @@
       };
       typst-vim.enable = true;
       typst-preview.enable = true;
+      typescript-tools.enable = true;
+      project-nvim.enable = true;
+      mini-surround.enable = true;
+      friendly-snippets.enable = true;
+      zen-mode.enable = true;
+      leap.enable = true;
+      repeat.enable = true;
+      zk.enable = true;
+      leetcode = {
+        enable = true;
+        settings = {
+          lang = "python";
+          storage = {
+            home = "~/Code/Leet";
+          };
+        };
+      };
       lsp = {
         enable = true;
         inlayHints = true;
@@ -96,5 +106,4 @@
       trouble.enable = true;
     };
   };
-
 }
