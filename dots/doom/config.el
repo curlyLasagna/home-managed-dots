@@ -19,15 +19,18 @@
   :mode ("\\.typ\\'" . typst-ts-mode)
   )
 
-(add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
+(after! lsp-mode
+  (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
 
-(lsp-register-client (make-lsp-client
-                      :new-connection (lsp-stdio-connection '("tinymist"))
-                      :activation-fn (lsp-activate-on "typst")
-                      :server-id 'tinymist
-                      ))
+  (lsp-register-client (make-lsp-client
+                        :new-connection (lsp-stdio-connection '("tinymist"))
+                        :activation-fn (lsp-activate-on "typst")
+                        :server-id 'tinymist
+                        ))
 
-(add-hook 'typst-ts-mode-hook 'lsp-deferred)
+  (add-hook 'typst-ts-mode-hook #'lsp! 'append)
+  )
+
 
 (whitespace-mode -1)
 (delete-selection-mode +1)
