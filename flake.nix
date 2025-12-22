@@ -10,6 +10,7 @@
     nix2vim = {
       url = "github:nix-community/nixvim";
     };
+    emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
     home-manager = {
       url = "github:nix-community/home-manager";
     };
@@ -26,6 +27,7 @@
       home-manager,
       alacritty-themes,
       nix2vim,
+      emacs-lsp-booster,
       ...
     }:
 
@@ -39,9 +41,10 @@
           ];
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
+            overlays = [ emacs-lsp-booster.overlays.default ];
           };
           extraSpecialArgs = {
-            alacritty-themes = alacritty-themes;
+            inherit alacritty-themes;
           };
         });
 
@@ -66,6 +69,7 @@
 
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
+            overlays = [ emacs-lsp-booster.overlays.default ];
           };
         });
       };
