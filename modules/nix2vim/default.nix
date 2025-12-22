@@ -74,6 +74,7 @@
       typst-vim.enable = true;
       typst-preview.enable = true;
       typescript-tools.enable = true;
+      render-markdown.enable = true;
       project-nvim.enable = true;
       mini-surround.enable = true;
       friendly-snippets.enable = true;
@@ -81,6 +82,7 @@
       leap.enable = true;
       repeat.enable = true;
       zk.enable = true;
+      illuminate.enable = true;
       leetcode = {
         enable = true;
         settings = {
@@ -94,6 +96,10 @@
         enable = true;
         inlayHints = true;
         servers = {
+          ruff.enable = true;
+          basedpyright.enable = true;
+          ty.enable = true;
+          marksman.enable = true;
           nil_ls.enable = true;
           tinymist = {
             enable = true;

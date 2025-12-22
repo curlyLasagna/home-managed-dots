@@ -97,6 +97,14 @@
           action = "keymaps";
           options.desc = "Keymap search";
         };
+        "<leader>sd" = {
+          action = "lsp_document_symbols";
+          options.desc = "Search document symbols";
+        };
+        "<leader>si" = {
+          action = "lsp_workspace_symbols";
+          options.desc = "Search workspace symbols";
+        };
         "gd" = "lsp_definitions";
         "gD" = "lsp_references";
       };
