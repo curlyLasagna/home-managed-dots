@@ -14,7 +14,6 @@
 (package! docker-compose-mode)
 (package! catppuccin-theme)
 (package! direnv)
-(package! typst-ts-mode)
 (package! kanagawa-themes)
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:

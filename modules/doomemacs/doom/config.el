@@ -12,25 +12,9 @@
 (after! treemacs
   (setq! treemacs-position 'right))
 
-(after! denote
-  (setq! denote-directory (expand-file-name "~/Documents/de_notes/")))
-
 (use-package! typst-ts-mode
   :mode ("\\.typ\\'" . typst-ts-mode)
   )
-
-(after! lsp-mode
-  (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
-
-  (lsp-register-client (make-lsp-client
-                        :new-connection (lsp-stdio-connection '("tinymist"))
-                        :activation-fn (lsp-activate-on "typst")
-                        :server-id 'tinymist
-                        ))
-
-  (add-hook 'typst-ts-mode-hook #'lsp! 'append)
-  )
-
 
 (whitespace-mode -1)
 (delete-selection-mode +1)
@@ -79,7 +63,7 @@
 
 (after! org
   (setq! org-image-max-width 0.5)
-  (setq org-directory (expand-file-name "~/Documents/de_notes/"))
+  (setq org-directory (expand-file-name "~/Documents/org/"))
   (setq! org-agenda-files (list org-directory))
   (when (modulep! :lang org +dragndrop)
     (setq! org-download-image-dir (concat org-directory "/attachments"))
@@ -155,7 +139,6 @@
   )
 
 
-;; TODO: Customize a minimal modeline that only shows the major mode and lsp server running. Git metrics would be cool too
 (setq! mode-line-format '("%e" mode-line-front-space
                           (:propertize
                            ("" mode-line-mule-info
