@@ -1,7 +1,7 @@
 { ... }:
 {
   xdg.configFile = {
-    "wezterm" = {
+    "doom" = {
       source = ./doom;
     };
   };

@@ -7,14 +7,9 @@
 {
   imports = [
     ./shared.nix
-    ../modules/fish
     ../modules/ghostty
     ../modules/alacritty
-    ../modules/git
-    ../modules/starship
-    ../modules/lazygit
     ../modules/wezterm
-    ../modules/nix2vim
   ];
 
   home.packages = with pkgs; [
@@ -45,18 +40,6 @@
     "${config.home.homeDirectory}/.ghcup/bin"
     "${config.home.homeDirectory}/.config/emacs/bin"
   ];
-
-  xdg.configFile = {
-
-    "doom" = {
-      source = ../dots/doom;
-    };
-
-    "zellij/config.kdl" = {
-      source = ../dots/zellij/config.kdl;
-    };
-
-  };
 
   programs.fish = {
     interactiveShellInit = ''

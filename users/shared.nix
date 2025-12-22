@@ -15,6 +15,15 @@ in
     allowUnfree = true;
   };
 
+  imports = [
+    ../modules/fish
+    ../modules/git
+    ../modules/starship
+    ../modules/lazygit
+    ../modules/nix2vim
+    ../modules/doomemacs
+  ];
+
   home = {
     username = "luis";
     homeDirectory =
@@ -42,7 +51,6 @@ in
       nil
       nixfmt-rfc-style
       pandoc
-      # Because emacs needs this -_-
       pyenv
       pipx
       ripgrep
@@ -52,13 +60,16 @@ in
       unixtools.watch
       wget
       xh
+      emacs-lsp-booster
       yaml-language-server
-      yazi
       zoxide
       zstd
     ];
 
     file = { };
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
   };
 
   programs = {
@@ -105,9 +116,6 @@ in
       icons = "auto";
     };
 
-    zellij = {
-      enable = true;
-    };
   };
 
   services = {
