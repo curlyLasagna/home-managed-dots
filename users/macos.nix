@@ -8,8 +8,8 @@
   imports = [
     ./shared.nix
     ../modules/ghostty
-    ../modules/alacritty
-    ../modules/wezterm
+    # ../modules/alacritty
+    # ../modules/wezterm
   ];
 
   home.packages = with pkgs; [
@@ -20,7 +20,6 @@
     skimpdf
     iina
     utm
-    wezterm
 
     # Fonts
     nerd-fonts.fira-code
@@ -31,8 +30,6 @@
     julia-mono
   ];
 
-  home.sessionVariables = {
-  };
   # PATH
   home.sessionPath = [
     "/opt/homebrew/bin"
