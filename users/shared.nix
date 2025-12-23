@@ -22,6 +22,7 @@ in
     ../modules/lazygit
     ../modules/nix2vim
     ../modules/doomemacs
+    ../modules/lf
   ];
 
   home = {
