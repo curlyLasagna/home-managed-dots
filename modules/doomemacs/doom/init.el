@@ -31,7 +31,7 @@
        :ui
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
-       ;; auto-dark
+       auto-dark
        ;; doom-dashboard    ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;(emoji +unicode)  ; 🙂
@@ -144,7 +144,7 @@
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
        ;; (java +tree-sitter)       ; the poster child for carpal tunnel syndrome
-       (javascript +lsp +tree-sitter)        ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        (latex +lsp)             ; writing papers in Emacs has never been so fun
@@ -155,11 +155,11 @@
        ;;nim               ; python + lisp at the speed of c
        ( nix +lsp )               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       ( org +present +dragndrop +pretty +journal)               ; organize your plain life in plain text
+       ( org +present +dragndrop)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       ( python +lsp +pyright +tree-sitter +pyenv)            ; beautiful is better than ugly
+       ( python +lsp +pyright +pyenv)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
@@ -174,7 +174,7 @@
        ;;solidity          ; do you need a blockchain? No.
        ;; ( swift +lsp )             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       ( web +lsp +tree-sitter )               ; the tubes
+       ( web +lsp )               ; the tubes
        ( yaml +lsp )              ; JSON, but readable
        ;;zig               ; C, but simpler
 

@@ -32,7 +32,9 @@
 (setq! window-divider-default-right-width 3)
 (setq! window-divider-default-bottom-width 0)
 
-;; Doom Emacs being buggy -_-
+;; Possible fix?
+;; Auto-save errors out since it tries to save within this path:
+;; <default-directory + doom-profile-cache-dir> which doesn't exists and shouldn't
 (setq! auto-save-file-name-transforms
        `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
           ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/tramp/\\2-") sha1)
@@ -51,12 +53,14 @@
   )
 
 (after! writeroom-mode
+  ;; Hide modeline
+  ;; Slightly upsize text
+  ;; Center text
   (setq! writeroom-mode-line nil
          +zen-text-scale 1.10
          writeroom-width 0.3)
-  ;; No line numbers in zen
+  ;; Toggle line numbers
   (add-hook! 'writeroom-mode-enable-hook #'(lambda () (display-line-numbers-mode -1)))
-  ;; Toggle line numbers leaving zen
   (add-hook! 'writeroom-mode-disable-hook #'(lambda () (display-line-numbers-mode 1)))
   ;; Disable writeroom from applying mixed-pitch text
   (remove-hook 'writeroom-mode-hook #'+zen-enable-mixed-pitch-mode-h)
@@ -64,9 +68,7 @@
 
 (after! corfu
   (setq! corfu-auto nil)
-  (setq! corfu-auto-prefix 3)
-  (setq! corfu-auto-delay 0.5)
-  ;; Absolutely useless
+  ;; Actually a nuissance
   (remove-hook 'completion-at-point-functions #'ispell-completion-at-point)
   )
 
@@ -84,7 +86,8 @@
       (re-search-forward (format org-complex-heading-regexp-format (regexp-quote selected)))
       (re-search-forward (format org-complex-heading-regexp-format (regexp-quote subheading)))))
   (setq! org-image-max-width 0.5)
-  (setq org-directory (expand-file-name "~/Documents/org/"))
+  (setq! org-directory (expand-file-name "~/Documents/org/"))
+  (setq! org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
   (when (modulep! :lang org +dragndrop)
     (setq! org-download-image-dir (expand-file-name "attachments" org-directory))
     )
@@ -130,7 +133,7 @@
            )
          )
 
-  (setq! org-agenda-files (list +org-capture-projects-file))
+  (setq! org-agenda-files (directory-files org-directory t "\\.org$"))
   )
 
 (after! dired
