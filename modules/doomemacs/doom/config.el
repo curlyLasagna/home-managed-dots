@@ -12,13 +12,17 @@
 (after! treemacs
   (setq! treemacs-position 'right))
 
+(use-package! auto-dark
+  :init
+  (setq! auto-dark-themes '((doom-ir-black) (doom-homage-white)))
+  )
+
 (whitespace-mode -1)
 (delete-selection-mode +1)
 (global-subword-mode +1)
 (repeat-mode 1)
 (global-goto-address-mode +1)
 (setq! ns-use-native-fullscreen t)
-(setq! doom-theme 'doom-one-light)
 (setq! tab-width 4)
 (setq! truncate-string-ellipsis "…")
 (setq! display-line-numbers-type 'relative)
