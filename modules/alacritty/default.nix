@@ -4,18 +4,28 @@
   alacritty-themes,
   ...
 }:
+let
+  useZellij = config.programs.zellij.enable or false;
+in
 {
   programs.alacritty = {
     enable = true;
     settings = {
       terminal.shell = {
         program = "${pkgs.fish}/bin/fish";
-        args = [
-          "-l"
-          "-i"
-          "-c"
-          "zellij"
-        ];
+        args =
+          if useZellij then
+            [
+              "--login"
+              "--interactive"
+              "-c"
+              "zellij"
+            ]
+          else
+            [
+              "--login"
+              "--interactive"
+            ];
       };
       window = {
         padding = {

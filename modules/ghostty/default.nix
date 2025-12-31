@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 # ghostty for darwin is currently bork in nixpkgs so it's installed via brew
 let
-  hasZellij = pkgs ? zellij;
+  useZellij = config.programs.zellij.enable or false;
   cmd =
-    if hasZellij then
-      "${pkgs.fish}/bin/fish --login --interactive -c  ${pkgs.zellij}/bin/zellij"
+    if useZellij then
+      "${pkgs.fish}/bin/fish --login --interactive -c ${pkgs.zellij}/bin/zellij"
     else
       "${pkgs.fish}/bin/fish --login --interactive";
 in
@@ -12,7 +12,7 @@ in
   xdg.configFile = {
     "ghostty/config" = {
       text = ''
-        command = ${pkgs.fish}/bin/fish --login --interactive
+        command = ${cmd}
         # Aesthetics
         font-family = JetBrains Mono
         font-size = 13

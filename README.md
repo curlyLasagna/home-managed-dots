@@ -43,11 +43,13 @@ Interact with remote repos without having to enter your passphrase:
 
 I've enjoyed my time setting up a declarative config that I can understand.
 
-I feel in control of my machine and that gives me a peace of mind. 
+I feel in control of my machine and that gives me a peace of mind.
 
-Gone are the days of "What prompted me to do that?"
+I also wasn't a fan of having to learn different syntax per config (lua is cool and all but it's not my cup of tea 🫣)
 
-- `modules`: Configuration for different applications managed with nix
+- `modules`: Per application configuration
 - `users`: Per device configuration
-- `dots`: App configuration that I believe is better off un-nixified
 
+## Update packages
+
+`nix flake update` to update the flake inputs
