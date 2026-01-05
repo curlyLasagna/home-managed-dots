@@ -14,7 +14,7 @@
 
 (use-package! auto-dark
   :init
-  (setq! auto-dark-themes '((doom-ir-black) (doom-homage-white)))
+  (setq! auto-dark-themes '((doom-ayu-dark) (doom-homage-white)))
   )
 
 (whitespace-mode -1)
