@@ -85,6 +85,7 @@
       ;; Find the project, then the specific subheading
       (re-search-forward (format org-complex-heading-regexp-format (regexp-quote selected)))
       (re-search-forward (format org-complex-heading-regexp-format (regexp-quote subheading)))))
+
   (setq! org-image-max-width 0.5)
   (setq! org-directory (expand-file-name "~/Documents/org/"))
   (setq! org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
@@ -111,9 +112,15 @@
             "* %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n %i\n%?"
             :prepend t)
 
-           ("j" "Journal" entry
+           ("j" "Journal")
+           ("jn" "Journal" entry
             (file+olp+datetree +org-capture-journal-file)
             "* %U %?\n %i" :prepend t)
+
+           ("jd" "Journal on date" entry
+            (file+datetree+prompt +org-capture-journal-file)
+            "* %U %?\n %i"
+            :prepend t)
 
            ("p" "Projects")
            ("pN" "New project" entry 
