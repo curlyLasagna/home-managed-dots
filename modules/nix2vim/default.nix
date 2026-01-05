@@ -81,7 +81,6 @@
       zen-mode.enable = true;
       leap.enable = true;
       repeat.enable = true;
-      zk.enable = true;
       illuminate.enable = true;
       leetcode = {
         enable = true;
