@@ -43,6 +43,7 @@ in
       devenv
       fd
       gawkInteractive
+      opencode
       hunspell
       hyperfine
       jq
