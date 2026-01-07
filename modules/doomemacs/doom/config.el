@@ -68,9 +68,10 @@
 
 (after! corfu
   (setq! corfu-auto nil)
-  ;; Actually a nuissance
-  (remove-hook 'completion-at-point-functions #'ispell-completion-at-point)
   )
+
+;; Disable word suggestion popups
+(setq! text-mode-ispell-word-completion nil)
 
 (after! org
   (defun my/org-capture-select-project-target ()
