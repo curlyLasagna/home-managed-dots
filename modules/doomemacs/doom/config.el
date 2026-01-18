@@ -90,6 +90,8 @@
   (setq! org-image-max-width 0.5)
   (setq! org-directory (expand-file-name "~/Documents/org/"))
   (setq! org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+  (setq! org-latex-compiler "lualatex")
+  (setq! org-preview-latex-default-process 'dvisvgm)
   (when (modulep! :lang org +dragndrop)
     (setq! org-download-image-dir (expand-file-name "attachments" org-directory))
     )
