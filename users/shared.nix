@@ -11,8 +11,8 @@ in
 {
 
   nixpkgs.config = {
-    # Allow useful packages 😜
-    allowUnfree = true;
+
+    allowUnfree = true; # Allow useful packages 😜
   };
 
   imports = [
@@ -44,12 +44,13 @@ in
       fd
       gawkInteractive
       opencode
-      hunspell
+      hunspell # spell checker
       hyperfine
       jq
       lazydocker
       lazygit
-      marksman
+      marksman # markdown lsp
+      harper # grammar lsp
       nil
       nixfmt-rfc-style
       pandoc
@@ -75,8 +76,7 @@ in
   };
 
   programs = {
-    # Let Home Manager install and manage itself.
-    home-manager.enable = true;
+    home-manager.enable = true; # Let Home Manager install and manage itself.
 
     direnv = {
       enable = true;
