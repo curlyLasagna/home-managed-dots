@@ -1,7 +1,15 @@
-{ ... }:
-{
-  # Based MacOS tiling window manager
-  programs.aerospace = {
+{ config, lib, ... }:
+
+with lib;
+let cfg = config.modules.aerospace;
+in {
+  options.modules.aerospace = {
+    enable = mkEnableOption "Aerospace window manager";
+  };
+
+  config = mkIf cfg.enable {
+    # Based MacOS tiling window manager
+    programs.aerospace = {
     launchd.enable = false;
     userSettings = {
       accordion-padding = 0;
@@ -88,4 +96,5 @@
       };
     };
   };
+};
 }

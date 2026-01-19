@@ -1,5 +1,13 @@
-{ ... }:
-{
+{ config, lib, ... }:
+
+with lib;
+let cfg = config.modules.git;
+in {
+  options.modules.git = {
+    enable = mkEnableOption "Git version control";
+  };
+
+  config = mkIf cfg.enable {
   programs.git = {
     enable = true;
 
@@ -58,6 +66,7 @@
       "*.retry"
     ];
 
-    lfs.enable = true;
-  };
+     lfs.enable = true;
+   };
+};
 }

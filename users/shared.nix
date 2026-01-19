@@ -23,7 +23,10 @@ in
     ../modules/nix2vim
     ../modules/doomemacs
     ../modules/lf
+    ../modules/mermaid
   ];
+
+
 
   home = {
     username = "luis";
@@ -43,6 +46,7 @@ in
       devenv
       fd
       gawkInteractive
+      mermaid-cli
       opencode
       hunspell # spell checker
       hyperfine
@@ -128,5 +132,19 @@ in
         timestamp = "-7 days";
       };
     };
+  };
+
+  modules = {
+    fish.enable = true;
+    git.enable = true;
+    starship.enable = true;
+    lazygit.enable = true;
+    nix2vim.enable = true;
+    doomemacs = {
+      enable = true;
+      texSupport = true;
+    };
+    lf.enable = true;
+    mermaid.enable = true;
   };
 }

@@ -1,5 +1,13 @@
-{ ... }:
-{
+{ config, lib, ... }:
+
+with lib;
+let cfg = config.modules.starship;
+in {
+  options.modules.starship = {
+    enable = mkEnableOption "Starship shell prompt";
+  };
+
+  config = mkIf cfg.enable {
   programs.starship = {
     enable = true;
 
@@ -42,4 +50,5 @@
       };
     };
   };
+};
 }

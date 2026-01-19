@@ -1,5 +1,13 @@
-{ ... }:
-{
+{ config, lib, ... }:
+
+with lib;
+let cfg = config.modules.fish;
+in {
+  options.modules.fish = {
+    enable = mkEnableOption "Fish shell";
+  };
+
+  config = mkIf cfg.enable {
   programs.fish = {
     enable = true;
     # Add brew completions to fish
@@ -19,4 +27,5 @@
     };
     # Need this when using Fish as a default macOS shell in order to pick up ~/.nix-profile/bin
   };
+};
 }

@@ -1,8 +1,13 @@
-{ inputs, ... }:
-{
-  imports = [
-    ./keymaps.nix
-  ];
+{ config, inputs, lib, ... }:
+
+with lib;
+let cfg = config.modules.nix2vim;
+in {
+  options.modules.nix2vim = {
+    enable = mkEnableOption "NixVim configuration";
+  };
+
+  config = mkIf cfg.enable {
   programs.nixvim = {
     enable = true;
     opts = {
@@ -38,6 +43,75 @@
       splitright = true;
       splitbelow = true;
     };
+    globals = {
+      mapleader = " ";
+      maplocalleader = " ";
+    };
+    keymaps = [
+      {
+        mode = [ "n" ];
+        key = "<Esc>";
+        action = "<cmd>nohlsearch<CR>";
+        options = {
+          silent = true;
+        };
+      }
+      # Window movement
+      {
+        mode = [ "n" ];
+        key = "<leader>wh";
+        action = "<C-w><C-h>";
+        options.desc = "Focus split left";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>wl";
+        action = "<C-w><C-l>";
+        options.desc = "Focus split right";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>wj";
+        action = "<C-w><C-j>";
+        options.desc = "Focus split below";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>wk";
+        action = "<C-w><C-k>";
+        options.desc = "Focus split above";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>ws";
+        action = "<C-w>s";
+        options.desc = "Split right";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>wv";
+        action = "<C-w>v";
+        options.desc = "Split below";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>wq";
+        action = "<C-w>v";
+        options.desc = "Split below";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>wd";
+        action = "<C-w>q";
+        options.desc = "Close split";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>fs";
+        action = ":w<CR>";
+        options.desc = "Save file";
+      }
+    ];
     colorschemes = {
       tokyonight.enable = false;
       kanagawa.enable = true;
@@ -53,6 +127,7 @@
       lualine.enable = true;
       blink-cmp = {
         enable = true;
+        settings.keymap.preset = "enter";
       };
       oil.enable = true;
       nvim-autopairs.enable = true;
@@ -70,6 +145,38 @@
       };
       telescope = {
         enable = true;
+        keymaps = {
+          "<leader>ff" = {
+            action = "find_files";
+            options.desc = "Find files";
+          };
+          "<leader>fr" = {
+            action = "oldfiles";
+            options.desc = "Recent files";
+          };
+          "<leader>b" = {
+            action = "buffers";
+            options.desc = "Select buffer";
+          };
+          "<leader>/" = {
+            action = "live_grep";
+            options.desc = "Search text";
+          };
+          "<leader>sk" = {
+            action = "keymaps";
+            options.desc = "Keymap search";
+          };
+          "<leader>sd" = {
+            action = "lsp_document_symbols";
+            options.desc = "Search document symbols";
+          };
+          "<leader>si" = {
+            action = "lsp_workspace_symbols";
+            options.desc = "Search workspace symbols";
+          };
+          "gd" = "lsp_definitions";
+          "gD" = "lsp_references";
+        };
       };
       typst-vim.enable = true;
       typst-preview.enable = true;
@@ -94,6 +201,12 @@
       lsp = {
         enable = true;
         inlayHints = true;
+        keymaps = {
+          lspBuf = {
+            "<leader>ca" = "code_action";
+            "<leader>cr" = "rename";
+          };
+        };
         servers = {
           ruff.enable = true;
           basedpyright.enable = true;
@@ -111,4 +224,5 @@
       trouble.enable = true;
     };
   };
+};
 }

@@ -1,13 +1,21 @@
 {
   config,
+  lib,
   pkgs,
   alacritty-themes,
   ...
 }:
+
+with lib;
 let
+  cfg = config.modules.alacritty;
   useZellij = config.programs.zellij.enable or false;
-in
-{
+in {
+  options.modules.alacritty = {
+    enable = mkEnableOption "Alacritty terminal emulator";
+  };
+
+  config = mkIf cfg.enable {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -63,4 +71,6 @@ in
         "${alacritty-themes}/themes/${themeName}.${ext}";
     };
   };
+};
+}
 }

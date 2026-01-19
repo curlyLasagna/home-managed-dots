@@ -72,4 +72,6 @@
       };
     };
   };
+
+  modules.ghostty.enable = true;
 }

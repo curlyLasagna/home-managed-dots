@@ -1,14 +1,20 @@
-{ config, pkgs, ... }:
-# ghostty for darwin is currently bork in nixpkgs so it's installed via brew
+{ config, lib, pkgs, ... }:
+
+with lib;
 let
+  cfg = config.modules.ghostty;
   useZellij = config.programs.zellij.enable or false;
   cmd =
     if useZellij then
       "${pkgs.fish}/bin/fish --login --interactive -c ${pkgs.zellij}/bin/zellij"
     else
       "${pkgs.fish}/bin/fish --login --interactive";
-in
-{
+in {
+  options.modules.ghostty = {
+    enable = mkEnableOption "Ghostty terminal emulator";
+  };
+
+  config = mkIf cfg.enable {
   xdg.configFile = {
     "ghostty/config" = {
       text = ''
@@ -42,4 +48,5 @@ in
       '';
     };
   };
+};
 }
