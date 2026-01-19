@@ -8,9 +8,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ mermaid-cli ungoogled-chromium ];
+    home.packages = with pkgs; [ mermaid-cli ];
     home.sessionVariables = {
-      PUPPETEER_EXECUTABLE_PATH = "${pkgs.ungoogled-chromium}/bin/chromium";
+      PUPPETEER_EXECUTABLE_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
       PUPPETEER_ARGS = "--no-sandbox --disable-setuid-sandbox";
     };
   };
