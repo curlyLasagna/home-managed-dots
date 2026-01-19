@@ -14,5 +14,4 @@ in {
       PUPPETEER_ARGS = "--no-sandbox --disable-setuid-sandbox";
     };
   };
-}</content>
-<parameter name="filePath">/Users/luis/.config/home-manager/modules/mermaid/default.nix
+}
