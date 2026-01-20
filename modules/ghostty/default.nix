@@ -36,7 +36,7 @@ in
         macos-icon = official
         macos-titlebar-style = transparent
         macos-titlebar-proxy-icon = hidden
-        macos-non-native-fullscreen = true
+        macos-non-native-fullscreen = false
         macos-option-as-alt = true
         macos-window-shadow = true
       '';
