@@ -20,12 +20,12 @@
     skimpdf
     iina
     utm
+    alegreya
 
     # Fonts
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nerd-fonts.roboto-mono
-    nerd-fonts.iosevka-term
     nerd-fonts.zed-mono
     julia-mono
   ];

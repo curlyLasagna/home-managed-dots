@@ -3,10 +3,9 @@
 (setq! user-full-name "Luis Dale Gascon"
        user-mail-address "luis.gcodes@gmail.com")
 
-(setq! doom-font (font-spec :family "ZedMono Nerd Font" :size 15)
-       doom-variable-pitch-font (font-spec :family "JuliaMono" :size 15)
-       doom-symbol-font (font-spec :family "Hack Nerd Font")
-       doom-big-font (font-spec :family "CommitMono" :size 25)
+(setq! doom-font (font-spec :family "ZedMono Nerd Font" :size 14)
+       doom-variable-pitch-font (font-spec :family "Alegreya" :size 13)
+       doom-big-font (font-spec :family "ZedMono Nerd Font" :size 25)
        line-spacing 0.10)
 
 (after! treemacs
@@ -120,6 +119,9 @@
             (file+headline +org-capture-notes-file "Notes")
             "* %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n %i\n%?"
             :prepend t)
+
+           ("m" "Meeting" entry (file+olp+datetree +org-capture-journal-file)
+	    "* %T MEETING with %? %i:MEETING:\n%?" :clock-in t :clock-resume t)
 
            ("j" "Journal")
            ("jn" "Journal" entry

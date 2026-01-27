@@ -7,7 +7,7 @@ let
   tex = (
     pkgs.texlive.combine {
       inherit (pkgs.texlive)
-        scheme-basic
+        scheme-full
         dvisvgm
         dvipng
         wrapfig

@@ -26,8 +26,6 @@ in
     ../modules/mermaid
   ];
 
-
-
   home = {
     username = "luis";
     homeDirectory =
@@ -46,7 +44,6 @@ in
       devenv
       fd
       gawkInteractive
-      mermaid-cli
       opencode
       hunspell # spell checker
       hyperfine
@@ -145,6 +142,6 @@ in
       texSupport = true;
     };
     lf.enable = true;
-    mermaid.enable = true;
+    mermaid.enable = false;
   };
 }

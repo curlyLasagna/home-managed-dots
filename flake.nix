@@ -34,15 +34,15 @@
     {
       # Macbook configuration
       homeConfigurations = {
-        "luis@macbook" = home-manager.lib.homeManagerConfiguration ({
-          modules = [
-            nix2vim.homeModules.nixvim
-            ./users/macos.nix
-          ];
-          pkgs = import nixpkgs {
-            system = "aarch64-darwin";
-            overlays = [ emacs-lsp-booster.overlays.default ];
-          };
+         "luis@macbook" = home-manager.lib.homeManagerConfiguration ({
+           modules = [
+             nix2vim.homeModules.nixvim
+             ./users/macos.nix
+           ];
+           pkgs = import nixpkgs {
+             system = "aarch64-darwin";
+             overlays = [ emacs-lsp-booster.overlays.default ];
+           };
           extraSpecialArgs = {
             inherit alacritty-themes;
           };
