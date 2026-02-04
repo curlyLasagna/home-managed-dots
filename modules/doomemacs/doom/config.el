@@ -56,8 +56,8 @@
   ;; Slightly upsize text
   ;; Center text
   (setq! writeroom-mode-line nil
-         +zen-text-scale 1.10
-         writeroom-width 0.3)
+         +zen-text-scale 0
+         writeroom-width 0.8)
   ;; Toggle line numbers
   (add-hook! 'writeroom-mode-enable-hook #'(lambda () (display-line-numbers-mode -1)))
   (add-hook! 'writeroom-mode-disable-hook #'(lambda () (display-line-numbers-mode 1)))
