@@ -15,6 +15,8 @@ in
     allowUnfree = true; # Allow useful packages 😜
   };
 
+  # TODO: Instead of listing all of these modules, is it possible to have a one-liner import all modules instead?
+  # For any module, just set .enable to false or true?
   imports = [
     ../modules/fish
     ../modules/git
@@ -38,6 +40,7 @@ in
     stateVersion = "23.11";
 
     packages = with pkgs; [
+      # Only CLI tools
       bat
       coreutils
       curl
@@ -55,7 +58,6 @@ in
       nil
       nixfmt-rfc-style
       pandoc
-      pyenv
       pipx
       ripgrep
       stylua
@@ -70,7 +72,6 @@ in
       zstd
     ];
 
-    file = { };
     sessionVariables = {
       EDITOR = "nvim";
     };
@@ -142,6 +143,7 @@ in
       texSupport = true;
     };
     lf.enable = true;
+    # TODO: Set default browser as PUPPETEER_EXECUTABLE_PATH
     mermaid.enable = false;
   };
 }
