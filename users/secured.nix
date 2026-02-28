@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     mongodb-compass
     slack
+    codex
 
     # ops
     awscli2
