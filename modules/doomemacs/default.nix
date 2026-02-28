@@ -1,9 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
   cfg = config.modules.doomemacs;
-  # Minimal set of tex packages for Emacs Orgmode
+  # tex packages for Emacs Orgmode
   tex = (
     pkgs.texlive.combine {
       inherit (pkgs.texlive)
@@ -18,7 +23,8 @@ let
         ;
     }
   );
-in {
+in
+{
   options.modules.doomemacs = {
     enable = mkEnableOption "Doom Emacs configuration";
     texSupport = mkEnableOption "TeX packages for Org mode";
