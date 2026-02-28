@@ -25,7 +25,6 @@ in
     ../modules/nix2vim
     ../modules/doomemacs
     ../modules/lf
-    ../modules/mermaid
   ];
 
   home = {
@@ -143,7 +142,5 @@ in
       texSupport = true;
     };
     lf.enable = true;
-    # TODO: Set default browser as PUPPETEER_EXECUTABLE_PATH
-    mermaid.enable = false;
   };
 }
