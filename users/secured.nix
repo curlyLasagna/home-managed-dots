@@ -10,6 +10,8 @@
     mongodb-compass
     slack
     codex
+    peon-ping
+    vscode
 
     # ops
     awscli2

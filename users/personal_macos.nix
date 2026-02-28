@@ -13,7 +13,6 @@
 
   home.packages = with pkgs; [
     # GUI apps
-    vscode
     obsidian
     skimpdf
     iina
