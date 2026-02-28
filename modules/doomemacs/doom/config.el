@@ -77,6 +77,9 @@
   (when (executable-find "harper-ls")
     (add-to-list 'eglot-server-programs '(text-mode . ("harper-ls" "--stdio")))
     )
+  ;; Keep the echo area from expanding up
+  (setq! eldoc-echo-area-use-multiline-p nil)
+  (setq! eldoc-echo-area-prefer-doc-buffer t)
   )
 
 (after! org
