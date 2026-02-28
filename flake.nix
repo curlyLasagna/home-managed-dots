@@ -7,6 +7,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nix2vim = {
       url = "github:nix-community/nixvim";
     };
@@ -19,6 +20,14 @@
       url = "github:alacritty/alacritty-theme";
       flake = false;
     };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs =
@@ -28,23 +37,24 @@
       alacritty-themes,
       nix2vim,
       emacs-lsp-booster,
+      zen-browser,
       ...
     }:
 
     {
       # Macbook configuration
       homeConfigurations = {
-         "luis@macbook" = home-manager.lib.homeManagerConfiguration ({
-           modules = [
-             nix2vim.homeModules.nixvim
-             ./users/macos.nix
-           ];
-           pkgs = import nixpkgs {
-             system = "aarch64-darwin";
-             overlays = [ emacs-lsp-booster.overlays.default ];
-           };
+        "luis@macbook" = home-manager.lib.homeManagerConfiguration ({
+          modules = [
+            nix2vim.homeModules.nixvim
+            ./users/personal_macos.nix
+          ];
+          pkgs = import nixpkgs {
+            system = "aarch64-darwin";
+            overlays = [ emacs-lsp-booster.overlays.default ];
+          };
           extraSpecialArgs = {
-            inherit alacritty-themes;
+            inherit alacritty-themes zen-browser;
           };
         });
 
