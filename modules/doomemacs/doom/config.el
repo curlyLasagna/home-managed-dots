@@ -30,6 +30,7 @@
 ;; Draggable window divider by increasing width
 (setq! window-divider-default-right-width 3)
 (setq! window-divider-default-bottom-width 0)
+(setq! initial-scratch-message nil)
 
 ;; Possible fix?
 ;; Auto-save errors out since it tries to save within this path:
