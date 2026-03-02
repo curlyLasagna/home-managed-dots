@@ -11,16 +11,21 @@
 (after! treemacs
   (setq! treemacs-position 'right))
 
+(setq +format-on-save-disabled-modes
+      '(sql-mode tex-mode latex-mode LaTeX-mode org-msg-edit-mode git-commit-mode))
+
 (use-package! auto-dark
   :init
-  (setq! auto-dark-themes '((doom-ayu-dark) (doom-homage-white)))
+  (setq! auto-dark-themes '((doom-dracula) (modus-operandi)))
   )
 
 (whitespace-mode -1)
+;; Replace selected region with yanked
 (delete-selection-mode +1)
 (global-subword-mode +1)
 (repeat-mode 1)
 (global-goto-address-mode +1)
+;; Occupy a space if MacOS fullscreen
 (setq! ns-use-native-fullscreen t)
 (setq! tab-width 4)
 (setq! truncate-string-ellipsis "…")
@@ -31,6 +36,7 @@
 (setq! window-divider-default-right-width 3)
 (setq! window-divider-default-bottom-width 0)
 (setq! initial-scratch-message nil)
+(add-to-list '+format-on-save-disabled-modes 'git-commit-mode)
 
 ;; Possible fix?
 ;; Auto-save errors out since it tries to save within this path:
@@ -67,6 +73,7 @@
   )
 
 (after! corfu
+  ;; Disable automatic popups
   (setq! corfu-auto nil)
   )
 
@@ -162,7 +169,7 @@
   (setq! dired-kill-when-opening-new-dired-buffer t))
 
 (after! flycheck
-  (flycheck-popup-tip-mode nil))
+  (flycheck-popup-tip-mode -1))
 
 (after! which-key
   (setq! which-key-idle-delay 0.8))
@@ -222,24 +229,10 @@
   )
 
 
-(setq! mode-line-format '("%e" mode-line-front-space
-                          (:propertize
-                           ("" mode-line-mule-info
-                            mode-line-client
-                            mode-line-modified
-                            mode-line-remote
-                            mode-line-window-dedicated)
-                           display (min-width (6.0)))
-                          mode-line-frame-identification
-                          mode-line-buffer-identification "   "
-                          mode-line-position
-                          (project-mode-line project-mode-line-format)
-                          (vc-mode vc-mode) "  "
-                          ;; mode-line-modes
-                          mode-name
-                          ;; mode-line-misc-info
-                          mode-line-end-spaces
-                          )
-       )
+(setq! mode-line-format
+       ;; Remove existing info in modeline
+       (delq 'mode-line-modes
+             (delq 'mode-line-misc-info
+                   mode-line-format)))
 
 (map! "C-z" nil :desc "Disable suspend frame keymap")
