@@ -21,6 +21,8 @@
       flake = false;
     };
 
+    peon-ping.url = "github:PeonPing/peon-ping";
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -38,6 +40,7 @@
       nix2vim,
       emacs-lsp-booster,
       zen-browser,
+      peon-ping,
       ...
     }:
 
@@ -72,12 +75,13 @@
         "luis@secured_macbook" = home-manager.lib.homeManagerConfiguration ({
           modules = [
             nix2vim.homeModules.nixvim
+            peon-ping.homeManagerModules.default
             ./users/macos.nix
             ./users/secured.nix
           ];
 
           extraSpecialArgs = {
-            alacritty-themes = alacritty-themes;
+            inherit alacritty-themes peon-ping;
           };
 
           pkgs = import nixpkgs {

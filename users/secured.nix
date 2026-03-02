@@ -1,6 +1,7 @@
 # Work related config for MacBook
 {
   pkgs,
+  peon-ping,
   ...
 }:
 
@@ -10,7 +11,6 @@
     mongodb-compass
     slack
     codex
-    peon-ping
     vscode
 
     # ops
@@ -33,6 +33,11 @@
     # linter/formatter
     ruff
   ];
+
+  programs.peon-ping = {
+    enable = true;
+    package = peon-ping.packages.${pkgs.system}.default;
+  };
 
   programs.fish = {
     shellAbbrs = {
