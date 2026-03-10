@@ -43,6 +43,7 @@
 
     {
       # Macbook configuration
+      # MacOS user configs assumes you have brew installed
       homeConfigurations = {
         "luis@macbook" = home-manager.lib.homeManagerConfiguration ({
           modules = [
@@ -58,6 +59,7 @@
           };
         });
 
+        # Very barebones. I rarely use x86-64 machines nowadays
         "luis@wsl" = home-manager.lib.homeManagerConfiguration ({
           modules = [
             ./users/linux.nix
