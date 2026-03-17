@@ -105,6 +105,10 @@ in
       enableZshIntegration = true;
     };
 
+    helix = {
+      enable = true;
+    };
+
     zoxide = {
       enable = true;
       enableFishIntegration = true;
