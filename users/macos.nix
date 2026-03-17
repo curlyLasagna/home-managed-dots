@@ -29,13 +29,6 @@
     "${config.home.homeDirectory}/.config/emacs/bin"
   ];
 
-  xdg.configFile = {
-    "zed" = {
-      source = config.lib.file.mkOutOfStoreSymlink "../modules/zed/";
-      recursive = true;
-    };
-  };
-
   programs.fish = {
     interactiveShellInit =
       # Add brew completions to Fish
