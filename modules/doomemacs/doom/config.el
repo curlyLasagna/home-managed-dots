@@ -80,6 +80,11 @@
 ;; Disable word suggestion popups
 (setq! text-mode-ispell-word-completion nil)
 
+(after! ox-latex
+  (setq! org-latex-src-block-backend 'listings)
+  (setq! org-latex-pdf-process '("latexmk %f"))
+  )
+
 (after! eglot
   (when (executable-find "harper-ls")
     (add-to-list 'eglot-server-programs '(text-mode . ("harper-ls" "--stdio")))
