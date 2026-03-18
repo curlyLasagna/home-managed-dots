@@ -10,6 +10,7 @@
   home.packages = with pkgs; [
     mongodb-compass
     slack
+    # Work has OpenAI subscription, tsk tsk Scam Altman but might as well use it 🫣
     codex
     vscode
 
@@ -19,7 +20,7 @@
     terragrunt
     terraform-ls
     tflint
-    colima
+    docker
 
     # lsp
     typescript-language-server
@@ -37,6 +38,10 @@
   programs.peon-ping = {
     enable = true;
     package = peon-ping.packages.${pkgs.system}.default;
+  };
+
+  modules = {
+    ghostty.enable = true;
   };
 
   programs.fish = {
