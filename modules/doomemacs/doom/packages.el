@@ -16,6 +16,7 @@
 (package! direnv)
 (package! kanagawa-themes)
 (package! org-habit-stats)
+(package! zotxt)
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
 ;; (package! builtin-package :disable t)
