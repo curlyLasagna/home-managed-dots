@@ -107,6 +107,12 @@ in
 
     helix = {
       enable = true;
+      settings = {
+        theme = "catppuccin_mocha";
+        statusline = {
+          center = [ "version-control" ];
+        };
+      };
     };
 
     zoxide = {
