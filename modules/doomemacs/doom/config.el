@@ -240,4 +240,18 @@
              (delq 'mode-line-misc-info
                    mode-line-format)))
 
+(defun nf/parse-headline (x)
+  (plist-get (cadr x) :raw-value))
+
+(defun nf/get-headlines ()
+  (org-element-map (org-element-parse-buffer) 'headline #'nf/parse-headline))
+
+(defun user/link-to-headline ()
+  "Insert an internal link to a headline."
+  (interactive)
+  (let* ((headlines (nf/get-headlines))
+	 (choice (completing-read "Headings: " headlines nil t))
+	 (desc (read-string "Description: " choice)))
+    (org-insert-link buffer-file-name (concat "*" choice) desc)))
+
 (map! "C-z" nil :desc "Disable suspend frame keymap")
