@@ -83,12 +83,6 @@
           }
           {
             mode = [ "n" ];
-            key = "<leader>wq";
-            action = "<C-w>v";
-            options.desc = "Split below";
-          }
-          {
-            mode = [ "n" ];
             key = "<leader>wd";
             action = "<C-w>q";
             options.desc = "Close split";
