@@ -137,8 +137,8 @@
              "* %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n %i\n%?"
              :prepend t)
 
-            ("m" "Meeting" entry (file+olp+datetree +org-capture-journal-file)
-	     "* %T MEETING with %? %i:MEETING:\n%?" :clock-in t :clock-resume t)
+            ("m" "Meeting" entry (file+datetree +org-capture-journal-file)
+             "* %T %? :MEETING:\n" :clock-in t :clock-resume t)
 
             ("j" "Journal")
             ("jn" "Journal" entry
