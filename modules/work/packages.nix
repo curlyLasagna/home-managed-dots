@@ -1,0 +1,25 @@
+{ ... }:
+{
+  flake.modules.homeManager.work =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        mongodb-compass
+        slack
+        codex
+        vscode
+
+        awscli2
+        terraform
+        terragrunt
+        terraform-ls
+        tflint
+        docker
+
+        typescript-language-server
+        biome
+        pyright
+        ruff
+      ];
+    };
+}

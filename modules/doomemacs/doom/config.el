@@ -1,22 +1,22 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq! user-full-name "Luis Dale Gascon"
-       user-mail-address "luis.gcodes@gmail.com")
+(setopt user-full-name "Luis Dale Gascon"
+        user-mail-address "luis.gcodes@gmail.com")
 
-(setq! doom-font (font-spec :family "ZedMono Nerd Font" :size 14)
-       doom-variable-pitch-font (font-spec :family "Alegreya" :size 13)
-       doom-big-font (font-spec :family "ZedMono Nerd Font" :size 25)
-       line-spacing 0.10)
+(setopt doom-font (font-spec :family "ZedMono Nerd Font" :size 14)
+        doom-variable-pitch-font (font-spec :family "Alegreya" :size 13)
+        doom-big-font (font-spec :family "ZedMono Nerd Font" :size 25)
+        line-spacing 0.10)
 
 (after! treemacs
-  (setq! treemacs-position 'right))
+  (setopt treemacs-position 'right))
 
 (setq +format-on-save-disabled-modes
       '(sql-mode tex-mode latex-mode LaTeX-mode org-msg-edit-mode git-commit-mode))
 
 (use-package! auto-dark
   :init
-  (setq! auto-dark-themes '((doom-dracula) (modus-operandi)))
+  (setopt auto-dark-themes '((doom-dracula) (modus-operandi)))
   )
 
 (whitespace-mode -1)
@@ -26,25 +26,25 @@
 (repeat-mode 1)
 (global-goto-address-mode +1)
 ;; Occupy a space if MacOS fullscreen
-(setq! ns-use-native-fullscreen t)
-(setq! tab-width 4)
-(setq! truncate-string-ellipsis "…")
-(setq! display-line-numbers-type 'relative)
-(setq! confirm-kill-emacs nil)
-(setq! frame-title-format "Notepad for the top 1\%% male")
+(setopt ns-use-native-fullscreen t)
+(setopt tab-width 4)
+(setopt truncate-string-ellipsis "…")
+(setopt display-line-numbers-type 'relative)
+(setopt confirm-kill-emacs nil)
+(setopt frame-title-format "Notepad for the top 1\%% male")
 ;; Draggable window divider by increasing width
-(setq! window-divider-default-right-width 3)
-(setq! window-divider-default-bottom-width 0)
-(setq! initial-scratch-message nil)
+(setopt window-divider-default-right-width 3)
+(setopt window-divider-default-bottom-width 0)
+(setopt initial-scratch-message nil)
 (add-to-list '+format-on-save-disabled-modes 'git-commit-mode)
 
 ;; Possible fix?
 ;; Auto-save errors out since it tries to save within this path:
 ;; <default-directory + doom-profile-cache-dir> which doesn't exists and shouldn't
-(setq! auto-save-file-name-transforms
-       `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
-          ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/tramp/\\2-") sha1)
-         (".*" ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/\\1-") sha1)))
+(setopt auto-save-file-name-transforms
+        `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
+           ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/tramp/\\2-") sha1)
+          (".*" ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/\\1-") sha1)))
 
 (map!
  :desc "Disable mouse scroll that modifies text size"
@@ -62,9 +62,9 @@
   ;; Hide modeline
   ;; Slightly upsize text
   ;; Center text
-  (setq! writeroom-mode-line nil
-         +zen-text-scale 0
-         writeroom-width 0.8)
+  (setopt writeroom-mode-line nil
+          +zen-text-scale 0
+          writeroom-width 0.8)
   ;; Toggle line numbers
   (add-hook! 'writeroom-mode-enable-hook #'(lambda () (display-line-numbers-mode -1)))
   (add-hook! 'writeroom-mode-disable-hook #'(lambda () (display-line-numbers-mode 1)))
@@ -74,15 +74,14 @@
 
 (after! corfu
   ;; Disable automatic popups
-  (setq! corfu-auto nil)
+  (setopt corfu-auto nil)
   )
 
 ;; Disable word suggestion popups
-(setq! text-mode-ispell-word-completion nil)
+(setopt text-mode-ispell-word-completion nil)
 
 (after! ox-latex
-  (setq! org-latex-src-block-backend 'listings)
-  (setq! org-latex-pdf-process '("latexmk %f"))
+  
   )
 
 (after! eglot
@@ -90,8 +89,8 @@
     (add-to-list 'eglot-server-programs '(text-mode . ("harper-ls" "--stdio")))
     )
   ;; Keep the echo area from expanding up
-  (setq! eldoc-echo-area-use-multiline-p nil)
-  (setq! eldoc-echo-area-prefer-doc-buffer t)
+  (setopt eldoc-echo-area-use-multiline-p nil)
+  (setopt eldoc-echo-area-prefer-doc-buffer t)
   )
 
 (after! org
@@ -108,79 +107,81 @@
       (re-search-forward (format org-complex-heading-regexp-format (regexp-quote selected)))
       (re-search-forward (format org-complex-heading-regexp-format (regexp-quote subheading)))))
 
-  (setq! org-image-max-width 0.5)
-  (setq! org-directory (expand-file-name "~/Documents/org/"))
-  (setq! org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
-  (setq! org-latex-compiler "lualatex")
-  (setq! org-preview-latex-default-process 'dvisvgm)
+  (setopt org-latex-src-block-backend 'listings)
+  (setopt org-latex-pdf-process '("latexmk %f"))
+  (setopt org-image-max-width 0.5)
+  (setopt org-directory (expand-file-name "~/Documents/org/"))
+  (setopt org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+  (setopt org-latex-compiler "lualatex")
+  (setopt org-preview-latex-default-process 'dvisvgm)
   (when (modulep! :lang org +dragndrop)
-    (setq! org-download-image-dir (expand-file-name "attachments" org-directory))
+    (setopt org-download-image-dir (expand-file-name "attachments" org-directory))
     )
   (map!
    :map org-mode-map
    :desc "Insert org heading" "C-s-<return>" #'org-insert-heading)
-  (setq! org-refile-allow-creating-parent-nodes 'confirm)
+  (setopt org-refile-allow-creating-parent-nodes 'confirm)
 
-  (setq! +org-capture-journal-file (expand-file-name "journal.org" org-directory)
-         +org-capture-projects-file (expand-file-name "projects.org" org-directory)
-         )
-  (setq! org-capture-templates
-         '(
-           ("i" "Fleeting" entry
-            (file+headline +org-capture-notes-file "Inbox")
-            "* %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n %i\n%?"
-            :prepend t)
+  (setopt +org-capture-journal-file (expand-file-name "journal.org" org-directory)
+          +org-capture-projects-file (expand-file-name "projects.org" org-directory)
+          )
+  (setopt org-capture-templates
+          '(
+            ("i" "Fleeting" entry
+             (file+headline +org-capture-notes-file "Inbox")
+             "* %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n %i\n%?"
+             :prepend t)
 
-           ("n" "Notes" entry
-            (file+headline +org-capture-notes-file "Notes")
-            "* %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n %i\n%?"
-            :prepend t)
+            ("n" "Notes" entry
+             (file+headline +org-capture-notes-file "Notes")
+             "* %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n %i\n%?"
+             :prepend t)
 
-           ("m" "Meeting" entry (file+olp+datetree +org-capture-journal-file)
-	    "* %T MEETING with %? %i:MEETING:\n%?" :clock-in t :clock-resume t)
+            ("m" "Meeting" entry (file+datetree +org-capture-journal-file)
+             "* %T %? :MEETING:\n" :clock-in t :clock-resume t)
 
-           ("j" "Journal")
-           ("jn" "Journal" entry
-            (file+olp+datetree +org-capture-journal-file)
-            "* %U %?\n %i" :prepend t)
+            ("j" "Journal")
+            ("jn" "Journal" entry
+             (file+olp+datetree +org-capture-journal-file)
+             "* %U %?\n %i" :prepend t)
 
-           ("jd" "Journal on date" entry
-            (file+datetree+prompt +org-capture-journal-file)
-            "* %U %?\n %i"
-            :prepend t)
+            ("jd" "Journal on date" entry
+             (file+datetree+prompt +org-capture-journal-file)
+             "* %U %?\n %i"
+             :prepend t)
 
-           ("p" "Projects")
-           ("pN" "New project" entry 
-            (file +org-capture-projects-file)
-            "* %^{Project Name}\n** Tasks\n** Notes")
-           ("pt" "Project todo" entry
-            (function my/org-capture-select-project-target)
-            "* TODO %? %i"
-            :subheading "Tasks"
-            :prepend nil)
+            ("p" "Projects")
+            ("pN" "New project" entry 
+             (file +org-capture-projects-file)
+             "* %^{Project Name}\n** Tasks\n** Notes")
+            ("pt" "Project todo" entry
+             (function my/org-capture-select-project-target)
+             "* TODO %? %i"
+             :subheading "Tasks"
+             :prepend nil)
 
-           ("pn" "Project notes" entry
-            (function my/org-capture-select-project-target)
-            "* %? %i"
-            :subheading "Notes"
-            :prepend t)
-           )
-         )
+            ("pn" "Project notes" entry
+             (function my/org-capture-select-project-target)
+             "* %? %i"
+             :subheading "Notes"
+             :prepend t)
+            )
+          )
 
-  (setq! org-agenda-files (directory-files org-directory t "\\.org$"))
+  (setopt org-agenda-files (directory-files org-directory t "\\.org$"))
   )
 
 (after! dired
-  (setq! dired-kill-when-opening-new-dired-buffer t))
+  (setopt dired-kill-when-opening-new-dired-buffer t))
 
 (after! flycheck
   (flycheck-popup-tip-mode -1))
 
 (after! which-key
-  (setq! which-key-idle-delay 0.8))
+  (setopt which-key-idle-delay 0.8))
 
 (after! tex
-  (setq! +latex-viewers '(skim pdf-tools)))
+  (setopt +latex-viewers '(skim pdf-tools)))
 
 (after! markdown-mode
   (map!
@@ -197,35 +198,35 @@
    ))
 
 (after! modus-themes
-  (setq! modus-themes-fringes nil))
+  (setopt modus-themes-fringes nil))
 
 (when (featurep :system 'macos)
-  (setq! ns-use-proxy-icon 'nil)
-  (setq! mac-right-option-modifier 'meta))
+  (setopt ns-use-proxy-icon 'nil)
+  (setopt mac-right-option-modifier 'meta))
 
 (when (modulep! :editor word-wrap)
   (+global-word-wrap-mode 1))
 
 (after! lsp-ui
-  (setq! lsp-ui-doc-enable nil)
-  (setq! lsp-ui-doc-delay 0.2)
-  (setq! lsp-ui-doc-show-with-cursor nil)
-  (setq! lsp-ui-doc-position 'top)
-  (setq! lsp-ui-doc-max-width 120)
-  (setq! lsp-ui-sideline-show-diagnostics nil)
-  (setq! lsp-ui-imenu-window-fix-width t)
-  (setq! lsp-ui-imenu-window-width 20)
-  (setq! lsp-ui-sideline-show-diagnostics nil)
+  (setopt lsp-ui-doc-enable nil)
+  (setopt lsp-ui-doc-delay 0.2)
+  (setopt lsp-ui-doc-show-with-cursor nil)
+  (setopt lsp-ui-doc-position 'top)
+  (setopt lsp-ui-doc-max-width 120)
+  (setopt lsp-ui-sideline-show-diagnostics nil)
+  (setopt lsp-ui-imenu-window-fix-width t)
+  (setopt lsp-ui-imenu-window-width 20)
+  (setopt lsp-ui-sideline-show-diagnostics nil)
   )
 
 (after! web-mode
-  (setq! web-mode-code-indent-offset 4)
-  (setq! web-mode-markup-indent-offset 2)
+  (setopt web-mode-code-indent-offset 4)
+  (setopt web-mode-markup-indent-offset 2)
   (add-hook 'web-mode-hook #'web-mode-toggle-current-element-highlight)
   )
 
 (after! markdown-mode
-  (setq! markdown-unordered-list-item-prefix "  - ")
+  (setopt markdown-unordered-list-item-prefix "  - ")
   )
 
 (after! gptel
@@ -234,11 +235,11 @@
   )
 
 
-(setq! mode-line-format
-       ;; Remove existing info in modeline
-       (delq 'mode-line-modes
-             (delq 'mode-line-misc-info
-                   mode-line-format)))
+(setopt mode-line-format
+        ;; Remove existing info in modeline
+        (delq 'mode-line-modes
+              (delq 'mode-line-misc-info
+                    mode-line-format)))
 
 (defun nf/parse-headline (x)
   (plist-get (cadr x) :raw-value))
