@@ -17,7 +17,7 @@
       };
     in
     {
-      xdg.configFile."doom".source = ./doomemacs/doom;
+      xdg.configFile."doom".source = ./doom;
 
       # Mirrors previous `texSupport = true` default.
       home.packages = [ tex ];

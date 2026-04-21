@@ -31,6 +31,12 @@
         overlays = [ inputs.emacs-lsp-booster.overlays.default ];
         extraModules = with inputs.self.modules.homeManager; [
           base
+          direnv
+          zsh
+          fzf
+          helix
+          zoxide
+          eza
           macos
           personal
           fish
@@ -49,6 +55,12 @@
         overlays = [ inputs.emacs-lsp-booster.overlays.default ];
         extraModules = with inputs.self.modules.homeManager; [
           base
+          direnv
+          zsh
+          fzf
+          helix
+          zoxide
+          eza
           macos
           work
           fish
@@ -66,6 +78,12 @@
         system = "x86_64-linux";
         extraModules = with inputs.self.modules.homeManager; [
           base
+          direnv
+          zsh
+          fzf
+          helix
+          zoxide
+          eza
           fish
           git
           starship
