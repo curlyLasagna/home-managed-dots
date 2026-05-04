@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.work =
+  flake.modules.homeManager."peon-ping" =
     let
       peonPing = inputs.peon-ping;
     in
@@ -10,6 +10,7 @@
 
       programs.peon-ping = {
         enable = true;
+        package = peonPing.packages.${pkgs.system}.default;
       };
     };
 }
