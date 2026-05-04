@@ -70,7 +70,8 @@ Directory: `modules/macos/`
 ### 5) Personal and Work aspects
 
 - `modules/personal/*` publishes `personal` (GUI apps, latexmkrc, ghcup path)
-- `modules/work/*` publishes `work` (work packages, peon-ping, fish abbrs)
+- `modules/work/*` publishes `work` (work packages, fish abbrs)
+- `modules/peon-ping/default.nix` publishes `peon-ping`
 
 ### 6) Tool aspects
 
