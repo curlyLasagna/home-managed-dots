@@ -33,7 +33,10 @@
           macbook = {
             system = "aarch64-darwin";
             overlays = [ emacsOverlay ];
-            aspects = profiles.darwin ++ [ hm.personal ];
+            aspects = profiles.darwin ++ [
+              hm.personal
+              hm.zed-editor
+            ];
           };
 
           secured-macbook = {
