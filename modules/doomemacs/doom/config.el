@@ -269,6 +269,16 @@
 (after! gptel
   (setq gptel-model 'gpt-4.1
         gptel-backend (gptel-make-gh-copilot "Copilot"))
+  ;; Dock gptel on the left
+  (set-popup-rule!
+    (lambda (bname _action)
+      (and (null gptel-display-buffer-action)
+           (buffer-local-value 'gptel-mode (get-buffer bname))))
+    :select t
+    :size 0.3
+    :quit nil
+    :side 'left
+    :ttl nil)
   )
 
 
