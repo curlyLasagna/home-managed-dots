@@ -21,5 +21,10 @@
         pyright
         ruff
       ];
+      programs.zed-editor = {
+        extensions = [
+          "angular"
+        ];
+      };
     };
 }
