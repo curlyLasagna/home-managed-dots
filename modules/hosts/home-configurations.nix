@@ -42,7 +42,10 @@
           secured-macbook = {
             system = "aarch64-darwin";
             overlays = [ emacsOverlay ];
-            aspects = profiles.darwin ++ [ hm.work ];
+            aspects = profiles.darwin ++ [
+              hm.work
+              hm.zed-editor
+            ];
           };
 
           wsl = {
