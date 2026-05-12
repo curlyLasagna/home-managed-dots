@@ -12,7 +12,7 @@
   (setopt treemacs-position 'right))
 
 (setq +format-on-save-disabled-modes
-      '(sql-mode tex-mode latex-mode LaTeX-mode org-msg-edit-mode git-commit-mode))
+      '(sql-mode org-msg-edit-mode git-commit-mode))
 
 (use-package! auto-dark
   :init
