@@ -87,36 +87,43 @@
              "%?"
              :target
              (file+head
-              "%<%Y%m%d%H%M%S>-${slug}.org"
-              "#+title: ${note-title}\n")
+              "${slug}.org"
+              "#+title: ${title}\n#+filetags: permanent\n#+DATE: %u\n#+modified:")
              :unnarrowed t)
-            ;; Literature notes
-            ("b" "bibliography" plain
+            ("l" "literature" plain
              "%?"
              :target
              (file+head
-              "${title}-${slug}.org"
-              "#+title: ${title}\n#+filetags: bibliography\n#+DATE: %<%Y-%m-%d>")
+              "${title}.org"
+              "#+title: ${title} \n#+filetags: literature\n#+DATE: %u")
              :unnarrowed t)
-            ))
+            ("c" "citar-literature" plain
+             "%?"
+             :target
+             (file+head
+              "${citar-citekey}.org"
+              "#+title: ${citar-citekey} (${citar-date}) \n#+filetags: literature\n#+DATE: %u")
+             :unnarrowed t)
+            )
+          )
 
   (setopt org-roam-dailies-capture-templates
           '(("i" "default"
              entry
-             "* %U\n%?"
+             "* %U\n** %^{title}\n%?"
              :if-new (file+head "inbox.org" "#+title: Inbox\n")
-             :empty-lines 1)))
+             :empty-lines 1))
+          )
   )
 
 (after! org
   (setopt org-todo-keywords
 	  '(
+            ;; Project todos
             (sequence "TODO" "WIP" "DONE")
-            ;; Note-taking specific
+            ;; Note-taking todos
             (sequence "INBOX(i)"
 	              "PROCESSING(p)"
-	              "URGENT(u)"
-	              "LOW-PRIORITY(l)"
 	              "WAIT(w)"
 	              "TO-READ(r)"
 	              "|"
@@ -155,17 +162,8 @@
           +org-capture-projects-file (expand-file-name "projects.org" org-directory)
           )
   (setopt org-capture-templates
+          ;; Vanilla org is used for project, journals and meetings
           '(
-            ("i" "Fleeting" entry
-             (file+headline +org-capture-notes-file "Inbox")
-             "* %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n %i\n%?"
-             :prepend t)
-
-            ("n" "Notes" entry
-             (file+headline +org-capture-notes-file "Notes")
-             "* %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:END:\n %i\n%?"
-             :prepend t)
-
             ("m" "Meeting" entry (file+olp+datetree +org-capture-journal-file)
              "* %U %? :MEETING:\n" :clock-in t :clock-resume t)
 
@@ -197,7 +195,12 @@
             )
           )
 
-  (setopt org-agenda-files (directory-files org-directory t "\\.org$"))
+  (setopt org-agenda-files
+          (append
+           (directory-files org-directory t "\\.org$")
+           (directory-files org-roam-directory t "\\.org$")
+           )
+          )
   )
 
 (after! dired
@@ -209,8 +212,6 @@
 (after! which-key
   (setopt which-key-idle-delay 0.8))
 
-
-(setopt +latex-viewers '(skim pdf-tools))
 
 (after! markdown-mode
   (map!
@@ -273,7 +274,6 @@
     :ttl nil)
   )
 
-
 (setopt mode-line-format
         ;; Remove existing info in modeline
         (delq 'mode-line-modes
@@ -297,6 +297,7 @@
 (map! "C-z" nil :desc "Disable suspend frame keymap")
 
 (after! citar
+  (setopt citar-org-roam-capture-template-key "c")
   (setopt org-cite-global-bibliography '("~/bib/ReferenceLibrary.bib"))
   (setopt citar-bibliography org-cite-global-bibliography)
   )
