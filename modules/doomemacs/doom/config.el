@@ -72,18 +72,10 @@
   (remove-hook 'writeroom-mode-hook #'+zen-enable-mixed-pitch-mode-h)
   )
 
-(after! corfu
-  ;; Disable automatic popups
-  (setopt corfu-auto nil)
-  )
-
 ;; Disable word suggestion popups
 (setopt text-mode-ispell-word-completion nil)
 
 (after! eglot
-  (when (executable-find "harper-ls")
-    (add-to-list 'eglot-server-programs '(text-mode . ("harper-ls" "--stdio")))
-    )
   ;; Keep the echo area from expanding up
   (setopt eldoc-echo-area-use-multiline-p nil)
   (setopt eldoc-echo-area-prefer-doc-buffer t)
