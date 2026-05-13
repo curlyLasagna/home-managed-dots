@@ -6,15 +6,15 @@
       editorUiSettings = {
         preview_tabs.enabled = false;
         show_whitespaces = "trailing";
-        inlay_hints.enabled = true;
+        inlay_hints.enabled = false;
 
         icon_theme = {
           light = "Catppuccin Latte";
           dark = "Catppuccin Mocha";
         };
         theme = {
-          light = "Kanagawa Lotus";
-          dark = "Catppuccin Mocha";
+          light = "Fleet Light";
+          dark = "Kanagawa Dragon";
         };
 
         indent_guides = {
@@ -29,8 +29,9 @@
 
         ui_font_size = 15;
         ui_font_family = ".ZedSans";
-        buffer_font_family = "RobotoMono Nerd Font Mono";
+        buffer_font_family = "ZedMono Nerd Font Mono";
         buffer_font_size = 13.0;
+        buffer_font_weight = 350;
         buffer_font_features.liga = true;
       };
 
