@@ -4,8 +4,10 @@
     { lib, pkgs, ... }:
     {
       home = {
-        username = "luis";
-        homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/luis" else "/home/luis";
+        username = lib.mkDefault "luis";
+        homeDirectory = lib.mkDefault (
+          if pkgs.stdenv.hostPlatform.isDarwin then "/Users/luis" else "/home/luis"
+        );
         stateVersion = "23.11";
 
         sessionVariables = {

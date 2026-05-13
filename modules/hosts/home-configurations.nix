@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   flake = {
     homeConfigurations =
@@ -52,6 +52,15 @@
             system = "x86_64-linux";
             aspects = profiles.common;
           };
+
+          secured-linux = {
+            system = "x86_64-linux";
+            aspects = profiles.common ++ [
+              hm.work
+            ];
+            username = "clark";
+            homeDirectory = "/home/clark";
+          };
         };
       in
       builtins.mapAttrs (
@@ -61,6 +70,8 @@
           aspects,
           overlays ? [ ],
           allowUnfree ? true,
+          username ? null,
+          homeDirectory ? null,
         }:
         let
           pkgs = import inputs.nixpkgs {
@@ -70,7 +81,15 @@
         in
         inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = aspects;
+          modules = aspects ++ lib.optional (username != null || homeDirectory != null) {
+            home =
+              (lib.optionalAttrs (username != null) {
+                inherit username;
+              })
+              // (lib.optionalAttrs (homeDirectory != null) {
+                inherit homeDirectory;
+              });
+          };
         }
       ) hosts;
   };
