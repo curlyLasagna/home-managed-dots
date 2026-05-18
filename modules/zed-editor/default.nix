@@ -256,13 +256,21 @@
           };
         }
       ];
+      userExtensions = [
+        "fleet-themes"
+        "kanagawa themes"
+        "catppucin-icons"
+        "catppucin"
+        "nix"
+      ];
+
     in
     {
       programs.zed-editor = {
         enable = true;
         userSettings = userSettings;
         userKeymaps = userKeymaps;
-        # Allow Zed to modify these files if needed (optional)
+        extensions = userExtensions;
         mutableUserSettings = true;
         mutableUserKeymaps = true;
       };
