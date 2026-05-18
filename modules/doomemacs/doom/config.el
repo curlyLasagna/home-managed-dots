@@ -4,7 +4,7 @@
         user-mail-address "luis.gcodes@gmail.com")
 
 (setopt doom-font (font-spec :family "ZedMono Nerd Font" :size 14)
-        doom-variable-pitch-font (font-spec :family "Alegreya" :size 13)
+        doom-variable-pitch-font (font-spec :family "Alegreya" :size 15)
         doom-big-font (font-spec :family "ZedMono Nerd Font" :size 25)
         line-spacing 0.10)
 
@@ -19,6 +19,7 @@
   (setopt auto-dark-themes '((doom-dracula) (modus-operandi)))
   )
 
+;; I hate clutter
 (whitespace-mode -1)
 ;; Replace selected region with yanked
 (delete-selection-mode +1)
@@ -31,12 +32,11 @@
 (setopt truncate-string-ellipsis "…")
 (setopt display-line-numbers-type 'relative)
 (setopt confirm-kill-emacs nil)
-(setopt frame-title-format "Notepad for the top 1\%% male")
+(setopt frame-title-format "Scuffed Cursor")
 ;; Draggable window divider by increasing width
 (setopt window-divider-default-right-width 3)
 (setopt window-divider-default-bottom-width 0)
 (setopt initial-scratch-message nil)
-(add-to-list '+format-on-save-disabled-modes 'git-commit-mode)
 
 ;; Possible fix?
 ;; Auto-save errors out since it tries to save within this path:
@@ -62,9 +62,9 @@
   ;; Hide modeline
   ;; Slightly upsize text
   ;; Center text
-  (setopt writeroom-mode-line nil
-          +zen-text-scale 0
-          writeroom-width 0.8)
+  (setopt 
+   +zen-text-scale 0
+   writeroom-width 0.8)
   ;; Toggle line numbers
   (add-hook! 'writeroom-mode-enable-hook #'(lambda () (display-line-numbers-mode -1)))
   (add-hook! 'writeroom-mode-disable-hook #'(lambda () (display-line-numbers-mode 1)))
@@ -82,20 +82,22 @@
   )
 
 (after! org-roam
+  ;; org-roam is strictly for learning
+  (setopt org-roam-directory (expand-file-name "~/Documents/org/roam"))
   (setopt org-roam-capture-templates
           '(("p" "permanent" plain
-             "%?"
+             "*${title}\n%?"
              :target
              (file+head
               "${slug}.org"
-              "#+title: ${title}\n#+filetags: permanent\n#+DATE: %u\n#+modified:")
+              "#+title: ${title}\n#+filetags: permanent\n#+DATE: %u\n")
              :unnarrowed t)
             ("l" "literature" plain
-             "%?"
+             "*${title}\n%?"
              :target
              (file+head
-              "${title}.org"
-              "#+title: ${title} \n#+filetags: literature\n#+DATE: %u")
+              "${slug}.org"
+              "#+title: ${title} \n#+filetags: literature\n#+DATE: %u\n")
              :unnarrowed t)
             ("c" "citar-literature" plain
              "%?"
@@ -107,13 +109,13 @@
             )
           )
 
-  (setopt org-roam-dailies-capture-templates
-          '(("i" "default"
-             entry
-             "* %U\n** %^{title}\n%?"
-             :if-new (file+head "inbox.org" "#+title: Inbox\n")
-             :empty-lines 1))
-          )
+  (setq org-roam-dailies-capture-templates
+        '(("d" "default"
+           entry
+           "* %<%H:%M>\n%?"
+           :if-new (file+head "%<%Y-%m-%d>.org"
+                              "#+title: %<%Y-%m-%d>\n")
+           :empty-lines 1)))
   )
 
 (after! org
@@ -165,7 +167,7 @@
           ;; Vanilla org is used for project, journals and meetings
           '(
             ("m" "Meeting" entry (file+olp+datetree +org-capture-journal-file)
-             "* %U %? :MEETING:\n" :clock-in t :clock-resume t)
+             "* %U %^{Meeting with?} :MEETING:\n%?" :clock-in t :clock-resume t)
 
             ("j" "Journal")
             ("jn" "Journal" entry
@@ -176,6 +178,11 @@
              (file+olp+datetree+prompt +org-capture-journal-file)
              "* %U %?\n %i"
              :prepend t)
+
+            ("jl" "work log" entry
+             (file+olp+datetree +org-capture-journal-file)
+             "* %U %?" :clock-in t :clock-keep t :jump-to-captured t
+             )
 
             ("p" "Projects")
             ("pN" "New project" entry 
@@ -197,10 +204,9 @@
 
   (setopt org-agenda-files
           (append
-           (directory-files org-directory t "\\.org$")
-           (directory-files org-roam-directory t "\\.org$")
-           )
-          )
+           (when (file-directory-p org-directory)
+             (directory-files org-directory t "\\.org$"))
+           ))
   )
 
 (after! dired
