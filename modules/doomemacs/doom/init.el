@@ -86,6 +86,7 @@
        ;; grammar           ; tasing grammar mistake every you make
 
        :tools
+       agent-shell
        llm
        ;;ansible
        biblio            ; Writes a PhD for you (citation needed)
