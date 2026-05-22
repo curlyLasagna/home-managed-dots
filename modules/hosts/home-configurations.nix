@@ -52,7 +52,6 @@
               hm.work
               hm.zed-editor
             ];
-            username = "secured-luis"
           };
 
           wsl = {
