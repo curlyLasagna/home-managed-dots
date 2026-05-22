@@ -4,11 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    # Pin Zed to a nixpkgs revision with a known-good Hydra build.
-    nixpkgs-zed.url = "github:NixOS/nixpkgs/d233902339c02a9c334e7e593de68855ad26c4cb";
-
     home-manager.url = "github:nix-community/home-manager";
-
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 

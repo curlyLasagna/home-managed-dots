@@ -8,17 +8,6 @@
 
         # Only override Zed from a pinned nixpkgs revision so it can be
         # substituted from Hydra even if current nixos-unstable is broken.
-        zedOverlay = final: prev:
-          let
-            pkgsZed = import inputs.nixpkgs-zed {
-              system = final.stdenv.hostPlatform.system;
-              config.allowUnfree = prev.config.allowUnfree or true;
-            };
-          in
-          {
-            zed-editor = pkgsZed.zed-editor;
-          };
-
         profiles = rec {
           common = with hm; [
             base
@@ -45,7 +34,9 @@
         hosts = {
           macbook = {
             system = "aarch64-darwin";
-            overlays = [ emacsOverlay zedOverlay ];
+            overlays = [
+              emacsOverlay
+            ];
             aspects = profiles.darwin ++ [
               hm.personal
               hm.zed-editor
@@ -54,11 +45,14 @@
 
           secured-macbook = {
             system = "aarch64-darwin";
-            overlays = [ emacsOverlay zedOverlay ];
+            overlays = [
+              emacsOverlay
+            ];
             aspects = profiles.darwin ++ [
               hm.work
               hm.zed-editor
             ];
+            username = "secured-luis"
           };
 
           wsl = {
@@ -94,15 +88,18 @@
         in
         inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = aspects ++ lib.optional (username != null || homeDirectory != null) {
-            home =
-              (lib.optionalAttrs (username != null) {
-                inherit username;
-              })
-              // (lib.optionalAttrs (homeDirectory != null) {
-                inherit homeDirectory;
-              });
-          };
+          modules =
+            aspects
+            # Optionally specify username and home directory
+            ++ lib.optional (username != null || homeDirectory != null) {
+              home =
+                (lib.optionalAttrs (username != null) {
+                  inherit username;
+                })
+                // (lib.optionalAttrs (homeDirectory != null) {
+                  inherit homeDirectory;
+                });
+            };
         }
       ) hosts;
   };
