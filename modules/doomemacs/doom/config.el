@@ -165,25 +165,24 @@
   (setopt org-capture-templates
           ;; Vanilla org is used for project, journals and meetings
           '(
-            ("m" "Meeting" entry (file+olp+datetree +org-capture-journal-file)
+            ("m" "Meeting" entry
+             (file+olp+datetree +org-capture-journal-file)
              "* %U %^{Meeting with?} :MEETING:\n%?" :clock-in t :clock-resume t)
 
-            ("j" "Journal")
             ("jn" "Journal" entry
              (file+olp+datetree +org-capture-journal-file)
-             "* %U %?\n %i" :prepend t)
+             "* %U %?\n %i")
 
             ("jd" "Journal on date" entry
              (file+olp+datetree+prompt +org-capture-journal-file)
              "* %U %?\n %i"
-             :prepend t)
+             )
 
             ("jl" "work log" entry
              (file+olp+datetree +org-capture-journal-file)
              "* %U %?" :clock-in t :clock-keep t :jump-to-captured t
              )
-
-            ("p" "Projects")
+            
             ("pN" "New project" entry 
              (file +org-capture-projects-file)
              "* %^{Project Name}\n** Tasks\n** Notes")
