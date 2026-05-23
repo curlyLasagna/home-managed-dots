@@ -34,8 +34,6 @@
 (setopt confirm-kill-emacs nil)
 (setopt frame-title-format "Scuffed Cursor")
 ;; Draggable window divider by increasing width
-(setopt window-divider-default-right-width 3)
-(setopt window-divider-default-bottom-width 0)
 (setopt initial-scratch-message nil)
 
 ;; Possible fix?
