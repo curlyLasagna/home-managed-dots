@@ -6,6 +6,7 @@
 
       programs.peon-ping = {
         enable = true;
+        package = inputs.peon-ping.packages.${pkgs.system}.default;
       };
     };
 }

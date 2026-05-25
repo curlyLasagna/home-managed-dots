@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."fish-abbrs" = { ... }:
+  flake.modules.homeManager."secured-macbook-fish-abbrs" = { ... }:
     {
       programs.fish.shellAbbrs = {
         https_to_ssh = "perl -i -p -e 's|https://(.*?)/|git@\\1:|g' .gitmodules";

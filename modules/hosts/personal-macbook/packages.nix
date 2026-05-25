@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."packages" = { pkgs, ... }:
+  flake.modules.homeManager."personal-packages" = { pkgs, ... }:
     {
       home.packages = with pkgs; [
         obsidian
