@@ -32,7 +32,6 @@ in
       hm."peon-ping"
       hm.grammar
       hm.spell
-      hm.emacs
       hm.lua
       hm.markdown
       hm.nix

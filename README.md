@@ -1,6 +1,6 @@
 # ❄️ Home-manager managed dotfiles ❄️
 
-Home-manager config for MacOS and WSL.
+Home-manager config for macOS (Apple Silicon), Linux, and WSL.
 > Home is where your dots is :)
 
 ## Setup
@@ -19,15 +19,44 @@ Add the following line in your `nix.conf` file
 
 `experimental-features = nix-command flakes`
 
+## Hosts
+
+This flake exposes these Home Manager configurations:
+
+- `personal-macbook`: M1 MacBook for personal use
+- `secured-macbook`: M3 MacBook strictly for work
+- `secured-linux`: powerful Linux desktop
+- `wsl`: WSL on an x86 Windows laptop
+
+## Apply Configuration
+
+If `home-manager` is already installed:
+
+```sh
+home-manager switch --flake .#personal-macbook
+```
+
+If you do not have `home-manager` installed yet (bootstrap via `nix run`):
+
+```sh
+nix run home-manager/master -- switch --flake .#personal-macbook
+```
+
+Replace `personal-macbook` with the host you want.
+
 ### WSL
 
-`nix run home-manager/master -- switch --flake .#luis@wsl`
+Use `.#wsl` for CLI-focused configuration (Windows handles GUI apps).
 
-All CLI applications. Not going to bother with any GUI apps. I'll let Windows deal with that.
+```sh
+nix run home-manager/master -- switch --flake .#wsl
+```
 
-### MacOS
+### macOS
 
-`nix run home-manager/master -- switch --flake .#luis@macbook`
+```sh
+nix run home-manager/master -- switch --flake .#personal-macbook
+```
 
 #### Add ssh key to keychain
 
@@ -37,7 +66,9 @@ Interact with remote repos without having to enter your passphrase:
 
 ### SecurEd (Work) MacBook
 
-`nix run home-manager/master -- switch --flake .#luis@secured_macbook`
+```sh
+nix run home-manager/master -- switch --flake .#secured-macbook
+```
 
 ## Philosphy
 
@@ -48,7 +79,7 @@ I feel in control of my machine and that gives me a peace of mind.
 I also wasn't a fan of having to learn different syntax per config (lua is cool and all but it's not my cup of tea 🫣)
 
 - `modules`: Per application configuration
-- `users`: Per device configuration
+- `modules/hosts`: Per machine configuration
 
 ## Update packages
 
