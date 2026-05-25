@@ -17,11 +17,24 @@ in
       # Inlined from base
       ({ config, lib, pkgs, ... }: {
         home = {
-          username = lib.mkDefault "luis";
-          homeDirectory = lib.mkDefault (if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}");
+          username = "luis";
+          homeDirectory = "/Users/${config.home.username}";
           stateVersion = "23.11";
           sessionVariables = { EDITOR = "nvim"; };
         };
+
+        programs.fish.shellAbbrs = {
+          https_to_ssh = "perl -i -p -e 's|https://(.*?)/|git@\\1:|g' .gitmodules";
+          del_tflock = "find . -type f -name '.terraform.lock.hcl' -exec rm {} +";
+        };
+
+
+        programs.zed-editor = {
+          extensions = [
+            "angular"
+          ];
+        };
+
         programs.home-manager.enable = true;
         services.home-manager.autoExpire = {
           enable = true;
@@ -31,10 +44,8 @@ in
       })
       # Modules
       hm.lf
-      hm."peon-ping"
       hm.grammar
       hm.spell
-      hm.emacs
       hm.lua
       hm.markdown
       hm.nix
@@ -42,9 +53,6 @@ in
       hm.fish
       hm.starship
       hm.zsh
-      hm.alacritty
-      hm.wezterm
-      hm.zellij
       hm.core
       hm.direnv
       hm.docker
@@ -57,7 +65,6 @@ in
       hm.aerospace
       hm.macos
       # Work specific
-      hm."secured-macbook-fish-abbrs"
       hm."secured-macbook-packages"
       # Editors
       hm.ghostty

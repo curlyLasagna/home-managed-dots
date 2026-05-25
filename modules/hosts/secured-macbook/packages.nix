@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."secured-linux-packages" = { pkgs, ... }:
+  flake.modules.homeManager."secured-macbook-packages" = { pkgs, ... }:
     {
       home.packages = with pkgs; [
         mongodb-compass
@@ -15,15 +15,8 @@
         tflint
         docker
 
-        typescript-language-server
-        biome
-        pyright
-        ruff
+        uv
+
       ];
-      programs.zed-editor = {
-        extensions = [
-          "angular"
-        ];
-      };
     };
 }

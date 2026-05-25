@@ -2,6 +2,6 @@
 {
   flake.modules.homeManager."nix" = { pkgs, ... }:
     {
-      home.packages = with pkgs; [ nil nixfmt-rfc-style ];
+      home.packages = with pkgs; [ nixd nixfmt-rfc-style ];
     };
 }

@@ -21,10 +21,20 @@ in
           sessionVariables = { EDITOR = "nvim"; };
         };
         programs.home-manager.enable = true;
+        programs.fish.shellAbbrs = {
+          https_to_ssh = "perl -i -p -e 's|https://(.*?)/|git@\\1:|g' .gitmodules";
+          del_tflock = "find . -type f -name '.terraform.lock.hcl' -exec rm {} +";
+        };
         services.home-manager.autoExpire = {
           enable = true;
           frequency = "weekly";
           timestamp = "-7 days";
+        };
+
+        programs.zed-editor = {
+          extensions = [
+            "angular"
+          ];
         };
       })
       # Modules
@@ -53,7 +63,6 @@ in
       hm.search
       hm.zoxide
       # Work specific
-      hm."secured-linux-fish-abbrs"
       hm."secured-linux-packages"
       # Editors
       hm.nixvim

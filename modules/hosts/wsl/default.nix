@@ -15,8 +15,8 @@ in
       # Inlined from base
       ({ config, lib, pkgs, ... }: {
         home = {
-          username = lib.mkDefault "luis";
-          homeDirectory = lib.mkDefault "/home/${config.home.username}";
+          username = "luis";
+          homeDirectory = "/home/${config.home.username}";
           stateVersion = "23.11";
           sessionVariables = { EDITOR = "nvim"; };
         };

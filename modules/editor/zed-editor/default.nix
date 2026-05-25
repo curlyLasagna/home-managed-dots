@@ -7,6 +7,7 @@
         show_whitespaces = "trailing";
         inlay_hints.enabled = false;
 
+
         icon_theme = {
           light = "Catppuccin Latte";
           dark = "Catppuccin Mocha";
@@ -61,8 +62,9 @@
 
         tab_bar = {
           show_nav_history_buttons = false;
-          show = true;
+          show = false;
         };
+        max_tabs = 1;
       };
 
       terminalSettings = {

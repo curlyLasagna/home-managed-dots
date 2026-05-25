@@ -7,6 +7,10 @@
         skimpdf
         iina
         utm
+        tree
+        unixtools.watch
+        wget
+        opencode
       ];
     };
 }
