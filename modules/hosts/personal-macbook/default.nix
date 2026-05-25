@@ -54,7 +54,6 @@ in
       # Personal specific
       hm."personal-latexmkrc"
       hm."personal-packages"
-      hm."personal-session-path"
       hm.ghostty
       # Editors
       hm.doomemacs
