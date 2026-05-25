@@ -169,6 +169,7 @@
              (file+olp+datetree +org-capture-journal-file)
              "* %U %^{Meeting with?} :MEETING:\n%?" :clock-in t :clock-resume t)
 
+            ("j" "journal")
             ("jn" "Journal" entry
              (file+olp+datetree +org-capture-journal-file)
              "* %U %?\n %i")

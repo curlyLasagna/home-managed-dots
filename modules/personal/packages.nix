@@ -1,13 +1,15 @@
 { ... }:
 {
-  flake.modules.homeManager.personal =
-    { pkgs, ... }:
-    {
-      home.packages = with pkgs; [
-        obsidian
-        skimpdf
-        iina
-        utm
-      ];
-    };
+  flake.modules.homeManager.personal = {
+    imports = [
+      ({ pkgs, ... }: {
+        home.packages = with pkgs; [
+          obsidian
+          skimpdf
+          iina
+          utm
+        ];
+      })
+    ];
+  };
 }

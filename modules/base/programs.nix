@@ -1,8 +1,10 @@
 { ... }:
 {
-  flake.modules.homeManager.base =
-    { ... }:
-    {
-      programs.home-manager.enable = true;
-    };
+  flake.modules.homeManager.base = {
+    imports = [
+      ({ ... }: {
+        programs.home-manager.enable = true;
+      })
+    ];
+  };
 }
