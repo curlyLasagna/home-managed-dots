@@ -1,12 +1,12 @@
 { ... }:
 {
-  flake.modules.homeManager."zed-editor" = { config, pkgs, ... }:
+  flake.modules.homeManager."zed-editor" =
+    { config, pkgs, ... }:
     let
       editorUiSettings = {
         preview_tabs.enabled = false;
         show_whitespaces = "trailing";
         inlay_hints.enabled = false;
-
 
         icon_theme = {
           light = "Catppuccin Latte";
@@ -64,7 +64,6 @@
           show_nav_history_buttons = false;
           show = false;
         };
-        max_tabs = 1;
       };
 
       terminalSettings = {

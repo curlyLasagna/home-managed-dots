@@ -15,23 +15,33 @@ in
     modules = [
       hm.inputs
       # Inlined from base
-      ({ config, lib, pkgs, ... }: {
-        home = {
-          username = "luis";
-          homeDirectory = "/Users/${config.home.username}";
-          stateVersion = "23.11";
-          sessionVariables = { EDITOR = "nvim"; };
-        };
-        programs.home-manager.enable = true;
-        services.home-manager.autoExpire = {
-          enable = true;
-          frequency = "weekly";
-          timestamp = "-7 days";
-        };
-        home.sessionPath = [
-          "${config.home.homeDirectory}/.ghcup/bin"
-        ];
-      })
+      (
+        {
+          config,
+          lib,
+          pkgs,
+          ...
+        }:
+        {
+          home = {
+            username = "luis";
+            homeDirectory = "/Users/${config.home.username}";
+            stateVersion = "23.11";
+            sessionVariables = {
+              EDITOR = "nvim";
+            };
+          };
+          programs.home-manager.enable = true;
+          services.home-manager.autoExpire = {
+            enable = true;
+            frequency = "weekly";
+            timestamp = "-7 days";
+          };
+          home.sessionPath = [
+            "${config.home.homeDirectory}/.ghcup/bin"
+          ];
+        }
+      )
       # Modules
       hm.lf
       hm.spell
@@ -56,6 +66,7 @@ in
       hm."personal-packages"
       hm.ghostty
       # Editors
+      hm.nixvim
       hm.doomemacs
       hm."zed-editor"
     ];
