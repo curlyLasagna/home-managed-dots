@@ -180,9 +180,8 @@
 
             ("jl" "work log" entry
              (file+olp+datetree +org-capture-journal-file)
-             "* %U %?" :clock-in t :clock-keep t :jump-to-captured t
+             "* %?" :clock-in t :clock-keep t
              )
-            
 
             ("p" "Projects")
             ("pN" "New project" entry
