@@ -33,10 +33,18 @@ in
           };
 
           programs.fish.shellAbbrs = {
+            # Converts development-environment submodules remote url from https to ssh
             https_to_ssh = "perl -i -p -e 's|https://(.*?)/|git@\\1:|g' .gitmodules";
+            # Deletes lock files
             del_tflock = "find . -type f -name '.terraform.lock.hcl' -exec rm {} +";
-          };
 
+          };
+          programs.fish.functions = {
+            clear_iac_cache = ''
+              find live -type d -name .terragrunt-cache -prune -exec rm -rf {} +
+              find live -type d -name .terraform -prune -exec rm -rf {} +
+            '';
+          };
           programs.zed-editor = {
             extensions = [
               "angular"
