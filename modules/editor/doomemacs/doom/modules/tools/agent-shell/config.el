@@ -26,7 +26,23 @@
   :bind (:map agent-shell-mode-map
               ("RET" . newline)
               ("C-c C-c" . shell-maker-submit)
-              ("C-c C-k" . agent-shell-interrupt)))
+              ("C-c C-k" . agent-shell-interrupt))
+  :config
+  (setq agent-shell-display-action nil)
+  (setq agent-shell-context-sources nil)
+  ;; Dock agent-shell on the left
+  (set-popup-rule!
+    (lambda (bname _action)
+      (let ((buf (get-buffer bname)))
+        (and buf
+             (with-current-buffer buf
+               (derived-mode-p 'agent-shell-mode)))))
+    :select t
+    :size 0.3
+    :quit nil
+    :side 'left
+    :ttl nil)
+  )
 
 (provide 'config)
 ;;; config.el ends here
