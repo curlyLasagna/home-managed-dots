@@ -17,6 +17,10 @@
         wget
         xh
         zstd
+        ripgrep
+        fd
+        bat
+        jq
       ];
     };
 }

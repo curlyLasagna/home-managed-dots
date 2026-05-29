@@ -1,11 +1,10 @@
 # wsl
 
-WSL on an x86 Windows laptop (`x86_64-linux`).
+WSL on an x86.
 
 Notes:
 
 - Intended for CLI tooling; Windows manages GUI apps.
-- Home Manager config sets `home.username = "luis"` and `home.homeDirectory = "/home/luis"`.
 
 Run:
 
