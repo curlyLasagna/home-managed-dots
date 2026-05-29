@@ -1,0 +1,76 @@
+direction: down
+
+Flake Entry: {
+  shape: cylinder
+  label: flake.nix
+}
+
+Import Tree: {
+  shape: rectangle
+  label: "import-tree ./modules"
+}
+
+Flake Entry -> Import Tree: passes directory
+
+Modules: {
+  shape: package
+  label: "Nix Module Tree (flake.homeModules)"
+  style: {
+    fill: transparent
+  }
+  
+  Global Options: {
+    shape: class
+    label: "modules/global-options"
+    "options.myHost.defaultShell"
+    "options.myHost.git.userName"
+    "options.myHost.git.userEmail"
+  }
+  
+  Terminal Emulators: {
+    shape: class
+    label: "modules/term/*"
+    "Alacritty"
+    "Ghostty"
+    "WezTerm"
+    "Zellij"
+  }
+  
+  Tools: {
+    shape: class
+    label: "modules/tools/*"
+    "Git"
+  }
+  
+  Hosts: {
+    shape: class
+    label: "modules/hosts/*"
+    "personal-macbook"
+    "secured-macbook"
+    "secured-linux"
+    "wsl"
+  }
+}
+
+Import Tree -> Modules: maps to outputs
+
+Modules.Hosts -> Modules.Global Options: "1. Sets options (e.g. fish)" {
+  style: {
+    stroke-dash: 5
+    stroke: green
+  }
+}
+Modules.Global Options -> Modules.Terminal Emulators: "2. Injects shell paths" {
+  style: {
+    stroke-dash: 5
+    stroke: blue
+  }
+}
+Modules.Global Options -> Modules.Tools: "3. Injects git user info" {
+  style: {
+    stroke-dash: 5
+    stroke: blue
+  }
+}
+Modules.Hosts -> Modules.Terminal Emulators: "4. Imports configured modules"
+Modules.Hosts -> Modules.Tools: "5. Imports configured modules"

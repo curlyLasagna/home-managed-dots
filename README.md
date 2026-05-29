@@ -3,6 +3,8 @@
 Home-manager config for macOS (Apple Silicon), Linux, and WSL.
 > Home is where your dots is :)
 
+
+
 ## Setup
 
 ### Install nix via Determinate Nix Installer
@@ -54,6 +56,8 @@ nix run home-manager/master -- switch --flake .#wsl
 
 ### macOS
 
+![](static/macos_screen.png)
+
 ```sh
 nix run home-manager/master -- switch --flake .#personal-macbook
 ```
@@ -72,14 +76,17 @@ nix run home-manager/master -- switch --flake .#secured-macbook
 
 ## Philosphy
 
-I've enjoyed my time setting up a declarative config that I can understand.
+I've enjoyed my time setting up a declarative config that I can (sort of) understand.
 
 I feel in control of my machine and that gives me a peace of mind.
 
 I also wasn't a fan of having to learn different syntax per config (lua is cool and all but it's not my cup of tea 🫣)
 
-- `modules`: Per application configuration
-- `modules/hosts`: Per machine configuration
+## Structure
+
+![](static/architecture.svg)
+
+Applied [flake-parts](https://flake.parts/index.html) framework via AI agents because I learn by doing... and **doing** was a lot of fixing errors and understanding the abstractions.
 
 ## Update packages
 
