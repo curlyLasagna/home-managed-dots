@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  hm = inputs.self.modules.homeManager;
+  hm = inputs.self.homeModules;
 
   pkgsLinux = import inputs.nixpkgs {
     system = "x86_64-linux";
@@ -12,6 +12,12 @@ in
     pkgs = pkgsLinux;
     modules = [
       hm.inputs
+      hm."global-options"
+      ({ ... }: {
+        myHost.defaultShell = "fish";
+        myHost.git.userName = "luis";
+        myHost.git.userEmail = "luis.gcodes@gmail.com";
+      })
       # Inlined from base
       ({ config, lib, pkgs, ... }: {
         home = {

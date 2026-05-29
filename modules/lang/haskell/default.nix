@@ -3,7 +3,7 @@
 }:
 
 {
-  flake.modules.homeManager."haskell" =
+  flake.homeModules."haskell" =
     { pkgs, config, ... }:
 
     {

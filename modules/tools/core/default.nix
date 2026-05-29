@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."core" =
+  flake.homeModules."core" =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

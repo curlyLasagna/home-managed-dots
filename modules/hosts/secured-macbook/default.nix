@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  hm = inputs.self.modules.homeManager;
+  hm = inputs.self.homeModules;
   emacsOverlay = inputs.emacs-lsp-booster.overlays.default;
 
   pkgsMac = import inputs.nixpkgs {
@@ -14,6 +14,12 @@ in
     pkgs = pkgsMac;
     modules = [
       hm.inputs
+      hm."global-options"
+      ({ ... }: {
+        myHost.defaultShell = "fish";
+        myHost.git.userName = "luis";
+        myHost.git.userEmail = "luis.gcodes@gmail.com";
+      })
       # Inlined from base
       (
         {

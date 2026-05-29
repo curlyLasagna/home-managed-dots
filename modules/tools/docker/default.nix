@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."docker" = { pkgs, ... }:
+  flake.homeModules."docker" = { pkgs, ... }:
     {
       home.packages = with pkgs; [ lazydocker ];
     };

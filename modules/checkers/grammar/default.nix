@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."grammar" =
+  flake.homeModules."grammar" =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [ harper ];

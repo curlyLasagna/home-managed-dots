@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."fish" =
+  flake.homeModules."fish" =
     { ... }:
     {
       programs.fish = {

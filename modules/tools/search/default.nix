@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."search" =
+  flake.homeModules."search" =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

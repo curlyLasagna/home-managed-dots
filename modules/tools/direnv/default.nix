@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."direnv" = { ... }:
+  flake.homeModules."direnv" = { ... }:
     {
       programs.direnv = {
         enable = true;

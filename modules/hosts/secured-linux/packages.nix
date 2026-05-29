@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."secured-linux-packages" = { pkgs, ... }:
+  flake.homeModules."secured-linux-packages" = { pkgs, ... }:
     {
       home.packages = with pkgs; [
         terraform

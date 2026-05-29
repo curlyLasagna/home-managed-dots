@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."lua" = { pkgs, ... }:
+  flake.homeModules."lua" = { pkgs, ... }:
     {
       home.packages = with pkgs; [ stylua lua ];
     };

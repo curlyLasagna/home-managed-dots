@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."secured-macbook-packages" = { pkgs, ... }:
+  flake.homeModules."secured-macbook-packages" = { pkgs, ... }:
     {
       home.packages = with pkgs; [
         mongodb-compass

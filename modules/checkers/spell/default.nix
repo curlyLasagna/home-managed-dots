@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."spell" =
+  flake.homeModules."spell" =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [ hunspell ];

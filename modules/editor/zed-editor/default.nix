@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."zed-editor" =
+  flake.homeModules."zed-editor" =
     { config, pkgs, ... }:
     let
       editorUiSettings = {

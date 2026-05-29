@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."fzf" = { ... }:
+  flake.homeModules."fzf" = { ... }:
     {
       programs.fzf = {
         enable = true;

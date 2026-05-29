@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."doomemacs" = { pkgs, config, ... }: {
+  flake.homeModules."doomemacs" = { pkgs, config, ... }: {
     xdg.configFile."doom".source = ./doom;
     home.packages = [ pkgs.emacs-lsp-booster];
     # Assuming this is where doom emacs is installed

@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.macos = {
+  flake.homeModules.macos = {
     imports = [
       ({ pkgs, ... }: {
         home.packages = with pkgs; [

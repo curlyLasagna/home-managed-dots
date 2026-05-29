@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."zsh" = { ... }:
+  flake.homeModules."zsh" = { ... }:
     {
       programs.zsh = {
         enable = true;

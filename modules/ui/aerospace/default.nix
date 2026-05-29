@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."aerospace" =
+  flake.homeModules."aerospace" =
     { ... }:
     {
       programs.aerospace = {

@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."personal-latexmkrc" = { ... }:
+  flake.homeModules."personal-latexmkrc" = { ... }:
     {
       home.file.".latexmkrc".text = ''
 

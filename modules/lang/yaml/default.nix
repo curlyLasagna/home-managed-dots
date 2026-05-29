@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."yaml" = { pkgs, ... }:
+  flake.homeModules."yaml" = { pkgs, ... }:
     {
       home.packages = with pkgs; [ yaml-language-server ];
     };

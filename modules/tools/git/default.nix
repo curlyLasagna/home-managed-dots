@@ -1,13 +1,13 @@
 { ... }:
 {
-  flake.modules.homeManager."git" = { ... }:
+  flake.homeModules."git" = { config, ... }:
     {
       programs.git = {
         enable = true;
         settings = {
           user = {
-            email = "luis.gcodes@gmail.com";
-            name = "luis";
+            email = config.myHost.git.userEmail;
+            name = config.myHost.git.userName;
           };
           alias.l = "log --graph --decorate --pretty=format:'%C(auto)%h %Cblue%ad %Cred%aN %C(auto)%d %n %s' --date=human";
           init.defaultBranch = "main";

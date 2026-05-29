@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager."alacritty" = { config, pkgs, ... }:
+  flake.homeModules."alacritty" = { config, pkgs, ... }:
     let
       themes = inputs.alacritty-themes;
       useZellij = config.programs.zellij.enable or false;
@@ -10,7 +10,7 @@
         enable = true;
         settings = {
           terminal.shell = {
-            program = "${pkgs.fish}/bin/fish";
+            program = "${pkgs.${config.myHost.defaultShell}}/bin/${config.myHost.defaultShell}";
             args =
               if useZellij then
                 [

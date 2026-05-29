@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager."helix" = { ... }:
+  flake.homeModules."helix" = { ... }:
     {
       programs.helix = {
         enable = true;
