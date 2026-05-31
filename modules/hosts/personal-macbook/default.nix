@@ -15,12 +15,14 @@ in
     modules = [
       hm.inputs
       hm."global-options"
-      ({ ... }: {
-        myHost.defaultShell = "fish";
-        myHost.git.userName = "luis";
-        myHost.git.userEmail = "luis.gcodes@gmail.com";
-      })
-      # Inlined from base
+      (
+        { ... }:
+        {
+          myHost.defaultShell = "fish";
+          myHost.git.userName = "luis";
+          myHost.git.userEmail = "luis.gcodes@gmail.com";
+        }
+      )
       (
         {
           config,
@@ -54,6 +56,7 @@ in
       hm.lua
       hm.markdown
       hm.nix
+      hm.core
       hm.yaml
       hm.fish
       hm.starship
@@ -64,7 +67,6 @@ in
       hm.fzf
       hm.git
       hm.lazygit
-      hm.search
       hm.zoxide
       hm.macos
       # Personal specific
