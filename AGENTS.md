@@ -4,13 +4,12 @@ High-signal notes for OpenCode sessions working in this Home Manager flake.
 
 ## Build / Verify
 
-Preferred verification is evaluating a host config.
+Preferred order of verification
 
-- Build (no activation): `home-manager build --flake .#personal-macbook`
-- Dry-run activation: `home-manager switch --flake .#personal-macbook --dry-run`
-- Activate: `home-manager switch --flake .#personal-macbook`
-- Flake checks: `nix flake check`
-- Update inputs: `nix flake update` (do not edit `flake.lock` manually)
+1. Flake checks: `nix flake check`
+2. Dry-run activation: `home-manager switch --flake .#personal-macbook --dry-run`
+3. Build (no activation): `home-manager build --flake .#personal-macbook`
+4. Activate: `home-manager switch --flake .#personal-macbook`
 
 Host names (use these): `personal-macbook`, `secured-macbook`, `secured-linux`, `wsl`.
 
