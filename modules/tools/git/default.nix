@@ -1,6 +1,12 @@
 { ... }:
 {
-  flake.homeModules."git" = { config, ... }:
+  flake.homeModules."git" =
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
     {
       programs.git = {
         enable = true;
@@ -57,5 +63,17 @@
         ];
         lfs.enable = true;
       };
+
+      imports = [
+        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+          programs.git.settings = {
+            credential.helper = "osxkeychain";
+            ssh = {
+              AddKeysToAgent = "yes";
+              UseKeychain = "yes";
+            };
+          };
+        })
+      ];
     };
 }
