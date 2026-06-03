@@ -1,6 +1,7 @@
 { inputs, ... }:
 {
-  flake.homeModules."nixvim" = { pkgs, ... }:
+  flake.homeModules."nixvim" =
+    { pkgs, ... }:
     {
       imports = [ inputs.nix2vim.homeModules.nixvim ];
 
@@ -157,7 +158,6 @@
           typst-preview.enable = true;
           typescript-tools.enable = true;
           render-markdown.enable = true;
-          project-nvim.enable = true;
           mini-surround.enable = true;
           friendly-snippets.enable = true;
           zen-mode.enable = true;
