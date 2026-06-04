@@ -10,7 +10,6 @@
         gawkInteractive
         opencode
         hyperfine
-        pipx
         tokei
         tree
         unixtools.watch
