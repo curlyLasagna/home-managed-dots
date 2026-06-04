@@ -37,7 +37,7 @@
 
       formattingSettings = {
         format_on_save = "on";
-        formatter = "language_server";
+        formatter = "auto";
       };
 
       vimSettings = {
