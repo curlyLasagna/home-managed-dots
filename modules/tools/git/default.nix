@@ -2,9 +2,9 @@
 {
   flake.homeModules."git" =
     {
+      config,
       lib,
       pkgs,
-      config,
       ...
     }:
     {
@@ -12,13 +12,13 @@
         enable = true;
         settings = {
           user = {
-            email = config.myHost.git.userEmail;
-            name = config.myHost.git.userName;
+            email = config.myHost.git.email;
+            name = config.myHost.git.name;
           };
           alias.l = "log --graph --decorate --pretty=format:'%C(auto)%h %Cblue%ad %Cred%aN %C(auto)%d %n %s' --date=human";
           init.defaultBranch = "main";
           core.autocrlf = false;
-          github.user = "curlyLasagna";
+          github.user = config.myHost.git.githubUserName;
           branch.autoSetupMerge = "always";
 
           "filter.lfs" = {

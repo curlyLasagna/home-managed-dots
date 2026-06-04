@@ -19,10 +19,11 @@ in
         { ... }:
         {
           myHost.defaultShell = "fish";
-          myHost.git.userName = "luis";
-          myHost.git.userEmail = "luis.gcodes@gmail.com";
+          myHost.git.name = "Luis";
+          myHost.git.email = "luis.gcodes@gmail.com";
         }
       )
+      # Inlined from base
       (
         {
           config,

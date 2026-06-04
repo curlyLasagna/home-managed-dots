@@ -15,11 +15,19 @@ in
     modules = [
       hm.inputs
       hm."global-options"
-      ({ ... }: {
-        myHost.defaultShell = "fish";
-        myHost.git.userName = "luis";
-        myHost.git.userEmail = "luis.gcodes@gmail.com";
-      })
+      (
+        { ... }:
+        {
+          myHost = {
+            defaultShell = "fish";
+            git = {
+              email = "luis.gcodes@gmail.com";
+              name = "Luis";
+              githubUserName = "curlyLasagna";
+            };
+          };
+        }
+      )
       # Inlined from base
       (
         {
@@ -34,7 +42,7 @@ in
             homeDirectory = "/Users/${config.home.username}";
             stateVersion = "23.11";
             sessionVariables = {
-              EDITOR = "nvim";
+              EDITOR = "hx";
             };
           };
 
@@ -72,6 +80,7 @@ in
       hm.nix
       hm.yaml
       hm.fish
+      hm.helix
       hm.starship
       hm.zsh
       hm.core
@@ -81,14 +90,12 @@ in
       hm.fzf
       hm.git
       hm.lazygit
-      hm.search
       hm.zoxide
       hm.macos
-      hm.helix
-      # Work specific
+      hm.ghostty
+      # Work packages
       hm."secured-macbook-packages"
       # Editors
-      hm.ghostty
       hm.doomemacs
       hm."zed-editor"
     ];
