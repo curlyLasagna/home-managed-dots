@@ -8,14 +8,17 @@
           name = lib.mkOption {
             type = lib.types.str;
             description = "Global Git name";
+            default = "User";
           };
           email = lib.mkOption {
             type = lib.types.str;
             description = "Global Git email";
+            default = "user@email.com";
           };
           githubUserName = lib.mkOption {
             type = lib.types.str;
             description = "Github username";
+            default = "Github user";
           };
         };
         defaultShell = lib.mkOption {

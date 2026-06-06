@@ -21,6 +21,7 @@ in
           myHost.defaultShell = "fish";
           myHost.git.name = "Luis";
           myHost.git.email = "luis.gcodes@gmail.com";
+          myHost.git.githubUserName = "curlyLasagna";
         }
       )
       # Inlined from base
