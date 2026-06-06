@@ -1,8 +1,14 @@
-# List of extensions that should come with Zed
-[
-  "fleet-themes"
-  "kanagawa themes"
-  "catppucin-icons"
-  "catppucin"
-  "nix"
-]
+{ ... }:
+{
+  flake.homeModules."zed-editor" =
+    { ... }:
+    {
+      programs.zed-editor.extensions = [
+        "fleet-themes"
+        "kanagawa themes"
+        "catppucin-icons"
+        "catppucin"
+        "nix"
+      ];
+    };
+}
