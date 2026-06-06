@@ -1,7 +1,11 @@
 { ... }:
 {
-  flake.homeModules."markdown" = { pkgs, ... }:
+  flake.homeModules."markdown" =
+    { pkgs, ... }:
     {
-      home.packages = with pkgs; [ marksman pandoc ];
+      home.packages = with pkgs; [
+        marksman
+        pandoc
+      ];
     };
 }

@@ -1,6 +1,7 @@
 { ... }:
 {
-  flake.homeModules."lazygit" = { ... }:
+  flake.homeModules."lazygit" =
+    { ... }:
     {
       programs.lazygit = {
         enable = true;

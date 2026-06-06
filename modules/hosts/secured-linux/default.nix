@@ -13,36 +13,49 @@ in
     modules = [
       hm.inputs
       hm."global-options"
-      ({ ... }: {
-        myHost.defaultShell = "fish";
-        myHost.git.userName = "luis";
-        myHost.git.userEmail = "luis.gcodes@gmail.com";
-      })
+      (
+        { ... }:
+        {
+          myHost.defaultShell = "fish";
+          myHost.git.userName = "luis";
+          myHost.git.userEmail = "luis.gcodes@gmail.com";
+        }
+      )
       # Inlined from base
-      ({ config, lib, pkgs, ... }: {
-        home = {
-          username = "clark";
-          homeDirectory = "/home/clark";
-          stateVersion = "23.11";
-          sessionVariables = { EDITOR = "nvim"; };
-        };
-        programs.home-manager.enable = true;
-        programs.fish.shellAbbrs = {
-          https_to_ssh = "perl -i -p -e 's|https://(.*?)/|git@\\1:|g' .gitmodules";
-          del_tflock = "find . -type f -name '.terraform.lock.hcl' -exec rm {} +";
-        };
-        services.home-manager.autoExpire = {
-          enable = true;
-          frequency = "weekly";
-          timestamp = "-7 days";
-        };
+      (
+        {
+          config,
+          lib,
+          pkgs,
+          ...
+        }:
+        {
+          home = {
+            username = "clark";
+            homeDirectory = "/home/clark";
+            stateVersion = "23.11";
+            sessionVariables = {
+              EDITOR = "nvim";
+            };
+          };
+          programs.home-manager.enable = true;
+          programs.fish.shellAbbrs = {
+            https_to_ssh = "perl -i -p -e 's|https://(.*?)/|git@\\1:|g' .gitmodules";
+            del_tflock = "find . -type f -name '.terraform.lock.hcl' -exec rm {} +";
+          };
+          services.home-manager.autoExpire = {
+            enable = true;
+            frequency = "weekly";
+            timestamp = "-7 days";
+          };
 
-        programs.zed-editor = {
-          extensions = [
-            "angular"
-          ];
-        };
-      })
+          programs.zed-editor = {
+            extensions = [
+              "angular"
+            ];
+          };
+        }
+      )
       # Modules
       hm.lf
       hm."peon-ping"

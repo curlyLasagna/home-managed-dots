@@ -1,6 +1,7 @@
 { ... }:
 {
-  flake.homeModules."zoxide" = { ... }:
+  flake.homeModules."zoxide" =
+    { ... }:
     {
       programs.zoxide = {
         enable = true;

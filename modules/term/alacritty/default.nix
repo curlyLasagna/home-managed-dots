@@ -1,6 +1,7 @@
 { inputs, ... }:
 {
-  flake.homeModules."alacritty" = { config, pkgs, ... }:
+  flake.homeModules."alacritty" =
+    { config, pkgs, ... }:
     let
       themes = inputs.alacritty-themes;
       useZellij = config.programs.zellij.enable or false;

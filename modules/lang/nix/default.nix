@@ -1,7 +1,11 @@
 { ... }:
 {
-  flake.homeModules."nix" = { pkgs, ... }:
+  flake.homeModules."nix" =
+    { pkgs, ... }:
     {
-      home.packages = with pkgs; [ nixd nixfmt ];
+      home.packages = with pkgs; [
+        nixd
+        nixfmt
+      ];
     };
 }

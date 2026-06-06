@@ -1,6 +1,7 @@
 { inputs, ... }:
 {
-  flake.homeModules."peon-ping" = { pkgs, ... }:
+  flake.homeModules."peon-ping" =
+    { pkgs, ... }:
     {
       imports = [ inputs.peon-ping.homeManagerModules.default ];
 

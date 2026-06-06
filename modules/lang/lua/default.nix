@@ -1,7 +1,11 @@
 { ... }:
 {
-  flake.homeModules."lua" = { pkgs, ... }:
+  flake.homeModules."lua" =
+    { pkgs, ... }:
     {
-      home.packages = with pkgs; [ stylua lua ];
+      home.packages = with pkgs; [
+        stylua
+        lua
+      ];
     };
 }

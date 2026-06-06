@@ -1,11 +1,14 @@
 { ... }:
 {
-  flake.homeModules."ghostty" = { config, pkgs, ... }:
+  flake.homeModules."ghostty" =
+    { config, pkgs, ... }:
     let
       useZellij = config.programs.zellij.enable or false;
       cmd =
         if useZellij then
-          "${pkgs.${config.myHost.defaultShell}}/bin/${config.myHost.defaultShell} --login --interactive -c ${pkgs.zellij}/bin/zellij"
+          "${
+            pkgs.${config.myHost.defaultShell}
+          }/bin/${config.myHost.defaultShell} --login --interactive -c ${pkgs.zellij}/bin/zellij"
         else
           "${pkgs.${config.myHost.defaultShell}}/bin/${config.myHost.defaultShell} --login --interactive";
     in
