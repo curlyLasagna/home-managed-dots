@@ -180,10 +180,9 @@
             };
             servers = {
               ruff.enable = true;
-              basedpyright.enable = true;
               ty.enable = true;
               marksman.enable = true;
-              nil_ls.enable = true;
+              nixd.enable = true;
               tinymist.enable = true;
               texlab.enable = true;
             };
