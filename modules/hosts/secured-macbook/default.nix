@@ -79,6 +79,7 @@ in
       hm.markdown
       hm.nix
       hm.yaml
+      hm.javascript
       hm.fish
       hm.helix
       hm.starship
