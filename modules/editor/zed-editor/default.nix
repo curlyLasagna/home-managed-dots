@@ -4,7 +4,7 @@
     { ... }:
     {
       programs.zed-editor = {
-        enable = true;
+        enable = false;
         mutableUserSettings = true;
         mutableUserKeymaps = true;
         userSettings = {
