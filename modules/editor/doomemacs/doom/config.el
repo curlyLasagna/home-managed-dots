@@ -162,25 +162,35 @@
   (setopt +org-capture-journal-file (expand-file-name "journal.org" org-directory)
           +org-capture-projects-file (expand-file-name "projects.org" org-directory)
           )
+
   (setopt org-capture-templates
           ;; Vanilla org is used for project, journals and meetings
           '(
             ("m" "Meeting" entry (file+olp+datetree +org-capture-journal-file)
-             "* %U %^{Meeting with?} :MEETING:\n%?" :clock-in t :clock-resume t)
+             "* %^{Meeting with?} :MEETING:\n%?" :clock-in t :clock-resume t :tree-type (year month week day)
+             )
 
             ("j" "Journal")
             ("jn" "Journal" entry
              (file+olp+datetree +org-capture-journal-file)
-             "* %U %?\n %i" :prepend t)
+             "* %<%I:%M %p>\n%?" :prepend t :tree-type (year month day)
+             )
 
             ("jd" "Journal on date" entry
-             (file+olp+datetree+prompt +org-capture-journal-file)
-             "* %U %?\n %i"
-             :prepend t)
-
-            ("jl" "work log" entry
              (file+olp+datetree +org-capture-journal-file)
-             "* %?" :clock-in t :clock-keep t
+             "* %<%I:%M %p>\n%?"
+             :prepend t :time-prompt t :tree-type (year month day)
+             )
+
+            ("jw" "Work log")
+            ("jwo" "log opsify work" entry
+             (file+olp+datetree "opsify-logs.org")
+             "* %?" :clock-in t :clock-keep t :tree-type (year month week day)
+             )
+            
+            ("jws" "log secured work" entry
+             (file+olp+datetree "secured-logs.org")
+             "* %?" :clock-in t :clock-keep t :tree-type (year month week day)
              )
 
             ("p" "Projects")
