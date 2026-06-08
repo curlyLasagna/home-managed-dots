@@ -26,23 +26,20 @@
 (global-subword-mode +1)
 (repeat-mode 1)
 (global-goto-address-mode +1)
-;; Occupy a space if MacOS fullscreen
-(setopt ns-use-native-fullscreen t)
 (setopt tab-width 4)
 (setopt truncate-string-ellipsis "…")
 (setopt display-line-numbers-type 'relative)
 (setopt confirm-kill-emacs nil)
 (setopt frame-title-format "Scuffed Cursor")
-;; Draggable window divider by increasing width
 (setopt initial-scratch-message nil)
 
 ;; Possible fix?
 ;; Auto-save errors out since it tries to save within this path:
 ;; <default-directory + doom-profile-cache-dir> which doesn't exists and shouldn't
-(setopt auto-save-file-name-transforms
-        `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
-           ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/tramp/\\2-") sha1)
-          (".*" ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/\\1-") sha1)))
+;; (setopt auto-save-file-name-transforms
+;;         `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
+;;            ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/tramp/\\2-") sha1)
+;;           (".*" ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/\\1-") sha1)))
 
 (map!
  :desc "Disable mouse scroll that modifies text size"
@@ -247,6 +244,8 @@
 
 (when (featurep :system 'macos)
   (setopt ns-use-proxy-icon 'nil)
+  ;; Occupy a space if MacOS fullscreen
+  (setopt ns-use-native-fullscreen t)
   (setopt mac-right-option-modifier 'meta))
 
 (when (modulep! :editor word-wrap)
