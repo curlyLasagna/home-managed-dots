@@ -1,19 +1,3 @@
-;;; init.el -*- lexical-binding: t; -*-
-
-;; This file controls what Doom modules are enabled and what order they load
-;; in. Remember to run 'doom sync' after modifying it!
-
-;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
-;;      documentation. There you'll find a link to Doom's Module Index where all
-;;      of our modules are listed, including what flags they support.
-
-;; NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
-;;      'C-c c k' for non-vim users) to view its documentation. This works on
-;;      flags as well (those symbols that start with a plus).
-;;
-;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
-;;      directory (for easy access to its source code).
-
 (doom! :input
        ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
@@ -26,7 +10,7 @@
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
-       ( vertico +icons )           ; the search engine of the future
+       ( vertico +icons)           ; the search engine of the future
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -68,9 +52,9 @@
        word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       ( dired +icons )             ; making dired pretty [functional]
+       ( dired +icons)             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
-       ( ibuffer +icons )         ; interactive buffer management
+       ( ibuffer +icons)         ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
@@ -102,8 +86,8 @@
        magit             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
-       pdf               ; pdf enhancements
-       ( terraform +lsp )         ; infrastructure as code
+       ;; pdf               ; pdf enhancements
+       ( terraform +lsp)         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
@@ -115,7 +99,7 @@
        :lang
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
-       (cc +lsp +tree-sitter)         ; C > C++ == 1
+       ;; (cc +lsp +tree-sitter)         ; C > C++ == 1
        ;;clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
@@ -142,7 +126,7 @@
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
        ;; (java +tree-sitter)       ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
+       ;; (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        (latex +lsp)             ; writing papers in Emacs has never been so fun
@@ -151,13 +135,13 @@
        (lua +lsp)               ; one-based indices? one-based indices
        (markdown +grip)          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
-       ( nix +lsp )               ; I hereby declare "nix geht mehr!"
+       ( nix +lsp)               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        ( org +dragndrop +roam)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       ( python +lsp +pyright +pyenv)            ; beautiful is better than ugly
+       ;; ( python +lsp +pyright +pyenv)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        (racket +lsp)            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
@@ -172,8 +156,8 @@
        ;;solidity          ; do you need a blockchain? No.
        ;; ( swift +lsp )             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       ( web +lsp )               ; the tubes
-       ( yaml +lsp )              ; JSON, but readable
+       ;; ( web +lsp )               ; the tubes
+       ( yaml +lsp)              ; JSON, but readable
        ;;zig               ; C, but simpler
 
        :email

@@ -21,7 +21,6 @@
   :hook
   (after-init . global-auto-revert-mode)
   :init
-  ;; (setq auto-revert-verbose t)
   (setq auto-revert-interval 3)
   (setq auto-revert-remote-files nil)
   (setq auto-revert-use-notify t)
@@ -92,13 +91,12 @@
 ;; by providing additional backends through completion-at-point-functions.
 (use-package cape
   :commands (cape-dabbrev cape-file cape-elisp-block)
-  :bind ("C-c p" . cape-prefix-map)
+  ; :bind ("C-c p" . cape-prefix-map)
   :init
   ;; Add to the global default value of `completion-at-point-functions' which is
   ;; used by `completion-at-point'.
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
-  (add-hook 'completion-at-point-functions #'cape-file)
-  (add-hook 'completion-at-point-functions #'cape-elisp-block))
+  (add-hook 'completion-at-point-functions #'cape-file))
 
 ;; The undo-fu package is a lightweight wrapper around Emacs' built-in undo
 ;; system, providing more convenient undo/redo functionality.
@@ -106,9 +104,9 @@
   :commands (undo-fu-only-undo
              undo-fu-only-redo
              undo-fu-only-redo-all
-             undo-fu-disable-checkpoint)
-  :config
-  (global-unset-key (kbd "C-z"))
+             undo-fu-disable-checkpoint))
+  ; :config
+  ; (global-unset-key (kbd "C-z"))
 
 ;; The undo-fu-session package complements undo-fu by enabling the saving
 ;; and restoration of undo history across Emacs sessions, even after restarting.
@@ -127,10 +125,7 @@
              markdown-view-mode)
   :mode (("\\.markdown\\'" . markdown-mode)
          ("\\.md\\'" . markdown-mode)
-         ("README\\.md\\'" . gfm-mode))
-  :bind
-  (:map markdown-mode-map
-        ("C-c C-e" . markdown-do)))
+         ("README\\.md\\'" . gfm-mode)))
 
 ;; Org mode is a major mode designed for organizing notes, planning, task
 ;; management, and authoring documents using plain text with a simple and
@@ -140,7 +135,7 @@
 (use-package org
   :commands (org-mode org-version)
   :mode
-  ("\\.org\\'" . org-mode)
+  ("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode)
   :custom
   (org-hide-leading-stars t)
   (org-startup-indented t)
@@ -168,6 +163,58 @@
    :config
    (no-littering-theme-backups))
 
+(use-package consult
+   :bind (
+          ;; Drop-in replacements
+          ("C-x b" . consult-buffer)
+          ("M-y"   . consult-yank-pop)
+          ;; Searching
+          ("M-s /" . consult-ripgrep)
+   )
+)
+
+(use-package dired
+  :ensure nil
+  :commands (dired)
+  :hook
+  ((dired-mode . dired-hide-details-mode)
+   (dired-mode . hl-line-mode))
+  :config
+  (setq dired-recursive-copies 'always)
+  (setq dired-recursive-deletes 'always)
+  (setq delete-by-moving-to-trash t)
+  (setq dired-dwim-target t))
+
+(use-package dired-subtree
+   :after dired
+   :bind
+   ( :map dired-mode-map
+     ("<tab>" . dired-subtree-toggle)
+     ("TAB" . dired-subtree-toggle)
+     ("<backtab>" . dired-subtree-remove)
+     ("S-TAB" . dired-subtree-remove))
+   :config
+   (setq dired-subtree-use-backgrounds nil))
+
+(use-package orderless
+    :custom
+    (completion-styles '(orderless basic))
+    ;; Do fuzzy search by adding orderless-flex to the list.
+    (orderless-matching-styles '(orderless-literal orderless-regexp))
+    ;; Get orderless everywhere
+    (completion-category-defaults nil)
+    (completion-category-overrides
+     ;; from Emacs Writing Studio & Corfu README
+     '((file (styles partial-completion)))))
+
+(use-package dumb-jump
+   :hook (xref-backend-functions . dumb-jump-xref-activate)
+   :custom
+   ;; use consult instead of pop-up buffer
+   (xref-show-definitions-function 'xref-show-definitions-completing-read)
+   )
+
 (delete-selection-mode 1)
 (setq line-number-mode t)
 (setq confirm-kill-emacs 'y-or-n-p)
+(setq truncate-string-ellipsis "…")

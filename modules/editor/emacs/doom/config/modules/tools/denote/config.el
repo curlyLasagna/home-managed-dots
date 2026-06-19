@@ -37,8 +37,8 @@
   (setq! denote-journal-directory (expand-file-name "journal" denote-directory))
   (map! :leader
         :desc "New or existing journal entry" :n "d j n" #'denote-journal-new-or-existing-entry
-        :desc "Link or create journal entry"  :n "d j l" #'denote-journal-link-or-create-entry)
-  )
+        :desc "Link or create journal entry"  :n "d j l" #'denote-journal-link-or-create-entry))
+
 
 (provide 'config)
 ;;; config.el ends here

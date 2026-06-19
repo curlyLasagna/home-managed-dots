@@ -1,15 +1,15 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setopt user-full-name "Luis Dale Gascon"
-        user-mail-address "luis.gcodes@gmail.com")
+(setq user-full-name "Luis Dale Gascon"
+      user-mail-address "luis.gcodes@gmail.com")
 
-(setopt doom-font (font-spec :family "ZedMono Nerd Font" :size 14 :weight 'light)
-        doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 15)
-        doom-big-font (font-spec :family "ZedMono Nerd Font" :size 25)
-        line-spacing 0.10)
+(setq doom-font (font-spec :family "ZedMono Nerd Font" :size 14 :weight 'light)
+      doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 15)
+      doom-big-font (font-spec :family "ZedMono Nerd Font" :size 25)
+      line-spacing 0.10)
 
 (after! treemacs
-  (setopt treemacs-position 'right))
+  (setq treemacs-position 'right))
 
 (setq +format-on-save-disabled-modes
       '(sql-mode org-msg-edit-mode git-commit-mode))
@@ -19,27 +19,18 @@
   (setopt auto-dark-themes '((doom-dracula) (modus-operandi)))
   )
 
-;; I hate clutter
 (whitespace-mode -1)
 ;; Replace selected region with yanked
 (delete-selection-mode +1)
 (global-subword-mode +1)
 (repeat-mode 1)
 (global-goto-address-mode +1)
-(setopt tab-width 4)
-(setopt truncate-string-ellipsis "…")
-(setopt display-line-numbers-type 'relative)
-(setopt confirm-kill-emacs nil)
-(setopt frame-title-format "Scuffed Cursor")
-(setopt initial-scratch-message nil)
-
-;; Possible fix?
-;; Auto-save errors out since it tries to save within this path:
-;; <default-directory + doom-profile-cache-dir> which doesn't exists and shouldn't
-;; (setopt auto-save-file-name-transforms
-;;         `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
-;;            ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/tramp/\\2-") sha1)
-;;           (".*" ,(concat (file-name-as-directory doom-profile-cache-dir) "autosave/\\1-") sha1)))
+(setq tab-width 4)
+(setq truncate-string-ellipsis "…")
+(setq display-line-numbers-type 'relative)
+(setq confirm-kill-emacs nil)
+(setq frame-title-format "Scuffed Cursor")
+(setq initial-scratch-message nil)
 
 (map!
  :desc "Disable mouse scroll that modifies text size"
@@ -57,7 +48,7 @@
   ;; Hide modeline
   ;; Slightly upsize text
   ;; Center text
-  (setopt 
+  (setq 
    +zen-text-scale 0
    writeroom-width 0.8)
   ;; Toggle line numbers
@@ -68,65 +59,65 @@
   )
 
 ;; Disable word suggestion popups
-(setopt text-mode-ispell-word-completion nil)
+(setq text-mode-ispell-word-completion nil)
 
 (after! eglot
   ;; Keep the echo area from expanding up
-  (setopt eldoc-echo-area-use-multiline-p nil)
-  (setopt eldoc-echo-area-prefer-doc-buffer t)
+  (setq eldoc-echo-area-use-multiline-p nil)
+  (setq eldoc-echo-area-prefer-doc-buffer t)
   )
 
 (after! org-roam
   ;; org-roam is strictly for learning
-  (setopt org-roam-directory (expand-file-name "~/Documents/org/roam"))
-  (setopt org-roam-capture-templates
-          '(("p" "permanent" plain
-             "* ${title}\n%?"
-             :target
-             (file+head
-              "${slug}.org"
-              "#+title: ${title}\n#+filetags: permanent\n#+DATE: %u\n")
-             :unnarrowed t)
-            ("l" "literature" plain
-             "* ${title}\n%?"
-             :target
-             (file+head
-              "${slug}.org"
-              "#+title: ${title} \n#+filetags: literature\n#+DATE: %u\n")
-             :unnarrowed t)
-            ("c" "citar-literature" plain
-             "%?"
-             :target
-             (file+head
-              "${citar-citekey}.org"
-              "#+title: ${citar-citekey} (${citar-date}) \n#+filetags: literature\n#+DATE: %u")
-             :unnarrowed t)
-            )
+  (setq org-roam-directory (expand-file-name "~/Documents/org/roam"))
+  (setq org-roam-capture-templates
+        '(("p" "permanent" plain
+           "* ${title}\n%?"
+           :target
+           (file+head
+            "${slug}.org"
+            "#+title: ${title}\n#+filetags: permanent\n#+DATE: %u\n")
+           :unnarrowed t)
+          ("l" "literature" plain
+           "* ${title}\n%?"
+           :target
+           (file+head
+            "${slug}.org"
+            "#+title: ${title} \n#+filetags: literature\n#+DATE: %u\n")
+           :unnarrowed t)
+          ("c" "citar-literature" plain
+           "%?"
+           :target
+           (file+head
+            "${citar-citekey}.org"
+            "#+title: ${citar-citekey} (${citar-date}) \n#+filetags: literature\n#+DATE: %u")
+           :unnarrowed t)
           )
+        )
 
-  (setopt org-roam-dailies-capture-templates
-          '(("d" "default"
-             entry
-             "* %<%H:%M>\n** %?"
-             :if-new (file+head "%<%Y-%m-%d>.org"
-                                "#+title: %<%Y-%m-%d>\n")
-             :empty-lines 1)
-            )
-          ))
+  (setq org-roam-dailies-capture-templates
+        '(("d" "default"
+           entry
+           "* %<%H:%M>\n** %?"
+           :if-new (file+head "%<%Y-%m-%d>.org"
+                              "#+title: %<%Y-%m-%d>\n")
+           :empty-lines 1)
+          )
+        ))
 
 (after! org
-  (setopt org-todo-keywords
-	  '(
-            ;; Project todos
-            (sequence "TODO" "WIP" "DONE")
-            ;; Note-taking todos
-            (sequence "INBOX(i)"
-	              "PROCESSING(p)"
-	              "WAIT(w)"
-	              "TO-READ(r)"
-	              "|"
-	              "DONE(d)"
-	              )))
+  (setq org-todo-keywords
+	'(
+          ;; Project todos
+          (sequence "TODO" "WIP" "DONE")
+          ;; Note-taking todos
+          (sequence "INBOX(i)"
+	            "PROCESSING(p)"
+	            "WAIT(w)"
+	            "TO-READ(r)"
+	            "|"
+	            "DONE(d)"
+	            )))
   (defun my/org-capture-select-project-target ()
     "Select a project headline and move point to the desired sub-heading. Generated by Gemini 3 (Fast)"
     (let* ((file +org-capture-projects-file)
@@ -140,89 +131,75 @@
       (re-search-forward (format org-complex-heading-regexp-format (regexp-quote selected)))
       (re-search-forward (format org-complex-heading-regexp-format (regexp-quote subheading)))))
 
-  (setopt org-latex-src-block-backend 'listings)
-  ;; Utilize latexmkrc
-  (setopt org-latex-pdf-process '("latexmk -f %f"))
-  (setopt org-image-max-width 0.5)
-  (setopt org-directory (expand-file-name "~/Documents/org/"))
-  (setopt org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
-  (setopt org-latex-compiler "lualatex")
-  (setopt org-preview-latex-default-process 'dvisvgm)
+  (setq org-image-max-width 0.5)
+  (setq org-directory (expand-file-name "~/Documents/org/"))
+  (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+  (setq org-latex-compiler "lualatex")
   (when (modulep! :lang org +dragndrop)
-    (setopt org-download-image-dir (expand-file-name "attachments" org-directory))
+    (setq org-download-image-dir (expand-file-name "attachments" org-directory))
     )
   (map!
    :map org-mode-map
    :desc "Insert org heading" "C-s-<return>" #'org-insert-heading)
-  (setopt org-refile-allow-creating-parent-nodes 'confirm)
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
 
-  (setopt +org-capture-journal-file (expand-file-name "journal.org" org-directory)
-          +org-capture-projects-file (expand-file-name "projects.org" org-directory)
+  (setq +org-capture-journal-file (expand-file-name "journal.org" org-directory)
+        +org-capture-projects-file (expand-file-name "projects.org" org-directory)
+        )
+
+  (setq org-capture-templates
+        ;; Vanilla org is used for project, journals and meetings
+        '(
+          ("j" "Journal")
+          ("jn" "Journal" entry
+           (file+olp+datetree +org-capture-journal-file)
+           "* %<%I:%M %p>\n%?" :prepend t :tree-type (year month day)
+           )
+
+          ("jd" "Journal on date" entry
+           (file+olp+datetree +org-capture-journal-file)
+           "* %<%I:%M %p>\n%?"
+           :prepend t :time-prompt t :tree-type (year month day)
+           )
+
+          ("jw" "Work log" entry
+           (file+olp+datetree "work-log.org")
+           "* %?" :clock-in t :clock-keep t :tree-type (year month week day)
+           )
+
+          ("p" "Projects")
+          ("pN" "New project" entry
+           (file +org-capture-projects-file)
+           "* %^{Project Name}\n** Tasks\n** Notes")
+          ("pt" "Project todo" entry
+           (function my/org-capture-select-project-target)
+           "* TODO %? %i"
+           :subheading "Tasks"
+           :prepend nil)
+
+          ("pn" "Project notes" entry
+           (function my/org-capture-select-project-target)
+           "* %? %i"
+           :subheading "Notes"
+           :prepend t)
           )
+        )
 
-  (setopt org-capture-templates
-          ;; Vanilla org is used for project, journals and meetings
-          '(
-            ("m" "Meeting" entry (file+olp+datetree +org-capture-journal-file)
-             "* %^{Meeting with?} :MEETING:\n%?" :clock-in t :clock-resume t :tree-type (year month week day)
-             )
-
-            ("j" "Journal")
-            ("jn" "Journal" entry
-             (file+olp+datetree +org-capture-journal-file)
-             "* %<%I:%M %p>\n%?" :prepend t :tree-type (year month day)
-             )
-
-            ("jd" "Journal on date" entry
-             (file+olp+datetree +org-capture-journal-file)
-             "* %<%I:%M %p>\n%?"
-             :prepend t :time-prompt t :tree-type (year month day)
-             )
-
-            ("jw" "Work log")
-            ("jwo" "log opsify work" entry
-             (file+olp+datetree "opsify-logs.org")
-             "* %?" :clock-in t :clock-keep t :tree-type (year month week day)
-             )
-            
-            ("jws" "log secured work" entry
-             (file+olp+datetree "secured-logs.org")
-             "* %?" :clock-in t :clock-keep t :tree-type (year month week day)
-             )
-
-            ("p" "Projects")
-            ("pN" "New project" entry
-             (file +org-capture-projects-file)
-             "* %^{Project Name}\n** Tasks\n** Notes")
-            ("pt" "Project todo" entry
-             (function my/org-capture-select-project-target)
-             "* TODO %? %i"
-             :subheading "Tasks"
-             :prepend nil)
-
-            ("pn" "Project notes" entry
-             (function my/org-capture-select-project-target)
-             "* %? %i"
-             :subheading "Notes"
-             :prepend t)
-            )
-          )
-
-  (setopt org-agenda-files
-          (append
-           (when (file-directory-p org-directory)
-             (directory-files org-directory t "\\.org$"))
-           ))
+  (setq org-agenda-files
+        (append
+         (when (file-directory-p org-directory)
+           (directory-files org-directory t "\\.org$"))
+         ))
   )
 
 (after! dired
-  (setopt dired-kill-when-opening-new-dired-buffer t))
+  (setq dired-kill-when-opening-new-dired-buffer t))
 
 (after! flycheck
   (flycheck-popup-tip-mode -1))
 
 (after! which-key
-  (setopt which-key-idle-delay 0.8))
+  (setq which-key-idle-delay 0.8))
 
 
 (after! markdown-mode
@@ -240,42 +217,34 @@
    ))
 
 (after! modus-themes
-  (setopt modus-themes-fringes nil))
+  (setq modus-themes-fringes nil))
 
 (when (featurep :system 'macos)
-  (setopt ns-use-proxy-icon 'nil)
+  (setq ns-use-proxy-icon 'nil)
   ;; Occupy a space if MacOS fullscreen
-  (setopt ns-use-native-fullscreen t)
-  (setopt mac-right-option-modifier 'meta))
+  (setq ns-use-native-fullscreen t)
+  (setq mac-right-option-modifier 'meta))
 
 (when (modulep! :editor word-wrap)
   (+global-word-wrap-mode 1))
 
 (after! lsp-ui
-  (setopt lsp-ui-doc-enable nil)
-  (setopt lsp-ui-doc-delay 0.2)
-  (setopt lsp-ui-doc-show-with-cursor nil)
-  (setopt lsp-ui-doc-position 'top)
-  (setopt lsp-ui-doc-max-width 120)
-  (setopt lsp-ui-sideline-show-diagnostics nil)
-  (setopt lsp-ui-imenu-window-fix-width t)
-  (setopt lsp-ui-imenu-window-width 20)
-  (setopt lsp-ui-sideline-show-diagnostics nil)
-  )
-
-(after! web-mode
-  (setopt web-mode-code-indent-offset 4)
-  (setopt web-mode-markup-indent-offset 2)
-  (add-hook 'web-mode-hook #'web-mode-toggle-current-element-highlight)
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-delay 0.2)
+  (setq lsp-ui-doc-show-with-cursor nil)
+  (setq lsp-ui-doc-position 'top)
+  (setq lsp-ui-doc-max-width 120)
+  (setq lsp-ui-sideline-show-diagnostics nil)
+  (setq lsp-ui-imenu-window-fix-width t)
+  (setq lsp-ui-imenu-window-width 20)
+  (setq lsp-ui-sideline-show-diagnostics nil)
   )
 
 (after! markdown-mode
-  (setopt markdown-unordered-list-item-prefix "  - ")
+  (setq markdown-unordered-list-item-prefix "  - ")
   )
 
 (after! gptel
-  (setq gptel-model 'gpt-4.1
-        gptel-backend (gptel-make-gh-copilot "Copilot"))
   ;; Dock gptel on the left
   (set-popup-rule!
     (lambda (bname _action)
@@ -287,12 +256,6 @@
     :side 'left
     :ttl nil)
   )
-
-(setopt mode-line-format
-        ;; Remove existing info in modeline
-        (delq 'mode-line-modes
-              (delq 'mode-line-misc-info
-                    mode-line-format)))
 
 (defun nf/parse-headline (x)
   (plist-get (cadr x) :raw-value))
@@ -311,7 +274,7 @@
 (map! "C-z" nil :desc "Disable suspend frame keymap")
 
 (after! citar
-  (setopt citar-org-roam-capture-template-key "c")
-  (setopt org-cite-global-bibliography '("~/bib/ReferenceLibrary.bib"))
-  (setopt citar-bibliography org-cite-global-bibliography)
+  (setq citar-org-roam-capture-template-key "c")
+  (setq org-cite-global-bibliography '("~/bib/ReferenceLibrary.bib"))
+  (setq citar-bibliography org-cite-global-bibliography)
   )
