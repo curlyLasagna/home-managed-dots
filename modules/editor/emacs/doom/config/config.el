@@ -3,8 +3,8 @@
 (setq user-full-name "Luis Dale Gascon"
       user-mail-address "luis.gcodes@gmail.com")
 
-(setq doom-font (font-spec :family "ZedMono Nerd Font" :size 14 :weight 'light)
-      doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 15)
+(setq doom-font (font-spec :family "DejaVuSansM Nerd Font Mono" :size 14)
+      doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 16)
       doom-big-font (font-spec :family "ZedMono Nerd Font" :size 25)
       line-spacing 0.10)
 
@@ -210,6 +210,7 @@
   )
 
 (after! vertico
+  (setq vertico-count 10)
   (map!
    :map vertico-map
    :desc "Scroll up" "C-v" #'scroll-up-command
