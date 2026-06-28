@@ -4,7 +4,8 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        docker
+        # docker
+        orbstack
         lazydocker
       ];
     };
