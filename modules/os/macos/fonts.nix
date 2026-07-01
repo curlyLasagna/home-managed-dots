@@ -11,6 +11,7 @@
             nerd-fonts.roboto-mono
             nerd-fonts.zed-mono
             nerd-fonts.dejavu-sans-mono
+            borg-sans-mono
             alegreya
             julia-mono
             ioskeley-mono.normal
