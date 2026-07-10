@@ -158,7 +158,7 @@
 
           ("jd" "Journal on date" entry
            (file+olp+datetree +org-capture-journal-file)
-           "* %<%I:%M %p>\n%?"
+           "* %?"
            :prepend t :time-prompt t :tree-type (year month day)
            )
 
