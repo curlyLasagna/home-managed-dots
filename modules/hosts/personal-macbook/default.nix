@@ -73,7 +73,7 @@ in
       hm.zoxide
       hm.macos
       # Personal specific
-      hm."personal-latexmkrc"
+      hm."latex"
       hm."personal-packages"
       hm.ghostty
       # Editors
