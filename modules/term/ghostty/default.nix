@@ -23,7 +23,7 @@
         window-padding-y = 2
         window-inherit-working-directory = true
 
-        theme = light:Kanso Pearl,dark:Kanagawa Dragon
+        theme = Lovelace
 
         shell-integration-features = no-cursor
         cursor-style = block
