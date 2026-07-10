@@ -26,6 +26,11 @@
           default = "fish";
           description = "The default shell to enable across the host";
         };
+        multiplexer = lib.mkOption {
+          type = lib.types.str;
+          default = "none";
+          description = "Terminal multiplexer. `none` is default";
+        };
       };
 
       config = {
