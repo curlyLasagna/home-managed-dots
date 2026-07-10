@@ -7,3 +7,5 @@
          (:options
           (:home-manager
            (:expr "(builtins.getFlake (builtins.toString ./.)).homeConfigurations.\"personal-macbook\".options"))))))))
+
+((nil . ((projectile-project-compilation-cmd . "home-manager switch --flake .#"))))
