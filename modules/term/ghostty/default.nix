@@ -3,12 +3,12 @@
   flake.homeModules."ghostty" =
     { config, pkgs, ... }:
     let
-      useZellij = config.programs.zellij.enable or false;
+      useMultiplexer = config.myHost.multiplexer != "none";
       cmd =
-        if useZellij then
+        if useMultiplexer then
           "${
             pkgs.${config.myHost.defaultShell}
-          }/bin/${config.myHost.defaultShell} --login --interactive -c ${pkgs.zellij}/bin/zellij"
+          }/bin/${config.myHost.defaultShell} --login --interactive -c ${config.myHost.multiplexer}"
         else
           "${pkgs.${config.myHost.defaultShell}}/bin/${config.myHost.defaultShell} --login --interactive";
     in

@@ -4,7 +4,7 @@
     { config, pkgs, ... }:
     let
       themes = inputs.alacritty-themes;
-      useZellij = config.programs.zellij.enable or false;
+      useMultiplexer = config.myHost.multiplexer != "none";
     in
     {
       programs.alacritty = {
@@ -13,12 +13,12 @@
           terminal.shell = {
             program = "${pkgs.${config.myHost.defaultShell}}/bin/${config.myHost.defaultShell}";
             args =
-              if useZellij then
+              if useMultiplexer then
                 [
                   "--login"
                   "--interactive"
                   "-c"
-                  "zellij"
+                  config.myHost.multiplexer
                 ]
               else
                 [
