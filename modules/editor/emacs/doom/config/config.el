@@ -14,11 +14,6 @@
 (setq +format-on-save-disabled-modes
       '(sql-mode org-msg-edit-mode git-commit-mode))
 
-(use-package! auto-dark
-  :init
-  (setopt auto-dark-themes '((doom-dracula) (modus-operandi)))
-  )
-
 (whitespace-mode -1)
 ;; Replace selected region with yanked
 (delete-selection-mode +1)
