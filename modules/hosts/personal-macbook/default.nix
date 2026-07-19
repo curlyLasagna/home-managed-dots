@@ -15,16 +15,22 @@ in
     modules = [
       hm.inputs
       hm."global-options"
+      # Global options value
       (
         { ... }:
         {
-          myHost.defaultShell = "fish";
-          myHost.git.name = "Luis";
-          myHost.git.email = "luis.gcodes@gmail.com";
-          myHost.git.githubUserName = "curlyLasagna";
+          myHost = {
+            defaultShell = "fish";
+            multiplexer = "herdr";
+            git = {
+              name = "Luis";
+              email = "luis.gcodes@gmail.com";
+              githubUserName = "curlyLasagna";
+            };
+          };
         }
       )
-      # Inlined from base
+      # Home-manager
       (
         {
           config,
@@ -38,7 +44,7 @@ in
             homeDirectory = "/Users/${config.home.username}";
             stateVersion = "23.11";
             sessionVariables = {
-              EDITOR = "nvim";
+              EDITOR = "emacs -nw";
             };
           };
           programs.home-manager.enable = true;
@@ -47,13 +53,9 @@ in
             frequency = "weekly";
             timestamp = "-7 days";
           };
-          home.sessionPath = [
-            "${config.home.homeDirectory}/.ghcup/bin"
-          ];
         }
       )
       # Modules
-      hm.lf
       hm.spell
       hm.lua
       hm.markdown
