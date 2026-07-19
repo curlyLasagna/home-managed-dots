@@ -36,7 +36,9 @@
   (map!
    :leader
    :desc "Kill ring history"
-   "s c" #'consult-yank-from-kill-ring)
+   "s c" #'consult-yank-from-kill-ring
+   :desc "Search org-roam notes"
+   "s o" #'my/consult-ripgrep-org-roam)
   )
 
 (after! writeroom-mode
@@ -130,6 +132,8 @@
   (setq org-directory (expand-file-name "~/Documents/org/"))
   (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
   (setq org-latex-compiler "lualatex")
+  (setq org-latex-pdf-process
+        '("latexmk %f"))
   (when (modulep! :lang org +dragndrop)
     (setq org-download-image-dir (expand-file-name "attachments" org-directory))
     )
@@ -240,19 +244,6 @@
   (setq markdown-unordered-list-item-prefix "  - ")
   )
 
-(after! gptel
-  ;; Dock gptel on the left
-  (set-popup-rule!
-    (lambda (bname _action)
-      (and (null gptel-display-buffer-action)
-           (buffer-local-value 'gptel-mode (get-buffer bname))))
-    :select t
-    :size 0.3
-    :quit nil
-    :side 'left
-    :ttl nil)
-  )
-
 (defun nf/parse-headline (x)
   (plist-get (cadr x) :raw-value))
 
@@ -267,6 +258,21 @@
 	 (desc (read-string "Description: " choice)))
     (org-insert-link buffer-file-name (concat "*" choice) desc)))
 
+(defun my/consult-ripgrep-org-roam ()
+  "Call `consult-ripgrep' for `.org' files in `org-roam-directory'. Inspired by https://github.com/jgru/consult-org-roam but I just want search"
+  (interactive)
+  (unless (boundp 'org-roam-directory)
+    (require 'org-roam))
+  (let ((dir (expand-file-name org-roam-directory)))
+    (if (file-directory-p dir)
+        (let ((consult-ripgrep-args
+               (append (if (listp consult-ripgrep-args)
+                           consult-ripgrep-args
+                         (list consult-ripgrep-args))
+                       '("-g" "*.org"))))
+          (consult-ripgrep dir))
+      (user-error "org-roam-directory %S does not exist or is not a directory" dir))))
+
 (map! "C-z" nil :desc "Disable suspend frame keymap")
 
 (after! citar
@@ -274,3 +280,5 @@
   (setq org-cite-global-bibliography '("~/bib/ReferenceLibrary.bib"))
   (setq citar-bibliography org-cite-global-bibliography)
   )
+
+

@@ -13,11 +13,6 @@
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
-;;; Commentary:
-;;
-;;  Description
-;;
-;;; Code:
 
 (require 'acp)
 (require 'agent-shell)
@@ -33,16 +28,16 @@
   ;; Dock agent-shell on the left
   (set-popup-rule!
     (lambda (bname _action)
-      (let ((buf (get-buffer bname)))
-        (and buf
-             (with-current-buffer buf
-               (derived-mode-p 'agent-shell-mode)))))
+      (and (display-graphic-p)
+           (let ((buf (get-buffer bname)))
+             (and buf
+                  (with-current-buffer buf
+                    (derived-mode-p 'agent-shell-mode))))))
     :select t
     :size 0.3
     :quit nil
     :side 'left
-    :ttl nil)
-  )
+    :ttl nil))
+
 
 (provide 'config)
-;;; config.el ends here
