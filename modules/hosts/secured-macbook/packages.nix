@@ -8,10 +8,6 @@
         slack
         codex
         awscli2
-        terraform
-        terragrunt
-        terraform-ls
-        tflint
         uv
       ];
     };

@@ -20,6 +20,7 @@ in
         {
           myHost = {
             defaultShell = "fish";
+            multiplexer = "herdr";
             git = {
               email = "luis.gcodes@gmail.com";
               name = "Luis";
@@ -28,7 +29,6 @@ in
           };
         }
       )
-      # Inlined from base
       (
         {
           config,
@@ -74,8 +74,8 @@ in
         }
       )
       # Modules
-      hm.lf
       hm.spell
+      hm.alacritty
       hm.markdown
       hm.nix
       hm.yaml
@@ -94,6 +94,7 @@ in
       hm.zoxide
       hm.macos
       hm.ghostty
+      hm.herdr
       # Work packages
       hm."secured-macbook-packages"
       # Editors
