@@ -66,7 +66,7 @@
 
        :checkers
        (syntax +icons)              ; tasing you for every semicolon you forget
-       (spell +everywhere +flyspell) ; tasing you for misspelling mispelling
+       (spell +everywhere +hunspell) ; tasing you for misspelling mispelling
        ;; grammar           ; tasing grammar mistake every you make
 
        :tools

@@ -1,24 +1,29 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq user-full-name "Luis Dale Gascon"
-      user-mail-address "luis.gcodes@gmail.com")
+(setq! user-full-name "Luis Dale Gascon"
+       user-mail-address "luis.gcodes@gmail.com")
 
-(setq doom-font (font-spec :family "DejaVuSansM Nerd Font Mono" :size 14)
-      doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 16)
-      doom-big-font (font-spec :family "ZedMono Nerd Font" :size 25)
-      line-spacing 0.10)
+(setq! doom-font (font-spec :family "DejaVuSansM Nerd Font Mono" :size 14)
+       doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 16)
+       doom-big-font (font-spec :family "ZedMono Nerd Font" :size 25)
+       line-spacing 0.10)
 
 (after! treemacs
-  (setq treemacs-position 'right))
+  (setq! treemacs-position 'right))
 
-(setq +format-on-save-disabled-modes
-      '(sql-mode org-msg-edit-mode git-commit-mode))
+(setq! +format-on-save-disabled-modes
+       '(sql-mode org-msg-edit-mode git-commit-mode))
+
+;; No modal editing in Emacs
+(setq! cursor-type 'bar)
 
 (whitespace-mode -1)
 ;; Replace selected region with yanked
 (delete-selection-mode +1)
+;; Intelligently moves a subword by different cases
 (global-subword-mode +1)
 (repeat-mode 1)
+;; Clickable links
 (global-goto-address-mode +1)
 (setq tab-width 4)
 (setq truncate-string-ellipsis "…")
@@ -280,5 +285,4 @@
   (setq org-cite-global-bibliography '("~/bib/ReferenceLibrary.bib"))
   (setq citar-bibliography org-cite-global-bibliography)
   )
-
 
