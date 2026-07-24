@@ -52,7 +52,7 @@
 
       xdg.configFile."alacritty/theme.toml".source =
         let
-          themeName = "kanagawa_dragon";
+          themeName = "hatsunemiku";
           ext = "toml";
         in
         "${themes}/themes/${themeName}.${ext}";
