@@ -82,6 +82,7 @@ in
       hm.javascript
       hm.fish
       hm.nixvim
+      hm."peon-ping"
       hm.starship
       hm.zsh
       hm.core

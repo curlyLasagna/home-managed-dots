@@ -1,16 +1,30 @@
 { inputs, ... }:
 {
   flake.homeModules."peon-ping" =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
+    let
+      peonPackage = inputs.peon-ping.packages.${pkgs.system}.default;
+      peonCodexAdapterPath = "${peonPackage}/share/peon-ping/adapters/codex.sh";
+      peonCodexHook = {
+        type = "command";
+        command = "bash ${peonCodexAdapterPath}";
+        timeout = 10;
+      };
+      mkPeonCodexHook = hook: {
+        matcher = "";
+        hooks = [ hook ];
+      };
+    in
     {
       imports = [ inputs.peon-ping.homeManagerModules.default ];
 
       programs.peon-ping = {
+        enableZshIntegration = false;
         enable = true;
-        package = inputs.peon-ping.packages.${pkgs.system}.default;
+        package = peonPackage;
         settings = {
-          default_pack = "glados";
-          volume = 0.7;
+          default_pack = "Rapper ad-libs";
+          volume = 1.0;
           enabled = true;
           desktop_notifications = true;
           categories = {
@@ -19,7 +33,7 @@
             "task.error" = true;
             "input.required" = true;
             "resource.limit" = true;
-            "user.spam" = true;
+            "user.spam" = false;
           };
         };
         installPacks = [
@@ -33,6 +47,28 @@
             };
           }
         ];
+      };
+
+      home.file.".codex/hooks.json".text = builtins.toJSON {
+        description = "Peon ping hook";
+        hooks = {
+          SessionStart = [ (mkPeonCodexHook peonCodexHook) ];
+          SessionEnd = [ (mkPeonCodexHook peonCodexHook) ];
+          SubagentStart = [ (mkPeonCodexHook peonCodexHook) ];
+          SubagentStop = [ (mkPeonCodexHook peonCodexHook) ];
+          UserPromptSubmit = [ (mkPeonCodexHook peonCodexHook) ];
+          Stop = [ (mkPeonCodexHook peonCodexHook) ];
+          Notification = [ (mkPeonCodexHook peonCodexHook) ];
+          PermissionRequest = [ (mkPeonCodexHook peonCodexHook) ];
+          PreToolUse = [ (mkPeonCodexHook peonCodexHook) ];
+          PostToolUseFailure = [
+            {
+              matcher = "Bash";
+              hooks = [ peonCodexHook ];
+            }
+          ];
+          PreCompact = [ (mkPeonCodexHook peonCodexHook) ];
+        };
       };
     };
 }
