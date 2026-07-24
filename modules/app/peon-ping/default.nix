@@ -4,16 +4,6 @@
     { config, pkgs, ... }:
     let
       peonPackage = inputs.peon-ping.packages.${pkgs.system}.default;
-      peonCodexAdapterPath = "${peonPackage}/share/peon-ping/adapters/codex.sh";
-      peonCodexHook = {
-        type = "command";
-        command = "bash ${peonCodexAdapterPath}";
-        timeout = 10;
-      };
-      mkPeonCodexHook = hook: {
-        matcher = "";
-        hooks = [ hook ];
-      };
     in
     {
       imports = [ inputs.peon-ping.homeManagerModules.default ];
@@ -42,8 +32,8 @@
             src = pkgs.fetchFromGitHub {
               owner = "garysheng";
               repo = "peonping-rapper-adlibs";
-              rev = "main"; # or a commit hash/tag
-              sha256 = "sha256-MYQITWqHXZUcoQZbIYKu80k/okS9q677LuDivihDrfw="; # Leave empty first, Nix will tell you the correct hash
+              rev = "main";
+              sha256 = "sha256-MYQITWqHXZUcoQZbIYKu80k/okS9q677LuDivihDrfw=";
             };
           }
         ];
@@ -52,22 +42,128 @@
       home.file.".codex/hooks.json".text = builtins.toJSON {
         description = "Peon ping hook";
         hooks = {
-          SessionStart = [ (mkPeonCodexHook peonCodexHook) ];
-          SessionEnd = [ (mkPeonCodexHook peonCodexHook) ];
-          SubagentStart = [ (mkPeonCodexHook peonCodexHook) ];
-          SubagentStop = [ (mkPeonCodexHook peonCodexHook) ];
-          UserPromptSubmit = [ (mkPeonCodexHook peonCodexHook) ];
-          Stop = [ (mkPeonCodexHook peonCodexHook) ];
-          Notification = [ (mkPeonCodexHook peonCodexHook) ];
-          PermissionRequest = [ (mkPeonCodexHook peonCodexHook) ];
-          PreToolUse = [ (mkPeonCodexHook peonCodexHook) ];
+          SessionStart = [
+            {
+              matcher = "startup|resume";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                }
+              ];
+            }
+          ];
+          SessionEnd = [
+            {
+              matcher = "";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                }
+              ];
+            }
+          ];
+          SubagentStart = [
+            {
+              matcher = "";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                }
+              ];
+            }
+          ];
+          SubagentStop = [
+            {
+              matcher = "";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                }
+              ];
+            }
+          ];
+          UserPromptSubmit = [
+            {
+              matcher = "";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                }
+              ];
+            }
+          ];
+          Stop = [
+            {
+              matcher = "";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  timeout = 10;
+                }
+              ];
+            }
+          ];
+          Notification = [
+            {
+              matcher = "";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                }
+              ];
+            }
+          ];
+          PermissionRequest = [
+            {
+              matcher = "";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                }
+              ];
+            }
+          ];
+          PreToolUse = [
+            {
+              matcher = "";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                }
+              ];
+            }
+          ];
           PostToolUseFailure = [
             {
               matcher = "Bash";
-              hooks = [ peonCodexHook ];
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                }
+              ];
             }
           ];
-          PreCompact = [ (mkPeonCodexHook peonCodexHook) ];
+          PreCompact = [
+            {
+              matcher = "";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                }
+              ];
+            }
+          ];
         };
       };
     };
