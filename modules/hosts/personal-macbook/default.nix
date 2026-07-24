@@ -74,10 +74,12 @@ in
       hm.lazygit
       hm.zoxide
       hm.macos
+      hm."peon-ping"
       # Personal specific
       hm."latex"
       hm."personal-packages"
-      hm.ghostty
+      # hm.ghostty
+      hm.alacritty
       # Editors
       hm.nixvim
       hm.doomemacs

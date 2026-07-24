@@ -194,6 +194,8 @@
          (when (file-directory-p org-directory)
            (directory-files org-directory t "\\.org$"))
          ))
+
+  (add-hook 'org-mode-hook 'visual-line-mode)
   )
 
 (after! dired
