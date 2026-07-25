@@ -4,6 +4,8 @@
     { config, pkgs, ... }:
     let
       peonPackage = inputs.peon-ping.packages.${pkgs.system}.default;
+      agyAdapter = "bash ${peonPackage}/share/peon-ping/adapters/antigravity.sh";
+      codexAdapter = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
     in
     {
       imports = [ inputs.peon-ping.homeManagerModules.default ];
@@ -13,10 +15,10 @@
         enable = true;
         package = peonPackage;
         settings = {
-          default_pack = "Rapper ad-libs";
+          default_pack = "glados";
           volume = 1.0;
           enabled = true;
-          desktop_notifications = true;
+          desktop_notifications = false;
           categories = {
             "session.start" = true;
             "task.complete" = true;
@@ -27,8 +29,9 @@
           };
         };
         installPacks = [
+          "glados"
           {
-            name = "Rapper ad-libs";
+            name = "ad-libs";
             src = pkgs.fetchFromGitHub {
               owner = "garysheng";
               repo = "peonping-rapper-adlibs";
@@ -39,127 +42,184 @@
         ];
       };
 
+      home.sessionPath = [
+        "${config.home.homeDirectory}/.openpeon"
+      ];
+
       home.file.".codex/hooks.json".text = builtins.toJSON {
         description = "Peon ping hook";
         hooks = {
           SessionStart = [
             {
-              matcher = "startup|resume";
               hooks = [
                 {
                   type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  command = codexAdapter;
+                  timeout = 10;
                 }
               ];
             }
           ];
           SessionEnd = [
             {
-              matcher = "";
               hooks = [
                 {
                   type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  command = codexAdapter;
+                  timeout = 3;
                 }
               ];
             }
           ];
           SubagentStart = [
             {
-              matcher = "";
               hooks = [
                 {
                   type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  command = codexAdapter;
+                  timeout = 10;
                 }
               ];
             }
           ];
           SubagentStop = [
             {
-              matcher = "";
               hooks = [
                 {
                   type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  command = codexAdapter;
+                  timeout = 10;
                 }
               ];
             }
           ];
           UserPromptSubmit = [
             {
-              matcher = "";
               hooks = [
                 {
                   type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  command = codexAdapter;
+                  timeout = 10;
                 }
               ];
             }
           ];
           Stop = [
             {
-              matcher = "";
               hooks = [
                 {
                   type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  command = codexAdapter;
                   timeout = 10;
-                }
-              ];
-            }
-          ];
-          Notification = [
-            {
-              matcher = "";
-              hooks = [
-                {
-                  type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
                 }
               ];
             }
           ];
           PermissionRequest = [
             {
-              matcher = "";
               hooks = [
                 {
                   type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  command = codexAdapter;
+                  timeout = 10;
                 }
               ];
             }
           ];
           PreToolUse = [
             {
-              matcher = "";
               hooks = [
                 {
                   type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  command = codexAdapter;
+                  timeout = 10;
                 }
               ];
             }
           ];
-          PostToolUseFailure = [
+          PostToolUse = [
             {
-              matcher = "Bash";
               hooks = [
                 {
                   type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  command = codexAdapter;
+                  timeout = 10;
                 }
               ];
             }
           ];
           PreCompact = [
             {
-              matcher = "";
               hooks = [
                 {
                   type = "command";
-                  command = "bash ${peonPackage}/share/peon-ping/adapters/codex.sh";
+                  command = codexAdapter;
+                  timeout = 10;
+                }
+              ];
+            }
+          ];
+        };
+      };
+
+      home.file.".gemini/config/hooks.json".text = builtins.toJSON {
+        peon-ping = {
+          PreInvocation = [
+            {
+              matcher = "startup";
+              hooks = [
+                {
+                  type = "command";
+                  command = agyAdapter;
+                  timeout = 10;
+                }
+              ];
+            }
+          ];
+          PostInvocation = [
+            {
+              matcher = ".*";
+              hooks = [
+                {
+                  type = "command";
+                  command = agyAdapter;
+                  timeout = 10;
+                }
+              ];
+            }
+          ];
+          PreToolUse = [
+            {
+              matcher = "run_command";
+              hooks = [
+                {
+                  type = "command";
+                  command = agyAdapter;
+                  timeout = 10;
+                }
+              ];
+            }
+          ];
+          PostToolUse = [
+            {
+              matcher = ".*";
+              hooks = [
+                {
+                  type = "command";
+                  command = agyAdapter;
+                  timeout = 10;
+                }
+              ];
+            }
+          ];
+          Stop = [
+            {
+              matcher = ".*";
+              hooks = [
+                {
+                  type = "command";
+                  command = agyAdapter;
+                  timeout = 10;
                 }
               ];
             }
