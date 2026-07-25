@@ -288,3 +288,6 @@
   (setq citar-bibliography org-cite-global-bibliography)
   )
 
+(after! git-auto-commit-mode
+  (setq! gac-automatically-push-p t)
+  )
