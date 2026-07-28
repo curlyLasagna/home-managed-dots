@@ -14,7 +14,7 @@
 (setq! +format-on-save-disabled-modes
        '(sql-mode org-msg-edit-mode git-commit-mode))
 
-;; No modal editing in Emacs
+;; It looks prettier anyway
 (setq! cursor-type 'bar)
 
 (whitespace-mode -1)
@@ -195,7 +195,7 @@
            (directory-files org-directory t "\\.org$"))
          ))
 
-  (add-hook 'org-mode-hook 'visual-line-mode)
+  (add-hook 'org-mode-hook 'visual-fill-column-mode)
   )
 
 (after! dired
