@@ -7,9 +7,7 @@
         enable = true;
 
         shellAbbrs = {
-          ls = "eza";
-          ee = "emacsclient -c --no-wait";
-          enw = "emacsclient -nw ";
+          e = "emacsclient -nw .";
           cd = "z";
         };
 
