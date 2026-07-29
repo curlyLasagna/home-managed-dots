@@ -27,6 +27,9 @@ in
               email = "luis.gcodes@gmail.com";
               githubUserName = "curlyLasagna";
             };
+            emacs = {
+              profile = "doom";
+            };
           };
         }
       )
@@ -82,7 +85,7 @@ in
       hm.alacritty
       # Editors
       hm.nixvim
-      hm.doomemacs
+      hm.emacs
       hm."zed-editor"
     ];
   };

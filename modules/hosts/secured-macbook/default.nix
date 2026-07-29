@@ -26,6 +26,9 @@ in
               name = "Luis";
               githubUserName = "curlyLasagna";
             };
+            emacs = {
+              profile = "doom";
+            };
           };
         }
       )
@@ -99,7 +102,7 @@ in
       # Work packages
       hm."secured-macbook-packages"
       # Editors
-      hm.doomemacs
+      hm.emacs
       hm."zed-editor"
     ];
   };
