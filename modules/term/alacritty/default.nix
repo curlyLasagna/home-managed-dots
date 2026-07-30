@@ -40,10 +40,10 @@
           };
           font = {
             normal = {
-              family = "JetBrainsMono Nerd Font";
-              style = "Regular";
+              family = "ZedMono Nerd Font";
+              style = "Light";
             };
-            size = 13;
+            size = 14;
           };
           selection.save_to_clipboard = true;
           general.import = [ "${config.xdg.configFile."alacritty/theme.toml".source}" ];
