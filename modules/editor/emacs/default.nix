@@ -28,8 +28,13 @@
             enable = true;
           };
 
+          # TODO: Fix emacsclient not rendering the correct colorscheme
           services.emacs = {
             enable = true;
+          };
+
+          programs.fish.shellAbbrs = {
+            e = "emacs -nw .";
           };
 
           home.packages = [ pkgs.emacs-lsp-booster ];
