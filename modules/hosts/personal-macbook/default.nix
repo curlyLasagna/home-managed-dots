@@ -12,8 +12,8 @@ in
 {
   flake.homeConfigurations."personal-macbook" = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = pkgsMac;
+    extraSpecialArgs = { inherit inputs; };
     modules = [
-      hm.inputs
       hm."global-options"
       # Global options value
       (
@@ -46,9 +46,6 @@ in
             username = "luis";
             homeDirectory = "/Users/${config.home.username}";
             stateVersion = "23.11";
-            sessionVariables = {
-              EDITOR = "emacs -nw";
-            };
           };
           programs.home-manager.enable = true;
           services.home-manager.autoExpire = {

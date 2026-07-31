@@ -10,15 +10,15 @@ in
 {
   flake.homeConfigurations.wsl = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = pkgsLinux;
+    extraSpecialArgs = { inherit inputs; };
     modules = [
-      hm.inputs
       hm."global-options"
       (
         { ... }:
         {
           myHost.defaultShell = "fish";
-          myHost.git.userName = "luis";
-          myHost.git.userEmail = "luis.gcodes@gmail.com";
+          myHost.git.name = "luis";
+          myHost.git.email = "luis.gcodes@gmail.com";
         }
       )
       # Inlined from base
@@ -59,7 +59,6 @@ in
       hm.starship
       hm.zsh
       hm.alacritty
-      hm.wezterm
       hm.zellij
       hm.core
       hm.direnv
@@ -68,7 +67,6 @@ in
       hm.fzf
       hm.git
       hm.lazygit
-      hm.search
       hm.zoxide
       # Editors
       hm.nixvim
