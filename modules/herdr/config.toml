@@ -2,7 +2,7 @@
 
 # Show first-run notification setup on startup.
 # Missing also shows onboarding; set false after you've chosen.
-# onboarding = true
+onboarding = false
 
 [theme]
 # Built-in themes: catppuccin, terminal, tokyo-night, dracula, nord,
@@ -74,8 +74,8 @@ prefix = "alt+space"
 # remove_worktree = ""  # optional, unset by default; opens confirmation
 # rename_workspace = "prefix+shift+w"
 # close_workspace = "prefix+shift+d"
-# previous_workspace = "" # optional, unset by default
-# next_workspace = ""     # optional, unset by default
+previous_workspace = "prefix+{" # optional, unset by default
+next_workspace = "prefix+}"     # optional, unset by default
 # previous_agent = ""     # optional, unset by default
 # next_agent = ""         # optional, unset by default
 # focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
@@ -203,11 +203,14 @@ prefix = "alt+space"
 
 # Play sounds when agents change state in background workspaces
 [ui.sound]
-# enabled = true
+enabled = true
 # Optional custom mp3 sound files. Relative paths are resolved from this config file's directory.
-# path = "sounds/notification.mp3"   # one mp3 file for all sound notifications
-# done_path = "sounds/done.mp3"      # overrides only finished notifications
-# request_path = "sounds/request.mp3" # overrides only needs-attention notifications
+# one mp3 file for all sound notifications
+path = "/Users/luis/.openpeon/packs/ad-libs/sounds/lilyachty_lilboat.mp3"
+# overrides only finished notifications
+done_path = "/Users/luis/.openpeon/packs/ad-libs/sounds/fetty_yeahbaby.mp3"
+# overrides only needs-attention notifications
+request_path = "/Users/luis/.openpeon/packs/ad-libs/sounds/bigsean_ohgod.mp3" 
 
 # Per-agent overrides: default | on | off
 # By default, droid is muted.
