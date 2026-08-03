@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.homeModules.latex =
+  flake.homeModules.tex =
     { pkgs, ... }:
     {
       home.packages = [ pkgs.texlive.combined.scheme-full ];

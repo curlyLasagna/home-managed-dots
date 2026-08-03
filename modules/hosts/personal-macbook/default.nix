@@ -77,7 +77,7 @@ in
       hm.macos
       hm."peon-ping"
       # Personal specific
-      hm."latex"
+      hm.tex
       hm."personal-packages"
       # hm.ghostty
       hm.alacritty
