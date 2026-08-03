@@ -10,6 +10,7 @@
           skimpdf
           iina
           utm
+          gh-dash
         ]
         ++ [ inputs.herdr.packages.${pkgs.system}.default ];
     };
