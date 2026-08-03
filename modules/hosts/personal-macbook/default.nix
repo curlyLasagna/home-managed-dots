@@ -66,6 +66,7 @@ in
       hm.starship
       hm.zsh
       hm.direnv
+      hm.yazi
       hm.herdr
       hm.docker
       hm.eza
