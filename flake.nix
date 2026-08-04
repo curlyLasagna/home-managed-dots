@@ -24,6 +24,11 @@
     };
 
     herdr.url = "github:ogulcancelik/herdr/v0.7.5";
+
+    hunk = {
+      url = "github:modem-dev/hunk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

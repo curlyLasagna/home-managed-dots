@@ -75,6 +75,7 @@ in
       hm.lazygit
       hm.zoxide
       hm.macos
+      hm.hunk
       hm."peon-ping"
       # Personal specific
       hm.tex
