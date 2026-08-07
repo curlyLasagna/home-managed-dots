@@ -9,6 +9,7 @@
         codex
         awscli2
         uv
+        gh-dash
       ];
     };
 }
