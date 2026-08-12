@@ -236,7 +236,8 @@
   (+global-word-wrap-mode 1))
 
 (after! lsp-ui
-  (setq lsp-ui-doc-enable nil)
+  (setq! lsp-headerline-breadcrumb-enable t)
+  (setq! lsp-ui-doc-enable nil)
   (setq lsp-ui-doc-delay 0.2)
   (setq lsp-ui-doc-show-with-cursor nil)
   (setq lsp-ui-doc-position 'top)
@@ -245,6 +246,15 @@
   (setq lsp-ui-imenu-window-fix-width t)
   (setq lsp-ui-imenu-window-width 20)
   (setq lsp-ui-sideline-show-diagnostics nil)
+  )
+
+(after! corfu
+  (setq! corfu-count 8)
+  )
+
+(after! lsp-mode
+  (setq! lsp-enable-snippet nil)
+  (setq! lsp-eldoc-enable-hover nil)
   )
 
 (after! markdown-mode

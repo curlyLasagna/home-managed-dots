@@ -4,13 +4,9 @@
 (
  (nil
   . ((projectile-project-compilation-cmd . "home-manager switch --flake .#")))
+ 
  (nix-mode
   . (
-     (eglot-workspace-configuration
-      .
-      (:nixd
-       (:options
-        (:home-manager
-         (:expr
-          "(builtins.getFlake (builtins.toString ./.)).homeConfigurations.\"personal-macbook\".options")))))))
+     (lsp-nix-nixd-home-manager-options-expr
+      . "(builtins.getFlake (builtins.to String ./.)).homeConfigurations.\"personal-macbook\".options")))
  )
