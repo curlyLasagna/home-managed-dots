@@ -28,9 +28,9 @@
             enable = true;
           };
 
-          # TODO: Fix emacsclient not rendering the correct colorscheme
+          # BUG: emacs daemon doesn't respect the proper colorscheme
           services.emacs = {
-            enable = true;
+            enable = false;
             client = {
               enable = true;
               arguments = [ "-nw" ];
