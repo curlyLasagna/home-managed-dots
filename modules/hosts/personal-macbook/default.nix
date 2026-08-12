@@ -83,7 +83,7 @@ in
       # hm.ghostty
       hm.alacritty
       # Editors
-      hm.nixvim
+      hm.lazyvim
       hm.emacs
       hm."zed-editor"
     ];
