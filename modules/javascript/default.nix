@@ -7,6 +7,7 @@
         pkgs.nodejs_24
         pkgs.typescript-go
         pkgs.vtsls
+        pkgs.pnpm
       ];
     };
 }
