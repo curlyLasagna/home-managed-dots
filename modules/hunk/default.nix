@@ -13,6 +13,7 @@
           mode = "split";
           line_numbers = true;
           tab_width = 4;
+          line_wrap = true;
         };
       };
     };
