@@ -11,6 +11,8 @@
     nix2vim.url = "github:nix-community/nixvim";
     emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
 
+    lazyvim.url = "github:pfassina/lazyvim-nix";
+
     alacritty-themes = {
       url = "github:alacritty/alacritty-theme";
       flake = false;
@@ -29,6 +31,11 @@
       url = "github:modem-dev/hunk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    openspec = {
+      url = "github:Fission-AI/OpenSpec";
+    };
+
   };
 
   outputs =
@@ -43,6 +50,7 @@
       imports = [
         inputs.flake-parts.flakeModules.modules
         inputs.home-manager.flakeModules.home-manager
+
         (inputs.import-tree ./modules)
       ];
     };
