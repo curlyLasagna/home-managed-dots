@@ -10,6 +10,7 @@
         awscli2
         uv
         gh-dash
+        openspec
       ];
     };
 }

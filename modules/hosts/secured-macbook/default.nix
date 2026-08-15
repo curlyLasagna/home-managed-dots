@@ -81,7 +81,6 @@ in
       hm.yaml
       hm.javascript
       hm.fish
-      hm.nixvim
       hm."peon-ping"
       hm.starship
       hm.zsh

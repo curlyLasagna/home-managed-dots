@@ -32,10 +32,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    openspec = {
-      url = "github:Fission-AI/OpenSpec";
-    };
-
   };
 
   outputs =
