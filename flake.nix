@@ -9,7 +9,6 @@
     import-tree.url = "github:vic/import-tree";
 
     nix2vim.url = "github:nix-community/nixvim";
-    emacs-lsp-booster.url = "github:slotThe/emacs-lsp-booster-flake";
 
     lazyvim.url = "github:pfassina/lazyvim-nix";
 

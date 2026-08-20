@@ -6,7 +6,6 @@ Notes:
 
 - Intended for personal use.
 - Home Manager config sets `home.username = "luis"` and `home.homeDirectory = "/Users/luis"`.
-- macOS hosts import nixpkgs with the `emacs-lsp-booster` overlay.
 
 Run:
 

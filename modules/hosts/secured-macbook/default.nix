@@ -1,11 +1,9 @@
 { inputs, ... }:
 let
   hm = inputs.self.homeModules;
-  emacsOverlay = inputs.emacs-lsp-booster.overlays.default;
 
   pkgsMac = import inputs.nixpkgs {
     system = "aarch64-darwin";
-    overlays = [ emacsOverlay ];
     config.allowUnfree = true;
   };
 in
@@ -25,9 +23,6 @@ in
               email = "luis.gcodes@gmail.com";
               name = "Luis";
               githubUserName = "curlyLasagna";
-            };
-            emacs = {
-              profile = "doom";
             };
           };
         }
@@ -100,7 +95,6 @@ in
       # Work packages
       hm."secured-macbook-packages"
       # Editors
-      hm.emacs
       hm."zed-editor"
     ];
   };
