@@ -79,6 +79,7 @@ in
       hm.markdown
       hm.nix
       hm.yaml
+      hm.lazyvim
       hm.javascript
       hm.fish
       hm."peon-ping"
@@ -95,6 +96,7 @@ in
       hm.macos
       hm.ghostty
       hm.herdr
+      hm.scripts
       # Work packages
       hm."secured-macbook-packages"
       # Editors
