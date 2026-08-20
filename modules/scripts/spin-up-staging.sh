@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-export AWS_PROFILE="luis_staging"
-
 cluster="stg-cyber4all-cluster-use1-c8ef755f"
 services=(
   "stg-clark-gateway-use1-c83f8041"
