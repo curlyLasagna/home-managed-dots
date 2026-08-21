@@ -203,7 +203,7 @@ next_workspace = "prefix+}"     # optional, unset by default
 
 # Play sounds when agents change state in background workspaces
 [ui.sound]
-enabled = true
+enabled = false
 # Optional custom mp3 sound files. Relative paths are resolved from this config file's directory.
 # one mp3 file for all sound notifications
 path = "/Users/luis/.openpeon/packs/ad-libs/sounds/lilyachty_lilboat.mp3"
