@@ -9,6 +9,7 @@
         iina
         utm
         gh-dash
+        posting
       ];
     };
 }

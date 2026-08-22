@@ -11,6 +11,7 @@
         uv
         gh-dash
         openspec
+        hoppscotch
       ];
     };
 }

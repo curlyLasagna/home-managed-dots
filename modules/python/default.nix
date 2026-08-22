@@ -11,9 +11,9 @@
       pkgs.ty
       pkgs.ruff
     ];
+    programs.ty = {
+
+    };
   };
 
-  programs.ty = {
-
-  };
 }
