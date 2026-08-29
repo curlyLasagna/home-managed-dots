@@ -25,8 +25,7 @@ Add the following line in your `nix.conf` file
 
 This flake exposes these Home Manager configurations:
 
-- `personal-macbook`: M1 MacBook for personal use
-- `secured-macbook`: M3 MacBook strictly for work
+- `personal-macbook`: MacBook for personal and work use
 - `secured-linux`: powerful Linux desktop
 - `wsl`: WSL on an x86 Windows laptop
 
@@ -67,12 +66,6 @@ nix run home-manager/master -- switch --flake .#personal-macbook
 Interact with remote repos without having to enter your passphrase:
 
 `ssh-add --apple-use-keychain <private key path>`
-
-### SecurEd (Work) MacBook
-
-```sh
-nix run home-manager/master -- switch --flake .#secured-macbook
-```
 
 ## Philosphy
 

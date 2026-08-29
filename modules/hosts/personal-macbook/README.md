@@ -1,10 +1,10 @@
 # personal-macbook
 
-Personal M1 MacBook (Apple Silicon, `aarch64-darwin`).
+MacBook (Apple Silicon, `aarch64-darwin`) for personal and work use.
 
 Notes:
 
-- Intended for personal use.
+- Unified configuration for personal and work.
 - Home Manager config sets `home.username = "luis"` and `home.homeDirectory = "/Users/luis"`.
 
 Run:

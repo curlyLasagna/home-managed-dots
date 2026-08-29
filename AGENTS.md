@@ -11,7 +11,7 @@ Preferred order of verification
 3. Build (no activation): `home-manager build --flake .#personal-macbook`
 4. Activate: `home-manager switch --flake .#personal-macbook`
 
-Host names (use these): `personal-macbook`, `secured-macbook`, `secured-linux`, `wsl`.
+Host names (use these): `personal-macbook`, `secured-linux`, `wsl`.
 
 ## Repo Structure (Dendritic)
 

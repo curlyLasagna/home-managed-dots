@@ -78,12 +78,11 @@ in
       hm.macos
       hm.hunk
       hm.javascript
-      hm."peon-ping"
       # Personal specific
       hm.tex
       hm."personal-packages"
-      # Work + personal laptop
-      hm."secured-macbook-packages"
+      # Scripts (work scripts like spin-up-staging)
+      hm.scripts
       # hm.ghostty
       hm.alacritty
       # Editors
