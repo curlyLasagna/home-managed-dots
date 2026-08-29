@@ -48,6 +48,12 @@ in
             frequency = "weekly";
             timestamp = "-7 days";
           };
+          # Doom Emacs profile alias
+          # A little nasty but 🤷
+          programs.fish.shellAbbrs = {
+            es = "emacs -nw --profile securEd";
+            ep = "emacs -nw --profile personal";
+          };
         }
       )
       # Modules
