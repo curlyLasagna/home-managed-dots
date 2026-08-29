@@ -28,7 +28,7 @@
         cursor_blink = false;
         relative_line_numbers = "enabled";
 
-        ui_font_size = 15;
+        ui_font_size = 13;
         ui_font_family = ".ZedSans";
         buffer_font_family = "ZedMono Nerd Font Mono";
         buffer_font_size = 13.0;

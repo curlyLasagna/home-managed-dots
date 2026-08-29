@@ -1,10 +1,11 @@
 { ... }:
 {
   flake.homeModules."zed-editor" =
-    { ... }:
+    { pkgs, ... }:
     {
       programs.zed-editor = {
-        enable = false;
+        enable = true;
+        package = pkgs.emptyDirectory;
         mutableUserSettings = true;
         mutableUserKeymaps = true;
         userSettings = {
