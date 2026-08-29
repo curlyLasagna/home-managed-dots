@@ -1,5 +1,7 @@
 { inputs, ... }:
-
+let
+  lua = ./lua;
+in
 {
   flake.homeModules.lazyvim =
     { ... }:
@@ -9,31 +11,7 @@
       ];
       programs.lazyvim = {
         enable = true;
-        installCoreDependencies = true;
-
-        config = { };
-
-        extras = {
-          coding.yanky = {
-            enable = true;
-          };
-
-          lang.python = {
-            enable = true;
-          };
-
-          lang.go = {
-            enable = true;
-          };
-
-          lang.nix = {
-            enable = true;
-          };
-
-          lang.typescript = {
-            enable = true;
-          };
-        };
+        configFiles = lua;
       };
     };
 }
