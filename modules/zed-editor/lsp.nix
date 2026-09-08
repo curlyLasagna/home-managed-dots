@@ -5,11 +5,14 @@
     {
       programs.zed-editor.userSettings.lsp = {
         biome = {
-          settings.inline_config = {
-            linter = {
-              rules = {
-                complexity = {
-                  noStaticOnlyClass = "off";
+          settings = {
+            require_config_file = true;
+            inline_config = {
+              linter = {
+                rules = {
+                  complexity = {
+                    noStaticOnlyClass = "off";
+                  };
                 };
               };
             };
