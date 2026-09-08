@@ -29,3 +29,4 @@ opt.wrap = true
 -- Set <space> as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.snacks_animate_scroll = false
