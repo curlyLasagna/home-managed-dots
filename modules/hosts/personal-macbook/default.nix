@@ -83,7 +83,7 @@ in
       hm."personal-packages"
       # Scripts (work scripts like spin-up-staging)
       hm.scripts
-      # hm.ghostty
+      hm.ghostty
       hm.alacritty
       # Editors
       hm.lazyvim

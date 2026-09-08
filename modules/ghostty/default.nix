@@ -15,7 +15,7 @@
     {
       xdg.configFile."ghostty/config".text = ''
         command = ${cmd}
-        font-family = JetBrains Mono
+        font-family = ZedMono Nerd Font
         font-size = 13
         window-theme = auto
 
