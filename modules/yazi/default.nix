@@ -24,6 +24,7 @@
         };
 
         preview = {
+          wrap = "yes";
           tab_size = 2;
           max_width = 1000;
           max_height = 1000;

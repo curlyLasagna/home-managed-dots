@@ -12,10 +12,10 @@
 
     lazyvim.url = "github:pfassina/lazyvim-nix";
 
-    alacritty-themes = {
-      url = "github:alacritty/alacritty-theme";
-      flake = false;
-    };
+    # alacritty-themes = {
+    #   url = "github:alacritty/alacritty-theme";
+    #   flake = false;
+    # };
 
     peon-ping.url = "github:PeonPing/peon-ping";
 

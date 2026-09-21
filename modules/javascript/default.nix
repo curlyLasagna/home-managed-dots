@@ -5,7 +5,7 @@
     {
       home.packages = [
         pkgs.nodejs_24
-        pkgs.typescript-go
+        pkgs.typescript
         pkgs.vtsls
         pkgs.pnpm
       ];

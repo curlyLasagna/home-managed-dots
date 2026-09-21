@@ -84,7 +84,8 @@ in
       # Scripts (work scripts like spin-up-staging)
       hm.scripts
       hm.ghostty
-      hm.alacritty
+      # Alacritty theme repo returning 504 for some reason
+      # hm.alacritty
       # Editors
       hm.lazyvim
       hm."zed-editor"

@@ -8,7 +8,7 @@
         preview_tabs.enabled = false;
         show_whitespaces = "trailing";
         inlay_hints.enabled = false;
-
+        which_key.enabled = true;
         icon_theme = {
           light = "Catppuccin Latte";
           dark = "Catppuccin Mocha";
